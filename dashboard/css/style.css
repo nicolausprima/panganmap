@@ -535,7 +535,7 @@ input[type="range"]:active::-moz-range-thumb { background: var(--color-accent-ac
    ========================================================================== */
 
 .site-foot { border-top: var(--hairline) solid var(--color-rule); }
-.site-foot-inner { display: flex; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; padding-block: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+.site-foot-inner { display: flex; justify-content: center; text-align: center; gap: var(--space-md); flex-wrap: wrap; padding-block: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
 
 /* ==========================================================================
    Responsive: filters stop sticking and the shell folds under 60rem
