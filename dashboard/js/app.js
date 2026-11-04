@@ -1609,6 +1609,8 @@
       records = records.filter(k =>
         k.kab.toLowerCase().includes(searchQuery) ||
         k.prov.toLowerCase().includes(searchQuery) ||
+        (k.cluster_name && k.cluster_name.toLowerCase().includes(searchQuery)) ||
+        (k.persona && k.persona.toLowerCase().includes(searchQuery)) ||
         (k.status && k.status.toLowerCase().includes(searchQuery))
       );
     }
@@ -1645,22 +1647,37 @@
     pageRows.forEach((r, idx) => {
       const tr = document.createElement('tr');
 
-      // Status carries the same scale colour the map uses for its IKP class.
-      const statusStep = groupStep(r.grp);
+      // Persona step mapping (1: Rawan Kritis, 2: Cukup Rawan, 4: Aman Perkotaan, 5: Sangat Aman)
+      const personaStep = {
+        'Agrarian Resilient': 5,
+        'Urban Resilient': 4,
+        'Agrarian Paradox': 2,
+        'Chronic Crisis': 1
+      }[r.persona] || 3;
 
-      const personaLabel = r.persona
-        ? `<span class="persona-tag" style="--persona: ${PERSONA_COLOR[r.persona] || 'var(--color-scale-3)'};"><span class="persona-swatch" aria-hidden="true"></span>${escapeHtml(PERSONA_LABEL[r.persona] || r.persona)}</span>`
-        : '';
+      const clusterNum = r.cluster_num || ({
+        'Agrarian Resilient': 1,
+        'Urban Resilient': 2,
+        'Agrarian Paradox': 3,
+        'Chronic Crisis': 4
+      }[r.persona] || '–');
+
+      const clusterName = r.cluster_name || ({
+        'Agrarian Resilient': 'Sangat Aman',
+        'Urban Resilient': 'Aman Perkotaan',
+        'Agrarian Paradox': 'Cukup Rawan',
+        'Chronic Crisis': 'Rawan Kritis'
+      }[r.persona] || r.status || '–');
 
       tr.innerHTML = `
         <td class="num">${startIdx + idx + 1}</td>
-        <td><strong>${escapeHtml(r.kab)}</strong>${personaLabel}</td>
+        <td><strong>${escapeHtml(r.kab)}</strong></td>
         <td>${escapeHtml(r.tipe || 'Kabupaten')}</td>
         <td>${escapeHtml(r.prov)}</td>
         <td class="num"><strong>${r.ikp !== null ? r.ikp.toFixed(2) : '–'}</strong></td>
         <td class="num">${r.rank || '–'}</td>
-        <td class="num">${r.grp || '–'}</td>
-        <td><span class="status-mark status-mark--${statusStep}"><span class="status-swatch" aria-hidden="true"></span>${escapeHtml(r.status || '–')}</span></td>
+        <td class="num"><strong>${clusterNum}</strong></td>
+        <td><span class="status-mark status-mark--${personaStep}"><span class="status-swatch" aria-hidden="true"></span>${escapeHtml(clusterName)}</span></td>
         <td class="num">${r.avail !== null ? r.avail.toFixed(1) : '–'}</td>
         <td class="num">${r.access !== null ? r.access.toFixed(1) : '–'}</td>
         <td class="num">${r.util !== null ? r.util.toFixed(1) : '–'}</td>
@@ -1735,19 +1752,19 @@
       );
     }
 
-    const headers = ['Tahun', 'Provinsi', 'Kabupaten/Kota', 'Tipe', 'Skor IKP', 'Peringkat', 'Kelompok', 'Status Kerentanan', 'Ketersediaan', 'Keterjangkauan', 'Pemanfaatan'];
+    const headers = ['Tahun', 'Provinsi', 'Kabupaten/Kota', 'Tipe', 'Skor IKP', 'Peringkat', 'Klaster', 'Profil Klaster', 'Ketersediaan', 'Keterjangkauan', 'Pemanfaatan'];
     const rows = records.map(r => [
       r.tahun,
       `"${r.prov}"`,
       `"${r.kab}"`,
-      `"${r.tipe}"`,
-      r.ikp,
-      r.rank,
-      r.grp,
-      `"${r.status}"`,
-      r.avail,
-      r.access,
-      r.util
+      `"${r.tipe || 'Kabupaten'}"`,
+      r.ikp !== null ? r.ikp : '',
+      r.rank || '',
+      r.cluster_num || r.grp || '',
+      `"${r.cluster_name || r.status || ''}"`,
+      r.avail !== null ? r.avail : '',
+      r.access !== null ? r.access : '',
+      r.util !== null ? r.util : ''
     ]);
 
     const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
