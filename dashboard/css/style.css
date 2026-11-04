@@ -227,7 +227,7 @@ html { scroll-padding-top: calc(var(--topbar-h) + var(--filterbar-h) + var(--spa
 .panel-title h2, .panel-title h3 { max-width: 56ch; }
 .panel-title h2 { font-size: var(--text-section); letter-spacing: -0.03em; }
 .panel-title h3 { font-size: var(--text-title); letter-spacing: -0.02em; line-height: 1.25; }
-.panel-desc { margin-top: var(--space-2xs); font-size: var(--text-sm); color: var(--color-muted); max-width: 62ch; }
+.panel-desc { margin-top: var(--space-2xs); font-size: var(--text-sm); color: var(--color-muted); max-width: 62ch; text-align: justify; text-align-last: left; }
 .selection-note { display: inline-flex; gap: var(--space-xs); align-items: baseline; font-size: var(--text-sm); color: var(--color-muted); }
 .selection-note strong { color: var(--color-ink); font-weight: 500; }
 
