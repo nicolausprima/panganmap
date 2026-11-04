@@ -758,8 +758,8 @@
   function renderChartTrend() {
     elChartTrend.innerHTML = '';
     const width = chartWidth(elChartTrend, 560);
-    const height = 260;
-    const pad = { top: 28, right: width < 420 ? 56 : 80, bottom: 34, left: 40 };
+    const height = 270;
+    const pad = { top: 28, right: width < 420 ? 56 : 80, bottom: 48, left: 56 };
 
     const svg = newChartSvg(width, height, 'Grafik garis rata-rata skor IKP tahun 2018 sampai 2026');
 
@@ -781,23 +781,10 @@
       }
     });
 
-    // Adaptive Y bounds so low-scoring regions (e.g. Papua 31-53) never pierce the bottom axis
-    const allVals = [...natSeries, ...activeSeries]
-      .map(p => p.val)
-      .filter(v => v !== null && v !== undefined && !isNaN(v));
-    const minDataVal = allVals.length > 0 ? Math.min(...allVals) : 50;
-
-    let yMin = 50;
+    // Rentang sumbu Y selalu dimulai dari 0 sampai 100
+    const yMin = 0;
     const yMax = 100;
-    let gridVals = [50, 65, 80, 100];
-
-    if (minDataVal < 42) {
-      yMin = 20;
-      gridVals = [20, 40, 60, 80, 100];
-    } else if (minDataVal < 52) {
-      yMin = 35;
-      gridVals = [35, 50, 65, 80, 100];
-    }
+    const gridVals = [0, 20, 40, 60, 80, 100];
 
     const scaleX = (i) => pad.left + i * xStep;
     const scaleY = (v) => height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom);
@@ -807,6 +794,17 @@
       svg.appendChild(svgEl('line', { x1: pad.left, x2: width - pad.right, y1: yPos, y2: yPos, class: 'chart-gridline' }));
       svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
+
+    // Label sumbu Y "Skor IKP" di samping kiri, tengah-tengah rentang 0-100
+    const midY = (scaleY(0) + scaleY(100)) / 2;
+    svg.appendChild(svgEl('text', {
+      transform: 'rotate(-90)',
+      x: -midY,
+      y: 18,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Skor IKP'));
 
     // National benchmark when a province is selected
     if (selectedProvince) {
@@ -846,7 +844,7 @@
 
       svg.appendChild(svgEl('text', {
         x: xPos,
-        y: height - 10,
+        y: height - 24,
         'text-anchor': 'middle',
         class: isCurrent ? 'chart-axis-text is-current' : 'chart-axis-text'
       }, y));
@@ -872,6 +870,16 @@
         }
       }
     });
+
+    // Label sumbu X "Tahun" di bagian bawah, tengah-tengah rentang 2018 - 2026
+    const midX = (scaleX(0) + scaleX(years.length - 1)) / 2;
+    svg.appendChild(svgEl('text', {
+      x: midX,
+      y: height - 6,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Tahun'));
 
     elChartTrend.appendChild(svg);
   }
@@ -1052,17 +1060,17 @@
     const svg = newChartSvg(width, height, 'Diagram pencar tingkat kemiskinan P0 terhadap skor IKP provinsi');
 
     const xMin = 0, xMax = 35; // Kemiskinan %
-    const yMin = 20, yMax = 100; // IKP
+    const yMin = 0, yMax = 100; // IKP (rentang konsisten dari 0)
 
     const scaleX = (v) => pad.left + ((v - xMin) / (xMax - xMin)) * (width - pad.left - pad.right);
     const scaleY = (v) => height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom);
 
-    // Double-vulnerability quadrant
+    // Double-vulnerability quadrant (kemiskinan > 15% dan IKP < 68)
     svg.appendChild(svgEl('rect', {
       x: scaleX(15),
-      y: scaleY(60),
+      y: scaleY(68),
       width: scaleX(xMax) - scaleX(15),
-      height: scaleY(yMin) - scaleY(60),
+      height: scaleY(yMin) - scaleY(68),
       class: 'chart-quadrant'
     }));
     svg.appendChild(svgEl('text', {
@@ -1072,7 +1080,7 @@
       class: 'chart-axis-text'
     }, 'Prioritas ganda'));
 
-    [20, 40, 60, 80, 100].forEach(gv => {
+    [0, 20, 40, 60, 80, 100].forEach(gv => {
       const yPos = scaleY(gv);
       svg.appendChild(svgEl('line', { x1: pad.left, x2: width - pad.right, y1: yPos, y2: yPos, class: 'chart-gridline' }));
       svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
@@ -1101,7 +1109,7 @@
         cx: scaleX(pt.pov),
         cy: scaleY(pt.ikp),
         r: isSel ? 7 : 4.5,
-        class: `scatter-dot ${pt.ikp < 60 ? 'scatter-dot--rentan' : ''} ${isSel ? 'is-selected' : ''}`,
+        class: `scatter-dot ${pt.ikp < 68.0 ? 'scatter-dot--rentan' : ''} ${isSel ? 'is-selected' : ''}`,
         tabindex: 0,
         role: 'button',
         'aria-label': `${pt.prov}: IKP ${pt.ikp.toFixed(1)}, kemiskinan ${pt.pov.toFixed(1)}%`
