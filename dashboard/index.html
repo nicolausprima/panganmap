@@ -95,8 +95,8 @@
         <div class="brief-item">
           <dt>Cara Eksplorasi</dt>
           <dd>
-            <strong>Peta & Simulasi Interaktif</strong>
-            Pilih tahun di menu atas, klik provinsi pada peta, dan geser simulator di bawah untuk menguji dampak kebijakan.
+            <strong>Peta & Persona Interaktif</strong>
+            Pilih tahun di menu atas, klik provinsi pada peta, dan pelajari 4 persona wilayah di bawah untuk rekomendasi kebijakan.
           </dd>
         </div>
       </dl>
@@ -292,14 +292,14 @@
 
     </section>
 
-    <!-- Inferential models: K-Means personas and regression -->
+    <!-- Inferential model: K-Means personas -->
     <section class="studies" id="inferentialSection" aria-labelledby="studiesTitle">
       <header class="studies-head">
-        <h2 id="studiesTitle">Analisis inferensial: persona wilayah dan tuas kebijakan</h2>
-        <p class="panel-desc">Pembuktian empiris berbasis klasterisasi multidimensi K-Means dan simulasi elastisitas regresi berganda (N = 514 daerah).</p>
+        <h2 id="studiesTitle">Analisis inferensial: 4 persona kerentanan daerah</h2>
+        <p class="panel-desc">Segmentasi 514 kabupaten dan kota berdasarkan 3 pilar IKP dan angka kelaparan (PoU) menggunakan klasterisasi K-Means.</p>
       </header>
 
-      <!-- 1. K-Means personas -->
+      <!-- K-Means personas -->
       <article class="study">
         <div class="study-text">
           <h3>4 persona kerentanan daerah</h3>
@@ -315,70 +315,6 @@
           </div>
           <div class="persona-detail" id="personaDetailCard">
             <!-- Rendered via app.js -->
-          </div>
-        </div>
-      </article>
-
-      <!-- 3. Regression and simulator -->
-      <article class="study">
-        <div class="study-text">
-          <h3>Tuas kebijakan dan simulator PoU</h3>
-          <p class="panel-desc">Identifikasi pengungkit utama penurunan angka kelaparan (R² = 58.5%), dari regresi berganda.</p>
-          <p class="bottleneck">
-            <strong>Uji bottleneck ketersediaan (p &lt; 0.001).</strong>
-            Pada 130 daerah dengan ketersediaan &lt; 50, angka kelaparan melonjak 2x lipat (17.8% vs 8.8%). Ketersediaan fisik adalah prasyarat mutlak sebelum subsidi daya beli efektif.
-          </p>
-          <p class="chart-caption chart-caption--solo">Model regresi OLS dengan koreksi HC3, data 514 kabupaten dan kota 2024</p>
-        </div>
-        <div class="study-body">
-          <div class="chart-body" id="chartRegressionTornado">
-            <!-- Rendered via app.js -->
-          </div>
-
-          <div class="simulator">
-            <div class="simulator-head">
-              <h4 class="simulator-title">Simulator alokasi intervensi (what-if)</h4>
-              <button type="button" id="resetSimBtn" class="btn btn--quiet">Reset</button>
-            </div>
-
-            <div class="sliders">
-              <div class="slider-row">
-                <label for="simSliderAccess">
-                  <span>Keterjangkauan (daya beli)</span>
-                  <span class="slider-value tnum" id="simValAccess">+0 poin</span>
-                </label>
-                <input type="range" id="simSliderAccess" min="0" max="20" value="0" step="1">
-              </div>
-              <div class="slider-row">
-                <label for="simSliderAvail">
-                  <span>Ketersediaan (produksi dan logistik)</span>
-                  <span class="slider-value tnum" id="simValAvail">+0 poin</span>
-                </label>
-                <input type="range" id="simSliderAvail" min="0" max="20" value="0" step="1">
-              </div>
-              <div class="slider-row">
-                <label for="simSliderUtil">
-                  <span>Pemanfaatan (sanitasi dan gizi)</span>
-                  <span class="slider-value tnum" id="simValUtil">+0 poin</span>
-                </label>
-                <input type="range" id="simSliderUtil" min="0" max="20" value="0" step="1">
-              </div>
-            </div>
-
-            <dl class="outcome">
-              <div class="outcome-item">
-                <dt>Baseline PoU nasional</dt>
-                <dd class="num">11.08%</dd>
-              </div>
-              <div class="outcome-item">
-                <dt>Proyeksi PoU baru</dt>
-                <dd class="num" id="simNewPou">11.08%</dd>
-              </div>
-              <div class="outcome-item">
-                <dt>Estimasi penurunan</dt>
-                <dd class="num" id="simDeltaPou">0.0%</dd>
-              </div>
-            </dl>
           </div>
         </div>
       </article>

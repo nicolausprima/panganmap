@@ -299,8 +299,7 @@
   function watchChartWidths() {
     if (typeof ResizeObserver === 'undefined') return;
     const targets = [elChartTrend, elChartRanking, elChartPillars, elChartScatter,
-      document.getElementById('chartKmeansRadar'),
-      document.getElementById('chartRegressionTornado')].filter(Boolean);
+      document.getElementById('chartKmeansRadar')].filter(Boolean);
     const lastWidth = new Map();
     let timer = null;
     const observer = new ResizeObserver((entries) => {
@@ -1185,11 +1184,6 @@
   function renderInferentialSection() {
     if (!data || !data.analytics) return;
     renderKmeansCard();
-    renderRegressionCard();
-    if (!isSimulatorInitialized) {
-      initPolicySimulator();
-      isSimulatorInitialized = true;
-    }
   }
 
   // Pilar 1: ANOVA Card
