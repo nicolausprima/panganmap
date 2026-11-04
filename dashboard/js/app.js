@@ -1146,11 +1146,16 @@
   // =========================================================================
   // Inferential & Storytelling Models (ANOVA, K-Means, Multiple Regression)
   // =========================================================================
-  let selectedPersonaKey = 'Urban Resilient';
+  let selectedPersonaKey = 'Agrarian Resilient';
   let isSimulatorInitialized = false;
 
-  // Personas read on the same diverging scale as the map: the stronger the
-  // persona, the closer to blue; the harder the crisis, the closer to amber.
+  const PERSONA_LABEL = {
+    'Agrarian Resilient': 'Klaster 1: Sangat Aman',
+    'Urban Resilient': 'Klaster 2: Aman Perkotaan',
+    'Agrarian Paradox': 'Klaster 3: Cukup Rawan',
+    'Chronic Crisis': 'Klaster 4: Rawan Kritis'
+  };
+
   const PERSONA_COLOR = {
     'Agrarian Resilient': 'var(--color-scale-5)',
     'Urban Resilient': 'var(--color-scale-4)',
@@ -1159,25 +1164,25 @@
   };
 
   const PERSONA_INFO = {
-    'Urban Resilient': {
-      title: 'Urban Resilient (Pusat Konsumsi Modern)',
-      desc: 'Keterjangkauan & pemanfaatan gizi tertinggi (82.5 & 78.5), produksi lokal minim, angka kelaparan sangat rendah (8.0%). Dominan kota besar di Jawa & Sumatera.',
-      policy: 'Intervensi: Penguatan rantai pasok logistik perkotaan, pemantauan stabilitas harga pangan esensial, dan mitigasi pemborosan makanan (food waste).'
-    },
     'Agrarian Resilient': {
-      title: 'Agrarian Resilient (Lumbung Pangan Berdaulat)',
-      desc: 'Ketersediaan surplus tertinggi (73.4), ketahanan prima (IKP 75.2), kelaparan terendah (7.4%). Mayoritas kabupaten sentra pertanian di Sumatera, Jawa, Kalimantan, Sulawesi.',
-      policy: 'Intervensi: Modernisasi teknologi pascapanen, perlindungan lahan pertanian abadi (LP2B), dan perluasan asuransi usaha tani.'
+      title: 'Klaster 1: Sangat Aman (Lumbung Pangan Tangguh)',
+      desc: 'Produksi pangan melimpah dan surplus (skor ketersediaan 73.4), daya beli warga tinggi (81.6), dan angka kelaparan paling rendah di Indonesia (7.4%). Mayoritas berada di sentra pertanian Sumatera, Jawa, Kalimantan, dan Sulawesi.',
+      policy: 'Fokus Kebijakan: Perlindungan lahan sawah abadi (LP2B), modernisasi teknologi panen, dan asuransi usaha tani.'
+    },
+    'Urban Resilient': {
+      title: 'Klaster 2: Aman Perkotaan (Sentra Konsumsi Modern)',
+      desc: 'Produksi pangan lokal sedikit (53.6), namun daya beli masyarakat sangat tinggi (82.5) dan sanitasi air sangat baik (78.5). Angka kelaparan sangat rendah (8.0%). Dominan berada di kota besar Jawa dan Sumatera.',
+      policy: 'Fokus Kebijakan: Penguatan kelancaran jalur logistik pangan, stabilitas harga sembako, dan pencegahan pemborosan makanan perkotaan.'
     },
     'Agrarian Paradox': {
-      title: 'Agrarian Paradox (Rentan Kesejahteraan)',
-      desc: 'Ketersediaan fisik cukup (52.9) tetapi akses daya beli dan sanitasi tertinggal; angka kelaparan mulai waspada (13.1%). Kabupaten transisi di Sumatera, Sulawesi, Bali-Nusra.',
-      policy: 'Intervensi: Bantuan pangan bersyarat (PKH), penguatan ekonomi petani gurem untuk daya beli, edukasi gizi balita, dan penyediaan sanitasi air bersih.'
+      title: 'Klaster 3: Cukup Rawan (Paradoks Lumbung Pangan)',
+      desc: 'Wilayah yang menghasilkan pangan (ketersediaan 52.9), tetapi warganya rentan kelaparan (13.1%) karena daya beli rendah dan fasilitas sanitasi kurang memadai. Tersebar di pedesaan Sumatera, Sulawesi, dan Nusa Tenggara.',
+      policy: 'Fokus Kebijakan: Bantuan pangan bersyarat, peningkatan pendapatan petani kecil, edukasi gizi balita, dan penyediaan sanitasi air bersih.'
     },
     'Chronic Crisis': {
-      title: 'Chronic Crisis (Krisis Multidimensi Akut)',
-      desc: 'Defisit ketersediaan kritis (<28), akses ekonomi terisolasi, angka kelaparan melonjak drastis (>33%). 100% berada di Kawasan Timur (30 Papua, 12 Maluku).',
-      policy: 'Intervensi: Pembangunan jalur logistik perintis, subsidi ongkos angkut pangan, revitalisasi pangan lokal (sagu/umbi), dan intervensi darurat stunting.'
+      title: 'Klaster 4: Rawan Kritis (Darurat Pangan Menahun)',
+      desc: 'Krisis pangan akut menahun. Kekurangan pasokan fisik parah (<28), akses ekonomi terisolasi, dan angka kelaparan menembus 33.3% (sepertiga warga kekurangan makan). Seluruhnya berada di Kawasan Timur (30 daerah Papua, 12 daerah Maluku).',
+      policy: 'Fokus Kebijakan: Jembatan udara logistik pangan perintis, subsidi ongkos angkut sembako, cadangan pangan darurat, dan penanganan gizi stunting.'
     }
   };
 
@@ -1320,7 +1325,7 @@
     if (!elPills || !elRadar || !elDetail) return;
 
     const personas = data.analytics.kmeans.personas;
-    const personaKeys = Object.keys(personas);
+    const personaKeys = ['Agrarian Resilient', 'Urban Resilient', 'Agrarian Paradox', 'Chronic Crisis'].filter(k => personas[k]);
 
     elPills.innerHTML = '';
     personaKeys.forEach(key => {
@@ -1333,7 +1338,7 @@
       btn.style.setProperty('--persona', PERSONA_COLOR[key] || 'var(--color-scale-3)');
       btn.innerHTML = `
         <span class="persona-swatch" aria-hidden="true"></span>
-        <span class="persona-name">${escapeHtml(key)}</span>
+        <span class="persona-name">${escapeHtml(PERSONA_LABEL[key] || key)}</span>
         <span class="persona-count num">${p.count}</span>
       `;
       btn.addEventListener('click', () => {
@@ -1605,7 +1610,7 @@
       const statusStep = groupStep(r.grp);
 
       const personaLabel = r.persona
-        ? `<span class="persona-tag" style="--persona: ${PERSONA_COLOR[r.persona] || 'var(--color-scale-3)'};"><span class="persona-swatch" aria-hidden="true"></span>${escapeHtml(r.persona)}</span>`
+        ? `<span class="persona-tag" style="--persona: ${PERSONA_COLOR[r.persona] || 'var(--color-scale-3)'};"><span class="persona-swatch" aria-hidden="true"></span>${escapeHtml(PERSONA_LABEL[r.persona] || r.persona)}</span>`
         : '';
 
       tr.innerHTML = `
