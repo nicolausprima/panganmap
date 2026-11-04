@@ -299,7 +299,6 @@
   function watchChartWidths() {
     if (typeof ResizeObserver === 'undefined') return;
     const targets = [elChartTrend, elChartRanking, elChartPillars, elChartScatter,
-      document.getElementById('chartAnovaDisparity'),
       document.getElementById('chartKmeansRadar'),
       document.getElementById('chartRegressionTornado')].filter(Boolean);
     const lastWidth = new Map();
@@ -1185,7 +1184,6 @@
 
   function renderInferentialSection() {
     if (!data || !data.analytics) return;
-    renderAnovaCard();
     renderKmeansCard();
     renderRegressionCard();
     if (!isSimulatorInitialized) {
