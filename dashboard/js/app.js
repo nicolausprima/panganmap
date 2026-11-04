@@ -759,7 +759,7 @@
     elChartTrend.innerHTML = '';
     const width = chartWidth(elChartTrend, 560);
     const height = 270;
-    const pad = { top: 28, right: width < 420 ? 56 : 80, bottom: 48, left: 56 };
+    const pad = { top: 28, right: width < 420 ? 56 : 80, bottom: 48, left: 44 };
 
     const svg = newChartSvg(width, height, 'Grafik garis rata-rata skor IKP tahun 2018 sampai 2026');
 
@@ -795,13 +795,11 @@
       svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
 
-    // Label sumbu Y "Skor IKP" di samping kiri, tengah-tengah rentang 0-100
-    const midY = (scaleY(0) + scaleY(100)) / 2;
+    // Label sumbu Y "Skor IKP" horizontal di atas sumbu Y
     svg.appendChild(svgEl('text', {
-      transform: 'rotate(-90)',
-      x: -midY,
-      y: 18,
-      'text-anchor': 'middle',
+      x: pad.left,
+      y: pad.top - 10,
+      'text-anchor': 'start',
       class: 'chart-axis-text',
       style: 'fill: var(--color-ink-2); font-weight: 500;'
     }, 'Skor IKP'));
@@ -891,7 +889,7 @@
   function renderChartRanking() {
     elChartRanking.innerHTML = '';
     const width = chartWidth(elChartRanking, 420);
-    const pad = { top: 8, right: 72, bottom: 8, left: Math.min(172, Math.round(width * 0.42)) };
+    const pad = { top: 22, right: 52, bottom: 8, left: Math.min(172, Math.round(width * 0.42)) };
 
     let items = [];
     if (!selectedProvince) {
@@ -925,6 +923,23 @@
     const scaleW = (width - pad.left - pad.right) / 100;
     const maxChars = Math.max(8, Math.floor((pad.left - 10) / 7.6));
 
+    // Label horizontal di atas grafik
+    svg.appendChild(svgEl('text', {
+      x: pad.left - 10,
+      y: 12,
+      'text-anchor': 'end',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Daerah'));
+
+    svg.appendChild(svgEl('text', {
+      x: pad.left + 100 * scaleW,
+      y: 12,
+      'text-anchor': 'end',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Skor 0–100'));
+
     items.forEach((item, i) => {
       const y = pad.top + i * rowH + (rowH - barH) / 2;
       const barW = Math.max(item.val * scaleW, 2);
@@ -952,17 +967,6 @@
         class: 'chart-bar-val'
       }, item.val.toFixed(1)));
     });
-
-    // Label vertikal "Skala skor 0–100" di samping kanan diagram batang
-    const midY = height / 2;
-    svg.appendChild(svgEl('text', {
-      transform: `rotate(-90, ${width - 12}, ${midY})`,
-      x: width - 12,
-      y: midY,
-      'text-anchor': 'middle',
-      class: 'chart-axis-text',
-      style: 'fill: var(--color-ink-2); font-weight: 500;'
-    }, 'Skala skor 0–100'));
 
     elChartRanking.appendChild(svg);
   }
@@ -1052,7 +1056,7 @@
     elChartScatter.innerHTML = '';
     const width = chartWidth(elChartScatter, 560);
     const height = 300;
-    const pad = { top: 26, right: 28, bottom: 46, left: 56 };
+    const pad = { top: 26, right: 28, bottom: 46, left: 44 };
 
     // Collect all provinces data for current year (fallback to 2025 for poverty if current year not yet published)
     const povYear = currentYear > 2025 ? 2025 : currentYear;
@@ -1099,13 +1103,11 @@
       svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
 
-    // Label sumbu Y "Skor IKP" di samping kiri, tengah-tengah rentang 0-100
-    const midY = (scaleY(0) + scaleY(100)) / 2;
+    // Label sumbu Y "Skor IKP" horizontal di atas sumbu Y
     svg.appendChild(svgEl('text', {
-      transform: 'rotate(-90)',
-      x: -midY,
-      y: 18,
-      'text-anchor': 'middle',
+      x: pad.left,
+      y: pad.top - 10,
+      'text-anchor': 'start',
       class: 'chart-axis-text',
       style: 'fill: var(--color-ink-2); font-weight: 500;'
     }, 'Skor IKP'));
