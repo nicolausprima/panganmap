@@ -1052,7 +1052,7 @@
     elChartScatter.innerHTML = '';
     const width = chartWidth(elChartScatter, 560);
     const height = 300;
-    const pad = { top: 26, right: 28, bottom: 46, left: 42 };
+    const pad = { top: 26, right: 28, bottom: 46, left: 56 };
 
     // Collect all provinces data for current year (fallback to 2025 for poverty if current year not yet published)
     const povYear = currentYear > 2025 ? 2025 : currentYear;
@@ -1099,6 +1099,17 @@
       svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
 
+    // Label sumbu Y "Skor IKP" di samping kiri, tengah-tengah rentang 0-100
+    const midY = (scaleY(0) + scaleY(100)) / 2;
+    svg.appendChild(svgEl('text', {
+      transform: 'rotate(-90)',
+      x: -midY,
+      y: 18,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Skor IKP'));
+
     [5, 15, 25, 35].forEach(xv => {
       svg.appendChild(svgEl('text', {
         x: scaleX(xv),
@@ -1108,7 +1119,6 @@
       }, `${xv}%`));
     });
 
-    svg.appendChild(svgEl('text', { x: pad.left, y: 12, class: 'chart-axis-text' }, 'Skor IKP'));
     svg.appendChild(svgEl('text', {
       x: pad.left + (width - pad.left - pad.right) / 2,
       y: height - 8,
