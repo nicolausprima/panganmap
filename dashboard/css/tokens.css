@@ -1,27 +1,76 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
   --text-xs: 0.75rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.2rem; --text-xl: 1.44rem; --text-2xl: 1.728rem; --text-3xl: 2.074rem; --text-4xl: 2.488rem;
   --text-display-s: 1.44rem; --text-display: 1.728rem; --text-section: 1.2rem; --text-title: 1rem; --text-lead: 1rem;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
-  --color-error: oklch(72% 0.15 27); --color-success: oklch(76% 0.13 150);
+  --color-error: oklch(58% 0.22 27); --color-success: oklch(52% 0.16 150);
   --container: 1440px; --gutter: 40px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
   --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
-  --color-paper: oklch(9% 0.008 75); --color-paper-2: oklch(12.5% 0.009 75); --color-paper-3: oklch(6.5% 0.007 75); --color-paper-4: oklch(17% 0.010 78);
-  --color-ink: oklch(94% 0.010 80); --color-ink-2: oklch(84% 0.011 80); --color-muted: oklch(68% 0.012 80); --color-muted-2: oklch(50% 0.010 80);
-  --color-rule: oklch(25% 0.010 78); --color-rule-2: oklch(16% 0.009 78);
-  --color-accent: oklch(72% 0.17 45); --color-accent-ink: oklch(10% 0.02 45); --color-accent-2: oklch(74% 0.12 250); --color-focus: oklch(78% 0.15 45);
-  --color-accent-hover: oklch(77% 0.17 45); --color-accent-active: oklch(66% 0.17 45);
 
-  /* Data scale, diverging: amber is the vulnerable end, sky blue the resilient end, a dim neutral in the middle.
-     Orange stays the UI's own colour (current year, primary action, focus) and never encodes data. */
-  --color-scale-1: oklch(82% 0.15 82); --color-scale-2: oklch(60% 0.11 75); --color-scale-3: oklch(44% 0.014 80);
-  --color-scale-4: oklch(58% 0.10 250); --color-scale-5: oklch(78% 0.12 250);
+  /* Default Light Theme (White Background - Clean, Editorial, Official) */
+  --color-paper: oklch(99.5% 0.002 85);       /* #ffffff pure white canvas */
+  --color-paper-2: oklch(97% 0.004 85);       /* #f8fafc subtle clean well/panel */
+  --color-paper-3: oklch(94% 0.006 85);       /* #f1f5f9 light card background */
+  --color-paper-4: oklch(89% 0.008 85);       /* #e2e8f0 borders/chips/hover */
+  --color-ink: oklch(18% 0.015 260);          /* #0f172a deep obsidian ink */
+  --color-ink-2: oklch(30% 0.015 260);        /* #334155 high contrast text */
+  --color-muted: oklch(48% 0.018 260);        /* #64748b secondary text/labels */
+  --color-muted-2: oklch(76% 0.012 260);      /* #cbd5e1 control borders */
+  --color-rule: oklch(88% 0.008 260);         /* #e2e8f0 dividers */
+  --color-rule-2: oklch(93% 0.005 260);       /* #f1f5f9 subtle gridlines */
+
+  --color-accent: oklch(62% 0.19 45);         /* warm vibrant orange #ea580c */
+  --color-accent-ink: oklch(99% 0 0);         /* #ffffff white on accent */
+  --color-accent-2: oklch(52% 0.18 250);      /* cobalt blue */
+  --color-focus: oklch(62% 0.19 45);
+  --color-accent-hover: oklch(56% 0.20 45);
+  --color-accent-active: oklch(50% 0.20 45);
+
+  /* Data scale, diverging for light background:
+     1: crimson red (Sangat Rentan)
+     2: amber orange (Rentan)
+     3: neutral slate (Agak Tahan)
+     4: cerulean blue (Tahan)
+     5: deep sapphire (Sangat Tahan) */
+  --color-scale-1: oklch(58% 0.22 30);
+  --color-scale-2: oklch(68% 0.17 65);
+  --color-scale-3: oklch(74% 0.02 260);
+  --color-scale-4: oklch(60% 0.14 240);
+  --color-scale-5: oklch(48% 0.18 255);
 
   --control-h: 36px; --hairline: 1px;
   --font-display: "Switzer", ui-sans-serif, system-ui, sans-serif; --font-body: var(--font-display);
   --font-outlier: "Geist Mono", ui-monospace, monospace;
   --radius-card: 0; --radius-pill: 0; --rule-hair: 1px; --shadow-card: none;
   --tracking-display: -0.04em; --display-weight: 500;
+}
+
+/* Dark Mode Theme Override */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-error: oklch(72% 0.15 27);
+  --color-success: oklch(76% 0.13 150);
+  --color-paper: oklch(9% 0.008 75);
+  --color-paper-2: oklch(12.5% 0.009 75);
+  --color-paper-3: oklch(6.5% 0.007 75);
+  --color-paper-4: oklch(17% 0.010 78);
+  --color-ink: oklch(94% 0.010 80);
+  --color-ink-2: oklch(84% 0.011 80);
+  --color-muted: oklch(68% 0.012 80);
+  --color-muted-2: oklch(50% 0.010 80);
+  --color-rule: oklch(25% 0.010 78);
+  --color-rule-2: oklch(16% 0.009 78);
+  --color-accent: oklch(72% 0.17 45);
+  --color-accent-ink: oklch(10% 0.02 45);
+  --color-accent-2: oklch(74% 0.12 250);
+  --color-focus: oklch(78% 0.15 45);
+  --color-accent-hover: oklch(77% 0.17 45);
+  --color-accent-active: oklch(66% 0.17 45);
+  --color-scale-1: oklch(82% 0.15 82);
+  --color-scale-2: oklch(60% 0.11 75);
+  --color-scale-3: oklch(44% 0.014 80);
+  --color-scale-4: oklch(58% 0.10 250);
+  --color-scale-5: oklch(78% 0.12 250);
 }

@@ -60,9 +60,32 @@
   const elEmptyState = document.getElementById('emptyState');
   const elResetEmptyBtn = document.getElementById('resetEmptyBtn');
 
+  // Theme elements
+  const elThemeToggleBtn = document.getElementById('themeToggleBtn');
+  const elThemeToggleIcon = document.getElementById('themeToggleIcon');
+  const elThemeToggleText = document.getElementById('themeToggleText');
+
+  function initTheme() {
+    const savedTheme = localStorage.getItem('sikap-theme') || 'light';
+    applyTheme(savedTheme);
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (elThemeToggleIcon) elThemeToggleIcon.textContent = '☀️';
+      if (elThemeToggleText) elThemeToggleText.textContent = 'Mode Terang';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (elThemeToggleIcon) elThemeToggleIcon.textContent = '🌙';
+      if (elThemeToggleText) elThemeToggleText.textContent = 'Mode Gelap';
+    }
+  }
+
   // Initialize
   async function init() {
     try {
+      initTheme();
       if (typeof document !== 'undefined') {
         document.documentElement.classList.add('js-ready');
       }
@@ -206,6 +229,16 @@
     elExportBtns.forEach(btn => btn.addEventListener('click', exportCsv));
     if (elReloadBtn) {
       elReloadBtn.addEventListener('click', () => window.location.reload());
+    }
+
+    if (elThemeToggleBtn) {
+      elThemeToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const nextTheme = isDark ? 'light' : 'dark';
+        localStorage.setItem('sikap-theme', nextTheme);
+        applyTheme(nextTheme);
+        renderCharts();
+      });
     }
 
     // Table sorting headers (mouse and keyboard)

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Ketahanan Pangan Indonesia 2018 sampai 2026</title>
   <meta name="description" content="Dashboard pemantauan multidimensi Indeks Ketahanan Pangan kabupaten dan kota di Indonesia periode 2018 sampai 2026 bersumber dari Badan Pangan Nasional dan BPS.">
-  <meta name="theme-color" content="#14120F">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
@@ -15,6 +15,14 @@
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('sikap-theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#mapSection">Lewati ke peta</a>
@@ -37,7 +45,13 @@
         <a href="#tableSection" class="nav-link">Rincian daerah</a>
       </nav>
 
-      <button type="button" id="exportBtn" class="btn btn--primary" data-export>Ekspor data</button>
+      <div class="topbar-actions">
+        <button type="button" id="themeToggleBtn" class="btn" aria-label="Ganti mode tampilan terang atau gelap" title="Ganti mode terang/gelap">
+          <span id="themeToggleIcon" aria-hidden="true">🌙</span>
+          <span id="themeToggleText">Mode Gelap</span>
+        </button>
+        <button type="button" id="exportBtn" class="btn btn--primary" data-export>Ekspor data</button>
+      </div>
     </div>
   </header>
 
