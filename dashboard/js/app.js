@@ -981,11 +981,17 @@
     const svg = newChartSvg(width, height, 'Diagram batang tiga pilar ketahanan pangan');
     const scaleW = (width - pad.left - pad.right) / 100;
 
+    // Cari pilar dengan nilai terendah sebagai faktor pembatas
+    const minVal = Math.min(...pillars.map(p => p.val));
+    const bottleneckKey = pillars.find(p => p.val === minVal)?.key;
+
     pillars.forEach((p, i) => {
       const top = pad.top + i * rowH;
       const barY = top + 28;
       const barW = Math.max(p.val * scaleW, 2);
-      const isBottleneck = p.key === 'indeks_ketersediaan';
+      const isBottleneck = p.key === bottleneckKey;
+      // Warna merah (rentan) hanya untuk pilar di bawah batas aman/tahan (< 68.0)
+      const isRentan = p.val < 68.0;
 
       const label = svgEl('text', { x: pad.left, y: top + 16, class: 'chart-bar-label chart-bar-label--strong' });
       label.appendChild(svgEl('tspan', {}, p.name));
@@ -998,7 +1004,7 @@
         y: barY,
         width: barW,
         height: barH,
-        class: `chart-bar-fill ${isBottleneck ? 'chart-bar-fill--rentan' : ''}`
+        class: `chart-bar-fill ${isRentan ? 'chart-bar-fill--rentan' : ''}`
       }));
 
       const val = svgEl('text', { x: pad.left + barW + 8, y: barY + barH / 2, class: 'chart-bar-val' }, p.val.toFixed(1));
