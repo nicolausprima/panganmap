@@ -245,7 +245,7 @@ html { scroll-padding-top: calc(var(--topbar-h) + var(--filterbar-h) + var(--spa
 .map-svg { width: 100%; height: auto; max-height: 560px; display: block; }
 
 .map-prov-path {
-  stroke: var(--color-paper-2);
+  stroke: var(--color-rule);
   stroke-width: 1px;
   stroke-linejoin: round;
   cursor: pointer;
@@ -253,10 +253,10 @@ html { scroll-padding-top: calc(var(--topbar-h) + var(--filterbar-h) + var(--spa
 }
 .map-prov-path:hover { stroke: var(--color-ink); stroke-width: 2px; }
 .map-prov-path:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; stroke: var(--color-ink); stroke-width: 2px; }
-.map-svg.has-selection .map-prov-path:not(.is-selected) { opacity: 0.45; }
-.map-svg.has-class-filter .map-prov-path:not(.is-class-match) { opacity: 0.3; }
+.map-svg.has-selection .map-prov-path:not(.is-selected) { opacity: 0.45; stroke: var(--color-rule); }
+.map-svg.has-class-filter .map-prov-path:not(.is-class-match) { opacity: 0.3; stroke: var(--color-rule); }
 .map-svg.has-selection .map-prov-path:not(.is-selected):hover,
-.map-svg.has-class-filter .map-prov-path:not(.is-class-match):hover { opacity: 0.9; }
+.map-svg.has-class-filter .map-prov-path:not(.is-class-match):hover { opacity: 0.9; stroke: var(--color-ink); }
 .map-prov-path.is-class-match { stroke: var(--color-ink); stroke-width: 1.5px; opacity: 1; }
 .map-prov-path.is-selected { stroke: var(--color-accent); stroke-width: 2.5px; opacity: 1; }
 

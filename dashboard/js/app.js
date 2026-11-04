@@ -547,7 +547,8 @@
   // metrics are looked up through the record's province.
   function recordStep(record) {
     if (activeMetric === 'ikp') return getStepForValue(record.ikp);
-    const y = data.provinces[record.prov]?.yearly[currentYear];
+    const yr = (activeMetric === 'kemiskinan' && currentYear > 2025) ? 2025 : currentYear;
+    const y = data.provinces[record.prov]?.yearly[yr];
     if (!y) return 0;
     return getStepForValue(activeMetric === 'rentan_pct' ? y.rentan_pct : y.kemiskinan_persen);
   }
@@ -586,12 +587,16 @@
     };
 
     function getColor(val) {
+      if (val === null || val === undefined || isNaN(val)) {
+        return 'var(--color-paper-4)';
+      }
       const s = getStepForValue(val);
-      return stepColors[s] || 'var(--color-paper-2)';
+      return stepColors[s] || 'var(--color-paper-4)';
     }
 
+    const mapYear = (activeMetric === 'kemiskinan' && currentYear > 2025) ? 2025 : currentYear;
     Object.entries(data.geo_map).forEach(([geoCode, geoInfo]) => {
-      const yData = geoInfo.yearly[currentYear] || {};
+      const yData = geoInfo.yearly[mapYear] || {};
       let val = null;
       if (activeMetric === 'ikp') val = yData.mean_ikp;
       else if (activeMetric === 'rentan_pct') val = yData.rentan_pct;
@@ -682,18 +687,21 @@
   }
 
   function showTooltip(e, geoInfo, val) {
-    const yData = geoInfo.yearly[currentYear] || {};
+    const tooltipYear = (activeMetric === 'kemiskinan' && currentYear > 2025) ? 2025 : currentYear;
+    const yData = geoInfo.yearly[tooltipYear] || {};
+    const currYData = geoInfo.yearly[currentYear] || {};
     const provsList = geoInfo.provinces.join(', ');
-    const metricLabel = activeMetric === 'ikp' ? 'Rata-rata IKP' : (activeMetric === 'rentan_pct' ? '% Daerah Rentan' : 'Kemiskinan P0');
+    const isPovertyFallback = activeMetric === 'kemiskinan' && currentYear > 2025;
+    const metricLabel = activeMetric === 'ikp' ? 'Rata-rata IKP' : (activeMetric === 'rentan_pct' ? '% Daerah Rentan' : `Kemiskinan P0${isPovertyFallback ? ' (BPS 2025)' : ''}`);
     const metricUnit = activeMetric === 'ikp' ? '/ 100' : '%';
     const displayVal = val !== null && val !== undefined ? `${val}${metricUnit}` : 'Data tidak tersedia';
 
     elMapTooltip.innerHTML = `
       <div class="tooltip-title">${provsList}</div>
       <div class="tooltip-row"><span>${metricLabel}:</span> <strong>${displayVal}</strong></div>
-      <div class="tooltip-row"><span>Kab/Kota:</span> <strong>${yData.total_kab || 0} daerah</strong></div>
-      <div class="tooltip-row"><span>Daerah Rentan:</span> <strong>${yData.rentan_count || 0} daerah (${yData.rentan_pct || 0}%)</strong></div>
-      <div class="tooltip-row"><span>Rentang IKP:</span> <strong>${yData.min_ikp || 0} - ${yData.max_ikp || 0}</strong></div>
+      <div class="tooltip-row"><span>Kab/Kota:</span> <strong>${currYData.total_kab || yData.total_kab || 0} daerah</strong></div>
+      <div class="tooltip-row"><span>Daerah Rentan:</span> <strong>${currYData.rentan_count || yData.rentan_count || 0} daerah (${currYData.rentan_pct || yData.rentan_pct || 0}%)</strong></div>
+      <div class="tooltip-row"><span>Rentang IKP:</span> <strong>${currYData.min_ikp || yData.min_ikp || 0} - ${currYData.max_ikp || yData.max_ikp || 0}</strong></div>
     `;
     elMapTooltip.classList.add('is-visible');
     positionTooltip(e);
