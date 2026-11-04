@@ -1,14 +1,12 @@
 /* ==========================================================================
-   SIKAP Pangan · Landing Page Stylesheet
-   Pure Light Mode Editorial · Swiss-minimalism · High Readability
+   SIKAP Pangan · Simple Editorial Landing Page
+   Light Mode · Emerald Green Accent · High Readability
    ========================================================================== */
 
 @import url("./tokens.css");
 @import url("./base.css");
 
-/* --------------------------------------------------------------------------
-   Top Navigation
-   -------------------------------------------------------------------------- */
+/* Navigation */
 .landing-nav {
   position: sticky;
   top: 0;
@@ -25,27 +23,7 @@
   height: var(--topbar-h);
 }
 
-.landing-menu {
-  display: flex;
-  align-items: center;
-  gap: var(--space-lg);
-}
-
-.landing-menu a {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-muted);
-  text-decoration: none;
-  transition: color var(--dur-micro) var(--ease-out);
-}
-
-.landing-menu a:hover {
-  color: var(--color-ink);
-}
-
-/* --------------------------------------------------------------------------
-   Hero Section
-   -------------------------------------------------------------------------- */
+/* Hero Section */
 .landing-hero {
   padding-block: var(--space-3xl) var(--space-2xl);
   border-bottom: var(--hairline) solid var(--color-rule);
@@ -54,31 +32,31 @@
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
   padding: var(--space-2xs) var(--space-sm);
   background: var(--color-paper-2);
-  border: var(--hairline) solid var(--color-muted-2);
+  border: var(--hairline) solid var(--color-rule);
   font-family: var(--font-outlier);
   font-size: var(--text-xs);
   color: var(--color-accent);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: var(--space-md);
+  font-weight: 500;
 }
 
 .hero-headline {
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   color: var(--color-ink);
-  max-width: 24ch;
+  max-width: 22ch;
 }
 
 .hero-lead {
   margin-top: var(--space-lg);
   font-size: var(--text-lg);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--color-muted);
   max-width: 58ch;
 }
@@ -88,18 +66,15 @@
   align-items: center;
   gap: var(--space-md);
   margin-top: var(--space-xl);
-  flex-wrap: wrap;
 }
 
 .btn--lg {
   min-height: 44px;
-  padding: 0 var(--space-lg);
+  padding: 0 var(--space-xl);
   font-size: var(--text-md);
 }
 
-/* --------------------------------------------------------------------------
-   Hero Stat Metrics
-   -------------------------------------------------------------------------- */
+/* Hero Stat Metrics */
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -118,15 +93,16 @@
   font-family: var(--font-outlier);
   font-size: var(--text-3xl);
   line-height: 1;
-  color: var(--color-ink);
+  color: var(--color-accent);
   letter-spacing: -0.03em;
+  font-weight: 500;
 }
 
 .hero-metric-label {
   margin-top: var(--space-xs);
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-ink-2);
+  color: var(--color-ink);
 }
 
 .hero-metric-desc {
@@ -136,9 +112,7 @@
   line-height: 1.4;
 }
 
-/* --------------------------------------------------------------------------
-   General Section Layout
-   -------------------------------------------------------------------------- */
+/* Sections */
 .landing-section {
   padding-block: var(--space-3xl);
   border-bottom: var(--hairline) solid var(--color-rule);
@@ -157,6 +131,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--color-accent);
+  font-weight: 500;
 }
 
 .section-title {
@@ -173,178 +148,7 @@
   line-height: 1.5;
 }
 
-/* --------------------------------------------------------------------------
-   Story Cards (Asymmetric Bento Grid)
-   -------------------------------------------------------------------------- */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--space-lg);
-}
-
-.bento-card {
-  padding: var(--space-xl);
-  background: var(--color-paper);
-  border: var(--hairline) solid var(--color-rule);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.bento-card--lead {
-  grid-column: span 7;
-  background: var(--color-paper-2);
-}
-
-.bento-card--side {
-  grid-column: span 5;
-}
-
-.bento-card--third {
-  grid-column: span 4;
-}
-
-.bento-card--half {
-  grid-column: span 6;
-}
-
-.bento-card-header {
-  margin-bottom: var(--space-lg);
-}
-
-.bento-card-title {
-  font-size: var(--text-xl);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--color-ink);
-}
-
-.bento-card-sub {
-  margin-top: var(--space-2xs);
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-}
-
-.bento-card-body {
-  font-size: var(--text-sm);
-  color: var(--color-ink-2);
-  line-height: 1.6;
-}
-
-.bento-card-footer {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-md);
-  border-top: var(--hairline) solid var(--color-rule);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.stat-highlight {
-  font-family: var(--font-outlier);
-  font-size: var(--text-2xl);
-  font-weight: 500;
-  color: var(--color-accent);
-}
-
-/* --------------------------------------------------------------------------
-   Personas Showcase
-   -------------------------------------------------------------------------- */
-.persona-cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-md);
-}
-
-.p-card {
-  padding: var(--space-lg);
-  border: var(--hairline) solid var(--color-rule);
-  background: var(--color-paper);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
-}
-
-.p-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-muted);
-}
-
-.p-card-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  width: fit-content;
-  font-size: var(--text-xs);
-  font-family: var(--font-outlier);
-  font-weight: 500;
-  margin-bottom: var(--space-sm);
-  padding: 2px 8px;
-  background: var(--color-paper-2);
-  border: 1px solid var(--color-rule);
-}
-
-.p-card-swatch {
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-}
-
-.p-card-title {
-  font-size: var(--text-lg);
-  font-weight: 500;
-  color: var(--color-ink);
-  letter-spacing: -0.02em;
-}
-
-.p-card-portion {
-  font-family: var(--font-outlier);
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  margin-top: var(--space-3xs);
-}
-
-.p-card-metrics {
-  margin-block: var(--space-md);
-  padding-block: var(--space-xs);
-  border-block: var(--hairline) solid var(--color-rule-2);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xs);
-  font-size: var(--text-xs);
-}
-
-.p-metric-item dt {
-  color: var(--color-muted);
-}
-
-.p-metric-item dd {
-  margin: 0;
-  font-family: var(--font-outlier);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-ink);
-}
-
-.p-card-desc {
-  font-size: var(--text-xs);
-  color: var(--color-ink-2);
-  line-height: 1.5;
-  margin-top: auto;
-}
-
-.p-card-policy {
-  margin-top: var(--space-sm);
-  padding-top: var(--space-xs);
-  font-size: var(--text-xs);
-  color: var(--color-muted);
-  border-top: 1px dashed var(--color-rule);
-}
-
-/* --------------------------------------------------------------------------
-   Model Methodology Grid
-   -------------------------------------------------------------------------- */
+/* Feature 3-Cards Grid */
 .models-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -355,6 +159,14 @@
   padding: var(--space-xl);
   border: var(--hairline) solid var(--color-rule);
   background: var(--color-paper);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+
+.model-card:hover {
+  border-color: var(--color-muted);
+  transform: translateY(-2px);
 }
 
 .model-num {
@@ -363,6 +175,7 @@
   color: var(--color-accent);
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
+  font-weight: 500;
 }
 
 .model-title {
@@ -379,31 +192,16 @@
   line-height: 1.6;
 }
 
-.model-stats {
-  margin-top: var(--space-lg);
-  padding: var(--space-md);
-  background: var(--color-paper-2);
-  border: var(--hairline) solid var(--color-rule);
-  font-family: var(--font-outlier);
-  font-size: var(--text-xs);
-  color: var(--color-ink);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-/* --------------------------------------------------------------------------
-   CTA Block
-   -------------------------------------------------------------------------- */
+/* CTA */
 .landing-cta {
-  padding-block: var(--space-4xl);
+  padding-block: var(--space-3xl);
   background: var(--color-paper-2);
-  border-block: var(--hairline) solid var(--color-rule);
+  border-bottom: var(--hairline) solid var(--color-rule);
   text-align: center;
 }
 
 .cta-inner {
-  max-width: 64ch;
+  max-width: 54ch;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -423,9 +221,7 @@
   line-height: 1.5;
 }
 
-/* --------------------------------------------------------------------------
-   Footer
-   -------------------------------------------------------------------------- */
+/* Footer */
 .landing-footer {
   padding-block: var(--space-2xl);
   background: var(--color-paper);
@@ -440,7 +236,7 @@
 }
 
 .footer-meta {
-  max-width: 45ch;
+  max-width: 48ch;
   font-size: var(--text-sm);
   color: var(--color-muted);
   line-height: 1.6;
@@ -470,22 +266,16 @@
 }
 
 .footer-links-group a:hover {
-  color: var(--color-ink);
+  color: var(--color-accent);
 }
 
-/* --------------------------------------------------------------------------
-   Responsive
-   -------------------------------------------------------------------------- */
+/* Responsive */
 @media (max-width: 64rem) {
   .hero-metrics { grid-template-columns: repeat(2, 1fr); }
-  .bento-card--lead, .bento-card--side, .bento-card--third, .bento-card--half { grid-column: span 12; }
-  .persona-cards { grid-template-columns: repeat(2, 1fr); }
   .models-grid { grid-template-columns: 1fr; }
-  .landing-menu { display: none; }
 }
 
 @media (max-width: 40rem) {
   .hero-metrics { grid-template-columns: 1fr; }
-  .persona-cards { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; }
 }
