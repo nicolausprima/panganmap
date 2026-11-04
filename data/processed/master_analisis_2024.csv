@@ -1,0 +1,515 @@
+kode_prov,nama_provinsi,kode_kab_kota,nama_kabupaten,tipe,gugus_pulau,ikp,indeks_ketersediaan,indeks_keterjangkauan,indeks_pemanfaatan,status_kerentanan,pou,persona,warna_persona,pca_1,pca_2
+11,Aceh,1101,Aceh Selatan,Kabupaten,Sumatera,70.13,76.67,75.65,58.16,Tahan,10.44,Agrarian Resilient,#15803d,-0.02322640670974386,1.5413957962936986
+11,Aceh,1102,Aceh Tenggara,Kabupaten,Sumatera,64.98,61.6,72.76,60.69,Agak Tahan,9.44,Agrarian Paradox,#d97706,-0.4552778078785594,0.7085473304454111
+11,Aceh,1103,Aceh Timur,Kabupaten,Sumatera,67.8,58.26,76.88,68.39,Agak Tahan,8.71,Agrarian Paradox,#d97706,0.06751007378317096,0.12582415608652361
+11,Aceh,1104,Aceh Tengah,Kabupaten,Sumatera,67.62,50.6,79.18,73.24,Agak Tahan,8.9,Urban Resilient,#0284c7,0.1881274043060729,-0.5373941920890531
+11,Aceh,1105,Aceh Barat,Kabupaten,Sumatera,68.78,64.55,70.52,71.28,Agak Tahan,8.41,Agrarian Paradox,#d97706,-0.03788638480769052,0.5535261148056366
+11,Aceh,1106,Aceh Besar,Kabupaten,Sumatera,71.73,61.23,80.35,73.75,Tahan,8.13,Urban Resilient,#0284c7,0.6175975608693872,-0.007107225149224849
+11,Aceh,1107,Pidie,Kabupaten,Sumatera,62.52,55.29,77.65,54.85,Agak Tahan,8.63,Agrarian Paradox,#d97706,-0.49387232523721175,0.4298300188245466
+11,Aceh,1108,Aceh Utara,Kabupaten,Sumatera,65.61,57.26,73.02,66.66,Agak Tahan,10.94,Agrarian Paradox,#d97706,-0.4111494177664888,0.2466790194290032
+11,Aceh,1109,Simeulue,Kabupaten,Sumatera,57.46,56.02,55.33,61.01,Agak Rentan,10.08,Agrarian Paradox,#d97706,-1.750643569238841,0.9037550958067807
+11,Aceh,1110,Aceh Singkil,Kabupaten,Sumatera,58.07,38.3,74.71,61.45,Agak Rentan,7.41,Agrarian Paradox,#d97706,-0.8067789450045516,-0.65403074108567
+11,Aceh,1111,Bireuen,Kabupaten,Sumatera,71.74,59.59,83.58,72.23,Tahan,8.98,Urban Resilient,#0284c7,0.6686713439091716,-0.13731259440369134
+11,Aceh,1112,Aceh Barat Daya,Kabupaten,Sumatera,62.74,60.01,66.9,61.37,Agak Tahan,8.81,Agrarian Paradox,#d97706,-0.8090653499489656,0.7693399011348249
+11,Aceh,1113,Gayo Lues,Kabupaten,Sumatera,69.36,66.45,74.4,67.3,Agak Tahan,7.97,Agrarian Resilient,#15803d,0.13175221485622826,0.6875445983851576
+11,Aceh,1114,Aceh Jaya,Kabupaten,Sumatera,79.81,89.58,83.46,66.43,Sangat Tahan,8.43,Agrarian Resilient,#15803d,1.2760955826951013,1.7210149367712972
+11,Aceh,1115,Nagan Raya,Kabupaten,Sumatera,72.23,73.84,73.56,69.32,Tahan,6.91,Agrarian Resilient,#15803d,0.42198273258155883,1.044786308219718
+11,Aceh,1116,Aceh Tamiang,Kabupaten,Sumatera,72.41,76.55,74.98,65.74,Tahan,9.98,Agrarian Resilient,#15803d,0.25823935331035885,1.2805623208980645
+11,Aceh,1117,Bener Meriah,Kabupaten,Sumatera,64.7,59.4,76.49,58.38,Agak Tahan,7.31,Agrarian Paradox,#d97706,-0.23739869081418233,0.5619730979056851
+11,Aceh,1118,Pidie Jaya,Kabupaten,Sumatera,65.0,60.31,74.48,60.33,Agak Tahan,9.67,Agrarian Paradox,#d97706,-0.4080965825172262,0.6001235048386011
+11,Aceh,1171,Kota Banda Aceh,Kota,Sumatera,74.79,60.21,87.11,77.22,Tahan,6.69,Urban Resilient,#0284c7,1.248480984418866,-0.38719263418972266
+11,Aceh,1172,Kota Sabang,Kota,Sumatera,64.92,37.37,74.3,83.24,Agak Tahan,7.81,Urban Resilient,#0284c7,-0.02099040101610562,-1.4808755318407905
+11,Aceh,1173,Kota Lhokseumawe,Kota,Sumatera,69.04,49.53,81.53,76.24,Agak Tahan,7.86,Urban Resilient,#0284c7,0.4917916332954266,-0.773601464389814
+11,Aceh,1174,Kota Langsa,Kota,Sumatera,68.64,51.46,83.41,71.26,Agak Tahan,8.96,Urban Resilient,#0284c7,0.40085517366591367,-0.5431422862510785
+11,Aceh,1175,Kota Subulussalam,Kota,Sumatera,59.49,45.38,69.92,63.34,Agak Rentan,8.02,Agrarian Paradox,#d97706,-0.8849566736399676,-0.19316159511743286
+12,Sumatera Utara,1201,Tapanuli Tengah,Kabupaten,Sumatera,65.06,53.16,84.44,57.87,Agak Tahan,6.66,Agrarian Paradox,#d97706,0.12321553381811923,0.004305674416595516
+12,Sumatera Utara,1202,Tapanuli Utara,Kabupaten,Sumatera,76.67,81.87,86.5,61.77,Tahan,6.64,Agrarian Resilient,#15803d,1.1871869961046364,1.3774716167869188
+12,Sumatera Utara,1203,Tapanuli Selatan,Kabupaten,Sumatera,68.67,59.85,89.71,56.75,Agak Tahan,7.68,Agrarian Resilient,#15803d,0.5359313836312513,0.2564785350378255
+12,Sumatera Utara,1204,Nias,Kabupaten,Sumatera,61.6,56.38,76.32,52.32,Agak Tahan,6.24,Agrarian Paradox,#d97706,-0.5044920168164408,0.6206545960106019
+12,Sumatera Utara,1205,Langkat,Kabupaten,Sumatera,70.84,57.75,81.63,73.3,Tahan,8.82,Urban Resilient,#0284c7,0.5459048093283719,-0.2194779021769964
+12,Sumatera Utara,1206,Karo,Kabupaten,Sumatera,78.29,82.41,83.14,69.38,Sangat Tahan,6.13,Agrarian Resilient,#15803d,1.3181533224214539,1.2308768155207908
+12,Sumatera Utara,1207,Deli Serdang,Kabupaten,Sumatera,76.51,61.89,87.31,80.5,Tahan,7.46,Urban Resilient,#0284c7,1.3896282294910614,-0.41964093484006837
+12,Sumatera Utara,1208,Simalungun,Kabupaten,Sumatera,75.03,68.21,81.47,75.51,Tahan,8.34,Agrarian Resilient,#15803d,0.9350371345292758,0.2791104225861987
+12,Sumatera Utara,1209,Asahan,Kabupaten,Sumatera,69.32,57.92,71.56,78.51,Agak Tahan,7.64,Urban Resilient,#0284c7,0.18226569943745305,-0.10197923972548631
+12,Sumatera Utara,1210,Labuhanbatu,Kabupaten,Sumatera,67.05,56.72,80.59,64.04,Agak Tahan,7.07,Agrarian Paradox,#d97706,0.19161105700826933,0.08969062257665814
+12,Sumatera Utara,1211,Dairi,Kabupaten,Sumatera,71.09,59.62,86.75,67.13,Tahan,6.72,Urban Resilient,#0284c7,0.8086264769685397,-0.044118666500762065
+12,Sumatera Utara,1212,Toba,Kabupaten,Sumatera,77.51,72.6,86.37,73.7,Sangat Tahan,7.72,Agrarian Resilient,#15803d,1.3342627594832432,0.4412922644231443
+12,Sumatera Utara,1213,Mandailing Natal,Kabupaten,Sumatera,66.05,57.62,82.94,57.84,Agak Tahan,7.1,Agrarian Paradox,#d97706,0.1196505009615128,0.29408436896571455
+12,Sumatera Utara,1214,Nias Selatan,Kabupaten,Sumatera,57.5,51.48,73.27,47.99,Agak Rentan,7.81,Agrarian Paradox,#d97706,-1.0992948355214283,0.5978431629494505
+12,Sumatera Utara,1215,Pakpak Bharat,Kabupaten,Sumatera,72.01,64.86,89.39,62.04,Tahan,6.13,Agrarian Resilient,#15803d,0.9542549942679653,0.34971711061685384
+12,Sumatera Utara,1216,Humbang Hasundutan,Kabupaten,Sumatera,76.25,73.23,85.6,70.04,Tahan,6.18,Agrarian Resilient,#15803d,1.2507578723960702,0.6311067204401194
+12,Sumatera Utara,1217,Samosir,Kabupaten,Sumatera,74.13,70.57,82.57,69.37,Tahan,5.31,Agrarian Resilient,#15803d,1.0108670770880916,0.5987010991663466
+12,Sumatera Utara,1218,Serdang Bedagai,Kabupaten,Sumatera,76.06,70.12,84.83,73.37,Tahan,8.46,Agrarian Resilient,#15803d,1.1103561341020793,0.3623752447855883
+12,Sumatera Utara,1219,Batu Bara,Kabupaten,Sumatera,68.83,55.73,81.1,69.84,Agak Tahan,7.45,Urban Resilient,#0284c7,0.4037555166029635,-0.18936246989614702
+12,Sumatera Utara,1220,Padang Lawas Utara,Kabupaten,Sumatera,67.69,59.99,85.28,58.06,Agak Tahan,6.16,Agrarian Resilient,#15803d,0.39970617397871905,0.34745938186059794
+12,Sumatera Utara,1221,Padang Lawas,Kabupaten,Sumatera,72.47,61.81,86.05,69.74,Tahan,5.53,Agrarian Resilient,#15803d,0.9985370396852489,0.0024438282698444566
+12,Sumatera Utara,1222,Labuhanbatu Selatan,Kabupaten,Sumatera,63.27,33.1,81.71,75.29,Agak Tahan,6.65,Urban Resilient,#0284c7,0.09507089900756036,-1.6454743148077615
+12,Sumatera Utara,1223,Labuhanbatu Utara,Kabupaten,Sumatera,72.7,60.7,80.92,76.6,Tahan,7.08,Urban Resilient,#0284c7,0.8163811432630055,-0.15582876799503712
+12,Sumatera Utara,1224,Nias Utara,Kabupaten,Sumatera,59.65,58.22,69.32,51.55,Agak Rentan,6.73,Agrarian Paradox,#d97706,-0.9640492262170824,0.9552871615788382
+12,Sumatera Utara,1225,Nias Barat,Kabupaten,Sumatera,51.73,50.54,63.27,41.54,Rentan,6.96,Agrarian Paradox,#d97706,-1.9696203963448653,1.0739494585249305
+12,Sumatera Utara,1271,Kota Medan,Kota,Sumatera,71.85,40.82,84.05,90.87,Tahan,7.27,Urban Resilient,#0284c7,1.0323266454213862,-1.8542973339310822
+12,Sumatera Utara,1272,Kota Pematangsiantar,Kota,Sumatera,77.19,61.59,84.45,85.64,Tahan,7.24,Urban Resilient,#0284c7,1.4145983041988701,-0.537760455358695
+12,Sumatera Utara,1273,Kota Sibolga,Kota,Sumatera,63.34,35.2,78.67,76.37,Agak Tahan,8.53,Urban Resilient,#0284c7,-0.11477778573030814,-1.4802339174884747
+12,Sumatera Utara,1274,Kota Tanjung Balai,Kota,Sumatera,66.44,41.56,72.87,85.0,Agak Tahan,6.3,Urban Resilient,#0284c7,0.1619536536899155,-1.272340066006512
+12,Sumatera Utara,1275,Kota Binjai,Kota,Sumatera,72.75,48.93,85.78,83.71,Tahan,7.63,Urban Resilient,#0284c7,1.0575760740946698,-1.2016455631068257
+12,Sumatera Utara,1276,Kota Tebing Tinggi,Kota,Sumatera,73.35,56.3,82.17,81.7,Tahan,9.54,Urban Resilient,#0284c7,0.829694533573478,-0.6187168219795605
+12,Sumatera Utara,2,Kota Padangsidimpuan,Kota,Sumatera,75.83,63.04,87.94,76.7,Tahan,6.99,Urban Resilient,#0284c7,1.3394608255158886,-0.2375993357406022
+12,Sumatera Utara,1278,Kota Gunungsitoli,Kota,Sumatera,59.78,46.52,73.71,59.31,Agak Rentan,7.43,Agrarian Paradox,#d97706,-0.7345536174386349,-0.09636091808252416
+13,Sumatera Barat,1301,Pesisir Selatan,Kabupaten,Sumatera,76.53,71.03,81.68,76.95,Tahan,8.82,Agrarian Resilient,#15803d,1.0526071594301418,0.3755130144124785
+13,Sumatera Barat,1302,Solok,Kabupaten,Sumatera,73.08,62.45,84.88,72.1,Tahan,8.94,Urban Resilient,#0284c7,0.8267312166548337,-0.013985641525606246
+13,Sumatera Barat,1303,Sijunjung,Kabupaten,Sumatera,73.7,62.68,85.14,73.46,Tahan,8.67,Urban Resilient,#0284c7,0.9198571699775007,-0.05810255485201489
+13,Sumatera Barat,1304,Tanah Datar,Kabupaten,Sumatera,78.34,68.17,91.19,75.86,Sangat Tahan,9.1,Agrarian Resilient,#15803d,1.5252112130102338,-0.02188284025271382
+13,Sumatera Barat,1305,Padang Pariaman,Kabupaten,Sumatera,70.85,52.74,87.19,72.87,Tahan,8.68,Urban Resilient,#0284c7,0.7585726710567652,-0.6423087025569449
+13,Sumatera Barat,1306,Agam,Kabupaten,Sumatera,74.37,63.27,84.21,75.78,Tahan,9.24,Urban Resilient,#0284c7,0.9332413238773777,-0.08243278342778347
+13,Sumatera Barat,1307,Lima Puluh Kota,Kota,Sumatera,80.36,85.95,83.27,71.9,Sangat Tahan,8.83,Agrarian Resilient,#15803d,1.3576769044719847,1.3296456722471435
+13,Sumatera Barat,1308,Pasaman,Kabupaten,Sumatera,76.43,83.84,78.12,67.34,Tahan,8.74,Agrarian Resilient,#15803d,0.795419902274388,1.5304252509467127
+13,Sumatera Barat,1309,Kepulauan Mentawai,Kabupaten,Sumatera,68.63,76.28,75.48,54.24,Agak Tahan,9.31,Agrarian Resilient,#15803d,-0.13096580548182293,1.6669795641694196
+13,Sumatera Barat,1310,Dharmasraya,Kabupaten,Sumatera,75.06,59.56,89.58,76.27,Tahan,7.51,Urban Resilient,#0284c7,1.3019334207712612,-0.4613376297659158
+13,Sumatera Barat,1311,Solok Selatan,Kabupaten,Sumatera,78.42,72.75,84.33,78.25,Sangat Tahan,10.95,Agrarian Resilient,#15803d,1.190994352615311,0.3444708082296806
+13,Sumatera Barat,1312,Pasaman Barat,Kabupaten,Sumatera,78.5,77.93,86.7,71.0,Sangat Tahan,8.55,Agrarian Resilient,#15803d,1.3422790605798818,0.8214043929955783
+13,Sumatera Barat,1371,Kota Padang,Kota,Sumatera,75.99,58.6,89.88,79.68,Tahan,8.57,Urban Resilient,#0284c7,1.365593579004523,-0.6463197029240986
+13,Sumatera Barat,1372,Kota Solok,Kota,Sumatera,83.34,85.38,80.36,84.23,Sangat Tahan,7.89,Agrarian Resilient,#15803d,1.7003315101927843,0.9384224902932496
+13,Sumatera Barat,1373,Kota Sawahlunto,Kota,Sumatera,77.5,60.5,87.71,84.44,Sangat Tahan,8.19,Urban Resilient,#0284c7,1.4890477316386665,-0.6502349412593523
+13,Sumatera Barat,1374,Kota Padang Panjang,Kota,Sumatera,74.37,58.1,83.49,81.65,Tahan,5.33,Urban Resilient,#0284c7,1.217045472635998,-0.5563838470818179
+13,Sumatera Barat,1375,Kota Bukittinggi,Kota,Sumatera,71.55,45.24,84.84,84.76,Tahan,7.35,Urban Resilient,#0284c7,0.9560714915224673,-1.4142888393729933
+13,Sumatera Barat,1376,Kota Payakumbuh,Kota,Sumatera,85.9,88.17,86.85,82.7,Sangat Tahan,8.17,Agrarian Resilient,#15803d,2.1145834533947165,0.955767246722168
+13,Sumatera Barat,1377,Kota Pariaman,Kota,Sumatera,73.93,57.19,86.29,78.5,Tahan,7.3,Urban Resilient,#0284c7,1.1277104126915372,-0.5750634718067941
+14,Riau,1401,Kampar,Kabupaten,Sumatera,66.13,55.34,72.72,70.43,Agak Tahan,10.75,Agrarian Paradox,#d97706,-0.32164633974862955,0.013960943001088685
+14,Riau,1402,Indragiri Hulu,Kabupaten,Sumatera,73.45,58.35,81.16,80.96,Tahan,11.22,Urban Resilient,#0284c7,0.6890000965226528,-0.45014568270391697
+14,Riau,1403,Bengkalis,Kabupaten,Sumatera,74.71,73.94,83.63,66.7,Tahan,9.92,Agrarian Resilient,#15803d,0.7841871373331415,0.8480848283237299
+14,Riau,1404,Indragiri Hilir,Kabupaten,Sumatera,66.95,58.16,78.98,63.89,Agak Tahan,13.23,Agrarian Paradox,#d97706,-0.2532070682410305,0.22046469918663197
+14,Riau,1405,Pelalawan,Kabupaten,Sumatera,73.68,60.57,75.7,84.81,Tahan,10.38,Urban Resilient,#0284c7,0.601990735545352,-0.3067166003962439
+14,Riau,1406,Rokan Hulu,Kabupaten,Sumatera,66.36,37.84,79.4,82.04,Agak Tahan,9.27,Urban Resilient,#0284c7,0.18269604319619523,-1.5620174881293576
+14,Riau,1407,Rokan Hilir,Kabupaten,Sumatera,63.02,49.55,78.55,61.18,Agak Tahan,10.47,Agrarian Paradox,#d97706,-0.4529839885505196,-0.14073006318150244
+14,Riau,1408,Siak,Kabupaten,Sumatera,75.73,61.28,83.32,82.7,Tahan,10.75,Urban Resilient,#0284c7,1.0041136365691001,-0.41574564937867403
+14,Riau,1409,Kuantan Singingi,Kabupaten,Sumatera,70.46,55.85,82.97,72.76,Tahan,11.47,Urban Resilient,#0284c7,0.39807943561303005,-0.3440967594206217
+14,Riau,1410,Kepulauan Meranti,Kabupaten,Sumatera,63.87,62.63,69.14,59.93,Agak Tahan,12.72,Agrarian Paradox,#d97706,-0.889140133135618,0.8985116972505967
+14,Riau,1471,Kota Pekanbaru,Kota,Sumatera,73.4,54.56,81.65,84.12,Tahan,10.08,Urban Resilient,#0284c7,0.8121193107556101,-0.7865099866591354
+14,Riau,1472,Kota Dumai,Kota,Sumatera,66.68,45.06,81.45,73.76,Agak Tahan,11.31,Urban Resilient,#0284c7,0.05801050291674447,-0.9272984043974863
+15,Jambi,1501,Kerinci,Kabupaten,Sumatera,76.39,71.37,79.56,78.3,Tahan,12.22,Agrarian Resilient,#15803d,0.7724343236024267,0.40715569751587594
+15,Jambi,1502,Merangin,Kabupaten,Sumatera,68.23,57.44,76.64,70.75,Agak Tahan,10.21,Urban Resilient,#0284c7,0.03210631126709631,0.0022817808121173384
+15,Jambi,1503,Sarolangun,Kabupaten,Sumatera,69.89,54.36,79.09,76.35,Tahan,9.89,Urban Resilient,#0284c7,0.34684386674892664,-0.44115725632466624
+15,Jambi,1504,Batanghari,Kabupaten,Sumatera,74.22,71.98,80.44,70.32,Tahan,10.97,Agrarian Resilient,#15803d,0.6058376143437427,0.7034305678455638
+15,Jambi,1505,Muaro Jambi,Kabupaten,Sumatera,81.47,76.78,86.48,81.23,Sangat Tahan,7.78,Agrarian Resilient,#15803d,1.7483739969653493,0.3950387515831285
+15,Jambi,1506,Tanjung Jabung Barat,Kabupaten,Sumatera,71.91,72.34,80.57,62.95,Tahan,13.9,Agrarian Resilient,#15803d,0.15440458352990155,0.9852902581498313
+15,Jambi,1507,Tanjung Jabung Timur,Kabupaten,Sumatera,73.01,75.46,81.7,61.98,Tahan,13.25,Agrarian Resilient,#15803d,0.312370248886908,1.158433221137847
+15,Jambi,1508,Bungo,Kabupaten,Sumatera,78.79,72.74,83.94,79.76,Sangat Tahan,6.51,Agrarian Resilient,#15803d,1.4953584738881225,0.30159563695254044
+15,Jambi,1509,Tebo,Kabupaten,Sumatera,70.85,57.43,81.6,73.67,Tahan,11.03,Urban Resilient,#0284c7,0.4156420668885169,-0.24991288699560607
+15,Jambi,1571,Kota Jambi,Kota,Sumatera,74.44,57.85,77.78,87.75,Tahan,11.41,Urban Resilient,#0284c7,0.7155128818247488,-0.6236149077769472
+15,Jambi,1572,Kota Sungai Penuh,Kota,Sumatera,78.16,61.91,83.07,89.58,Sangat Tahan,14.91,Urban Resilient,#0284c7,1.0243227452348669,-0.6233815265873442
+16,Sumatera Selatan,1601,Ogan Komering Ulu,Kabupaten,Sumatera,77.01,73.21,79.4,78.45,Tahan,7.31,Agrarian Resilient,#15803d,1.1163345978484984,0.5081963109010851
+16,Sumatera Selatan,1602,Ogan Komering Ilir,Kabupaten,Sumatera,76.61,84.78,79.76,65.33,Tahan,5.77,Agrarian Resilient,#15803d,1.0270991378511711,1.6069179953456554
+16,Sumatera Selatan,1603,Muara Enim,Kabupaten,Sumatera,77.2,77.86,77.52,76.23,Tahan,4.86,Agrarian Resilient,#15803d,1.1826315965489604,0.899267291775295
+16,Sumatera Selatan,1604,Lahat,Kabupaten,Sumatera,78.42,79.1,76.07,80.04,Sangat Tahan,5.55,Agrarian Resilient,#15803d,1.2318526182332261,0.8721283225415589
+16,Sumatera Selatan,1605,Musi Rawas,Kabupaten,Sumatera,78.67,86.58,74.75,74.61,Sangat Tahan,6.83,Agrarian Resilient,#15803d,1.0569143589947632,1.517394711722746
+16,Sumatera Selatan,1606,Musi Banyuasin,Kabupaten,Sumatera,73.77,63.96,77.72,79.69,Tahan,4.41,Urban Resilient,#0284c7,0.9837861763134101,0.005955989376558647
+16,Sumatera Selatan,1607,Banyuasin,Kabupaten,Sumatera,79.25,87.68,81.07,69.04,Sangat Tahan,4.21,Agrarian Resilient,#15803d,1.4311333862710012,1.5935041573326707
+16,Sumatera Selatan,1608,Ogan Komering Ulu Timur,Kabupaten,Sumatera,76.1,68.19,79.51,80.66,Tahan,7.63,Agrarian Resilient,#15803d,1.0555664715890725,0.14970455657461015
+16,Sumatera Selatan,1609,Ogan Komering Ulu Selatan,Kabupaten,Sumatera,76.17,78.25,79.69,70.61,Tahan,12.95,Agrarian Resilient,#15803d,0.6183558148762295,1.0585295456173873
+16,Sumatera Selatan,1610,Ogan Ilir,Kabupaten,Sumatera,77.7,79.06,77.59,76.44,Sangat Tahan,7.12,Agrarian Resilient,#15803d,1.0905108016087686,0.9550356451389466
+16,Sumatera Selatan,1611,Empat Lawang,Kabupaten,Sumatera,70.98,83.34,76.6,53.08,Tahan,13.91,Agrarian Resilient,#15803d,-0.19375746590021903,2.0623740742221504
+16,Sumatera Selatan,1612,Penukal Abab Lematang Ilir,Kabupaten,Sumatera,72.74,79.09,78.54,60.68,Tahan,6.97,Agrarian Resilient,#15803d,0.5381796301791852,1.4985690122719406
+16,Sumatera Selatan,1613,Musi Rawas Utara,Kabupaten,Sumatera,65.13,57.52,72.45,65.52,Agak Tahan,6.5,Agrarian Paradox,#d97706,-0.21583090706710129,0.31974179199898284
+16,Sumatera Selatan,1671,Kota Palembang,Kota,Sumatera,76.95,66.02,78.65,86.2,Tahan,3.36,Urban Resilient,#0284c7,1.4203338897940962,-0.14365425102931026
+16,Sumatera Selatan,1672,Kota Pagar Alam,Kota,Sumatera,74.41,82.09,79.08,62.14,Tahan,6.91,Agrarian Resilient,#15803d,0.7153382241332213,1.5944571080524979
+16,Sumatera Selatan,1673,Kota Lubuk Linggau,Kota,Sumatera,78.29,75.26,79.3,80.32,Sangat Tahan,6.9,Agrarian Resilient,#15803d,1.2642263880729103,0.5560288394871209
+16,Sumatera Selatan,1674,Kota Prabumulih,Kota,Sumatera,71.45,55.44,78.31,80.72,Tahan,7.62,Urban Resilient,#0284c7,0.6367912213089117,-0.5165620725765142
+17,Bengkulu,1701,Bengkulu Selatan,Kabupaten,Sumatera,66.09,67.37,71.79,59.19,Agak Tahan,9.42,Agrarian Paradox,#d97706,-0.41954054804942426,1.1078377047704966
+17,Bengkulu,1702,Rejang Lebong,Kabupaten,Sumatera,65.99,62.64,77.38,58.1,Agak Tahan,12.54,Agrarian Paradox,#d97706,-0.4216724034045867,0.7227173809777097
+17,Bengkulu,1703,Bengkulu Utara,Kabupaten,Sumatera,64.64,53.71,80.31,60.14,Agak Tahan,9.7,Agrarian Paradox,#d97706,-0.22186914174757189,0.07340729160480984
+17,Bengkulu,1704,Kaur,Kabupaten,Sumatera,64.37,57.59,72.25,63.39,Agak Tahan,12.36,Agrarian Paradox,#d97706,-0.6672248929782096,0.4054388467706682
+17,Bengkulu,1705,Seluma,Kabupaten,Sumatera,67.4,78.07,68.91,55.23,Agak Tahan,11.05,Agrarian Paradox,#d97706,-0.5706877049266282,1.922364350793872
+17,Bengkulu,2,Mukomuko,Kabupaten,Sumatera,71.12,68.77,81.0,63.73,Tahan,5.56,Agrarian Resilient,#15803d,0.623230056456952,0.7501522338018032
+17,Bengkulu,1707,Lebong,Kabupaten,Sumatera,68.92,65.67,76.97,64.24,Agak Tahan,12.38,Agrarian Paradox,#d97706,-0.1135353075157669,0.6790285602844942
+17,Bengkulu,1708,Kepahiang,Kabupaten,Sumatera,63.81,54.81,76.72,60.09,Agak Tahan,13.7,Agrarian Paradox,#d97706,-0.6676045844650672,0.240545736421345
+17,Bengkulu,1709,Bengkulu Tengah,Kabupaten,Sumatera,67.41,63.82,80.69,57.93,Agak Tahan,9.48,Agrarian Paradox,#d97706,0.001875823285067359,0.6967132768160605
+17,Bengkulu,1771,Kota Bengkulu,Kota,Sumatera,63.23,31.87,79.96,78.12,Agak Tahan,6.43,Urban Resilient,#0284c7,0.07482793712467295,-1.7637304830513751
+18,Lampung,1801,Lampung Selatan,Kabupaten,Sumatera,82.12,81.63,81.12,83.59,Sangat Tahan,9.91,Agrarian Resilient,#15803d,1.4995137826747351,0.733162688414404
+18,Lampung,1802,Lampung Tengah,Kabupaten,Sumatera,70.15,66.11,79.89,64.6,Tahan,10.25,Agrarian Resilient,#15803d,0.229352721980933,0.6045841327124464
+18,Lampung,1803,Lampung Utara,Kabupaten,Sumatera,64.0,54.52,77.96,59.72,Agak Tahan,10.36,Agrarian Paradox,#d97706,-0.40744425307892906,0.2020778923422692
+18,Lampung,1804,Lampung Barat,Kabupaten,Sumatera,74.5,73.45,80.88,69.26,Tahan,11.17,Agrarian Resilient,#15803d,0.6196856176836868,0.8094087424911778
+18,Lampung,1805,Tulang Bawang,Kabupaten,Sumatera,71.68,63.76,81.51,69.93,Tahan,10.21,Agrarian Resilient,#15803d,0.48294667231580274,0.23535959002797438
+18,Lampung,1806,Tanggamus,Kabupaten,Sumatera,73.6,68.05,82.83,70.06,Tahan,10.65,Agrarian Resilient,#15803d,0.662100694453937,0.4269846395492076
+18,Lampung,1807,Lampung Timur,Kabupaten,Sumatera,70.84,56.94,79.15,76.57,Tahan,11.54,Urban Resilient,#0284c7,0.3288385849292405,-0.30967932864872777
+18,Lampung,1808,Way Kanan,Kabupaten,Sumatera,77.12,82.65,79.72,69.05,Tahan,10.61,Agrarian Resilient,#15803d,0.8198216618126108,1.3558217879257928
+18,Lampung,1809,Pesawaran,Kabupaten,Sumatera,71.91,68.72,78.34,68.77,Tahan,11.36,Agrarian Resilient,#15803d,0.29796761488214163,0.6424364995686663
+18,Lampung,1810,Pringsewu,Kabupaten,Sumatera,71.15,59.77,82.37,71.47,Tahan,10.51,Urban Resilient,#0284c7,0.4729268154888013,-0.06461232185622592
+18,Lampung,1811,Mesuji,Kabupaten,Sumatera,70.69,56.74,84.57,70.97,Tahan,10.25,Urban Resilient,#0284c7,0.5281074820438448,-0.2774047397170157
+18,Lampung,1812,Tulang Bawang Barat,Kabupaten,Sumatera,65.5,53.15,83.02,60.6,Agak Tahan,10.78,Agrarian Paradox,#d97706,-0.11062703130382755,-0.05384788181681347
+18,Lampung,1813,Pesisir Barat,Kabupaten,Sumatera,70.7,72.82,81.26,58.17,Tahan,8.4,Agrarian Resilient,#15803d,0.3569620121796233,1.1651151103821535
+18,Lampung,1871,Kota Bandar Lampung,Kota,Sumatera,67.05,31.74,83.21,86.44,Agak Tahan,10.05,Urban Resilient,#0284c7,0.38873354213397016,-2.1680362136746605
+18,Lampung,1872,Kota Metro,Kota,Sumatera,82.86,75.79,84.21,88.6,Sangat Tahan,8.23,Agrarian Resilient,#15803d,1.8400734405456722,0.14099355212969053
+19,Kep. Bangka Belitung,1901,Bangka,Kabupaten,Sumatera,83.31,84.0,83.79,82.15,Sangat Tahan,10.45,Agrarian Resilient,#15803d,1.6451548621486058,0.8364764568871584
+19,Kep. Bangka Belitung,1902,Belitung,Kabupaten,Sumatera,72.98,63.65,78.82,76.54,Tahan,11.26,Urban Resilient,#0284c7,0.504946324122633,0.06925376996526922
+19,Kep. Bangka Belitung,1903,Bangka Selatan,Kabupaten,Sumatera,75.26,69.73,80.51,75.61,Tahan,10.95,Agrarian Resilient,#15803d,0.7599327724500924,0.38670105491075135
+19,Kep. Bangka Belitung,1904,Bangka Tengah,Kabupaten,Sumatera,73.89,64.65,77.9,79.2,Tahan,11.55,Urban Resilient,#0284c7,0.56057015076549,0.054980425407720857
+19,Kep. Bangka Belitung,1905,Bangka Barat,Kabupaten,Sumatera,72.24,56.6,84.39,75.91,Tahan,10.85,Urban Resilient,#0284c7,0.6716604625480536,-0.45855336008832626
+19,Kep. Bangka Belitung,1906,Belitung Timur,Kabupaten,Sumatera,75.02,66.92,82.17,76.07,Tahan,10.32,Agrarian Resilient,#15803d,0.8468652780445944,0.16719525394315007
+19,Kep. Bangka Belitung,1971,Kota Pangkal Pinang,Kota,Sumatera,77.07,63.5,82.36,85.44,Tahan,8.68,Urban Resilient,#0284c7,1.2367708403977014,-0.3644847106878897
+21,Kep. Riau,2101,Bintan,Kabupaten,Sumatera,71.49,50.49,86.5,77.69,Tahan,13.64,Urban Resilient,#0284c7,0.5425476306113532,-0.9206220809519464
+21,Kep. Riau,2102,Karimun,Kabupaten,Sumatera,72.0,53.82,84.01,78.34,Tahan,13.2,Urban Resilient,#0284c7,0.5253760421812965,-0.6880994985836896
+21,Kep. Riau,2103,Natuna,Kabupaten,Sumatera,67.98,45.98,86.32,71.91,Agak Tahan,13.48,Urban Resilient,#0284c7,0.19025365094097757,-0.9536940528312655
+21,Kep. Riau,2104,Lingga,Kabupaten,Sumatera,58.26,36.45,74.62,63.96,Agak Rentan,20.0,Agrarian Paradox,#d97706,-1.5287348091543715,-0.8458289769497825
+21,Kep. Riau,2105,Kepulauan Anambas,Kabupaten,Sumatera,63.87,44.34,87.3,60.33,Agak Tahan,9.04,Urban Resilient,#0284c7,0.0207944732379808,-0.6530049144223299
+21,Kep. Riau,2171,Kota Batam,Kota,Sumatera,74.65,56.75,80.62,86.68,Tahan,7.87,Urban Resilient,#0284c7,1.0408482105914536,-0.7282308931644876
+21,Kep. Riau,2172,Kota Tanjung Pinang,Kota,Sumatera,78.32,65.16,87.13,82.79,Sangat Tahan,10.63,Urban Resilient,#0284c7,1.3643415077029755,-0.31831849659040257
+31,DKI Jakarta,2,Kep. Seribu,Kabupaten,Jawa,62.05,36.97,77.7,71.73,Agak Tahan,4.39,Urban Resilient,#0284c7,-0.060879395519022154,-1.1860648738183954
+31,DKI Jakarta,2,Kota Jakarta Pusat,Kota,Jawa,70.44,40.53,84.52,86.47,Tahan,3.63,Urban Resilient,#0284c7,1.101926319222145,-1.7244141491215708
+31,DKI Jakarta,2,Kota Jakarta Utara,Kota,Jawa,69.83,45.79,84.17,79.76,Tahan,3.39,Urban Resilient,#0284c7,0.9709770709721327,-1.1828980738850652
+31,DKI Jakarta,2,Kota Jakarta Barat,Kota,Jawa,70.57,37.33,87.75,86.9,Tahan,3.55,Urban Resilient,#0284c7,1.2444964195001815,-2.0104260860563605
+31,DKI Jakarta,2,Kota Jakarta Selatan,Kota,Jawa,71.87,41.24,87.21,87.41,Tahan,2.45,Urban Resilient,#0284c7,1.4025759920594383,-1.7983339884736222
+31,DKI Jakarta,2,Kota Jakarta Timur,Kota,Jawa,72.47,42.35,86.32,88.93,Tahan,4.38,Urban Resilient,#0284c7,1.3182545328345683,-1.7665629964112917
+32,Jawa Barat,3201,Bogor,Kabupaten,Jawa,72.91,69.0,82.99,66.88,Tahan,5.68,Agrarian Resilient,#15803d,0.8743776610078364,0.5902370624314961
+32,Jawa Barat,3202,Sukabumi,Kabupaten,Jawa,72.31,66.06,82.8,68.24,Tahan,5.82,Agrarian Resilient,#15803d,0.8279292117082127,0.3853830311944041
+32,Jawa Barat,3203,Cianjur,Kabupaten,Jawa,74.01,63.17,82.53,76.46,Tahan,5.37,Urban Resilient,#0284c7,1.0849237254999913,-0.06235876758272105
+32,Jawa Barat,3204,Bandung,Kabupaten,Jawa,68.0,49.25,84.99,70.01,Agak Tahan,5.8,Urban Resilient,#0284c7,0.5850839251331635,-0.6650981181764223
+32,Jawa Barat,3205,Garut,Kabupaten,Jawa,75.29,72.72,82.78,70.47,Tahan,5.02,Agrarian Resilient,#15803d,1.1435877131065932,0.6708127381340475
+32,Jawa Barat,3206,Tasikmalaya,Kabupaten,Jawa,69.73,60.07,78.99,70.26,Tahan,5.95,Urban Resilient,#0284c7,0.4935386610881452,0.09584259362971001
+32,Jawa Barat,3207,Ciamis,Kabupaten,Jawa,74.3,63.94,85.89,73.26,Tahan,5.78,Agrarian Resilient,#15803d,1.1698144035541709,-0.003353892038157237
+32,Jawa Barat,3208,Kuningan,Kabupaten,Jawa,67.03,53.82,80.82,66.65,Agak Tahan,5.83,Urban Resilient,#0284c7,0.3065007666179923,-0.17020345849026017
+32,Jawa Barat,3209,Cirebon,Kabupaten,Jawa,73.25,62.36,79.85,77.63,Tahan,5.65,Urban Resilient,#0284c7,0.9202859282262383,-0.07027810219651168
+32,Jawa Barat,3210,Majalengka,Kabupaten,Jawa,69.38,58.83,75.75,73.66,Agak Tahan,5.95,Urban Resilient,#0284c7,0.38659595562130494,0.00030854482994630185
+32,Jawa Barat,3211,Sumedang,Kabupaten,Jawa,74.16,61.8,82.15,78.67,Tahan,5.43,Urban Resilient,#0284c7,1.107165325124378,-0.206214520187485
+32,Jawa Barat,3212,Indramayu,Kabupaten,Jawa,76.54,76.2,80.55,72.91,Tahan,5.46,Agrarian Resilient,#15803d,1.1643451231121813,0.83898350965298
+32,Jawa Barat,3213,Subang,Kabupaten,Jawa,74.54,65.38,83.38,75.0,Tahan,6.19,Agrarian Resilient,#15803d,1.091580197597277,0.0865487615620887
+32,Jawa Barat,3214,Purwakarta,Kabupaten,Jawa,71.73,60.64,79.71,74.97,Tahan,5.84,Urban Resilient,#0284c7,0.7480453575473656,-0.06430013301073483
+32,Jawa Barat,3215,Karawang,Kabupaten,Jawa,74.45,66.29,77.65,79.45,Tahan,5.1,Agrarian Resilient,#15803d,0.9908544295680214,0.14441281574391543
+32,Jawa Barat,3216,Bekasi,Kabupaten,Jawa,74.56,62.54,82.38,78.86,Tahan,4.6,Urban Resilient,#0284c7,1.1999687595625907,-0.17911146164732836
+32,Jawa Barat,3217,Bandung Barat,Kabupaten,Jawa,68.92,53.76,79.63,73.53,Agak Tahan,6.25,Urban Resilient,#0284c7,0.475020945347392,-0.3873738160754671
+32,Jawa Barat,3218,Pangandaran,Kabupaten,Jawa,76.32,69.88,85.92,73.3,Tahan,5.22,Agrarian Resilient,#15803d,1.3679798772314986,0.32025876548120014
+32,Jawa Barat,3271,Kota Bogor,Kota,Jawa,66.73,35.0,82.05,83.39,Agak Tahan,7.98,Urban Resilient,#0284c7,0.40769322113545997,-1.8443595332188878
+32,Jawa Barat,3272,Kota Sukabumi,Kota,Jawa,71.87,61.64,83.44,70.71,Tahan,5.57,Agrarian Resilient,#15803d,0.8623416049978615,0.03479831580190084
+32,Jawa Barat,3273,Kota Bandung,Kota,Jawa,71.77,44.98,85.49,85.06,Tahan,5.48,Urban Resilient,#0284c7,1.1162671800439887,-1.458200409084217
+32,Jawa Barat,3274,Kota Cirebon,Kota,Jawa,68.5,40.12,81.08,84.5,Agak Tahan,6.56,Urban Resilient,#0284c7,0.614123416852329,-1.5749319463286806
+32,Jawa Barat,3275,Kota Bekasi,Kota,Jawa,72.07,39.98,88.12,88.35,Tahan,4.88,Urban Resilient,#0284c7,1.3163652639666017,-1.9286395152809623
+32,Jawa Barat,3276,Kota Depok,Kota,Jawa,68.41,42.89,89.9,72.77,Agak Tahan,4.52,Urban Resilient,#0284c7,0.9150633648700304,-1.25799790352514
+32,Jawa Barat,3277,Kota Cimahi,Kota,Jawa,72.46,49.28,86.16,82.14,Tahan,5.43,Urban Resilient,#0284c7,1.1630742788037507,-1.1364280543137184
+32,Jawa Barat,3278,Kota Tasikmalaya,Kota,Jawa,78.81,74.78,84.44,77.29,Sangat Tahan,5.31,Agrarian Resilient,#15803d,1.5578325952598064,0.4882538768546191
+32,Jawa Barat,3279,Kota Banjar,Kota,Jawa,83.82,92.52,84.06,74.9,Sangat Tahan,5.13,Agrarian Resilient,#15803d,1.9296032379553625,1.5589444333266762
+33,Jawa Tengah,3301,Cilacap,Kabupaten,Jawa,68.4,53.08,76.93,75.31,Agak Tahan,10.9,Urban Resilient,#0284c7,0.07112296809353133,-0.4103504025417956
+33,Jawa Tengah,3302,Banyumas,Kabupaten,Jawa,69.6,53.33,78.15,77.45,Tahan,7.98,Urban Resilient,#0284c7,0.4182876539254659,-0.5094443746259806
+33,Jawa Tengah,3303,Purbalingga,Kabupaten,Jawa,68.8,55.46,77.18,73.9,Agak Tahan,8.63,Urban Resilient,#0284c7,0.23377858446718078,-0.235755194877283
+33,Jawa Tengah,3304,Banjarnegara,Kabupaten,Jawa,70.27,58.04,75.45,77.38,Tahan,11.79,Urban Resilient,#0284c7,0.13807158230869443,-0.16973778300570788
+33,Jawa Tengah,3305,Kebumen,Kabupaten,Jawa,67.65,53.93,73.74,75.37,Agak Tahan,9.2,Urban Resilient,#0284c7,-0.0047785289206205735,-0.271771819130461
+33,Jawa Tengah,3306,Purworejo,Kabupaten,Jawa,68.27,51.03,75.52,78.37,Agak Tahan,11.51,Urban Resilient,#0284c7,0.009219250389796669,-0.5920704066237269
+33,Jawa Tengah,3307,Wonosobo,Kabupaten,Jawa,72.03,61.85,75.75,78.55,Tahan,13.39,Urban Resilient,#0284c7,0.20931505265292225,-0.012218851418743742
+33,Jawa Tengah,3308,Magelang,Kabupaten,Jawa,68.9,55.86,75.67,75.27,Agak Tahan,11.24,Urban Resilient,#0284c7,0.04325101080681454,-0.21948488996899984
+33,Jawa Tengah,3309,Boyolali,Kabupaten,Jawa,68.31,51.46,76.83,76.78,Agak Tahan,9.1,Urban Resilient,#0284c7,0.18853114993436182,-0.5491057993650288
+33,Jawa Tengah,3310,Klaten,Kabupaten,Jawa,68.02,52.99,74.63,76.53,Agak Tahan,10.11,Urban Resilient,#0284c7,0.01743608810633118,-0.3916047018301532
+33,Jawa Tengah,3311,Sukoharjo,Kabupaten,Jawa,70.7,52.58,81.53,78.16,Tahan,8.05,Urban Resilient,#0284c7,0.6386453042689658,-0.6757374604513174
+33,Jawa Tengah,3312,Wonogiri,Kabupaten,Jawa,69.74,54.53,77.81,77.0,Tahan,10.25,Urban Resilient,#0284c7,0.2731261048278274,-0.4177276036740121
+33,Jawa Tengah,3313,Karanganyar,Kabupaten,Jawa,68.25,51.17,76.7,76.99,Agak Tahan,7.09,Urban Resilient,#0284c7,0.30279119012735883,-0.568513561535187
+33,Jawa Tengah,3314,Sragen,Kabupaten,Jawa,71.99,55.86,77.68,82.52,Tahan,8.12,Urban Resilient,#0284c7,0.6485400347790884,-0.5402174706393532
+33,Jawa Tengah,3315,Grobogan,Kabupaten,Jawa,70.87,58.32,73.97,80.38,Tahan,9.91,Urban Resilient,#0284c7,0.2836293186407845,-0.21894590682617313
+33,Jawa Tengah,3316,Blora,Kabupaten,Jawa,70.95,55.36,79.26,78.35,Tahan,11.19,Urban Resilient,#0284c7,0.38489484712600697,-0.4638300221216107
+33,Jawa Tengah,3317,Rembang,Kabupaten,Jawa,72.22,63.02,73.19,80.45,Tahan,9.17,Urban Resilient,#0284c7,0.4084237706225786,0.05937462110572021
+33,Jawa Tengah,3318,Pati,Kabupaten,Jawa,75.6,65.46,82.48,78.98,Tahan,8.4,Urban Resilient,#0284c7,1.0590097506417264,-0.02690247896375623
+33,Jawa Tengah,3319,Kudus,Kabupaten,Jawa,73.91,58.07,81.4,82.38,Tahan,5.41,Urban Resilient,#0284c7,1.1060984740720836,-0.5228652908578546
+33,Jawa Tengah,3320,Jepara,Kabupaten,Jawa,74.82,62.02,83.05,79.51,Tahan,7.86,Urban Resilient,#0284c7,1.0563224980008457,-0.2514406817296204
+33,Jawa Tengah,3321,Demak,Kabupaten,Jawa,75.79,61.25,79.45,86.71,Tahan,7.59,Urban Resilient,#0284c7,1.1056895723839144,-0.44800087044108344
+33,Jawa Tengah,3322,Semarang,Kabupaten,Jawa,70.64,50.97,83.51,77.64,Tahan,7.71,Urban Resilient,#0284c7,0.7222212701050874,-0.8034579512501293
+33,Jawa Tengah,3323,Temanggung,Kabupaten,Jawa,69.27,46.76,81.63,79.59,Agak Tahan,11.72,Urban Resilient,#0284c7,0.321080800690385,-1.0502479378614884
+33,Jawa Tengah,3324,Kendal,Kabupaten,Jawa,71.51,56.53,78.73,79.37,Tahan,10.03,Urban Resilient,#0284c7,0.4932931670909756,-0.42077156427060797
+33,Jawa Tengah,3325,Batang,Kabupaten,Jawa,73.42,62.04,82.87,75.48,Tahan,6.53,Urban Resilient,#0284c7,0.9668298953568424,-0.09907619212633403
+33,Jawa Tengah,3326,Pekalongan,Kabupaten,Jawa,72.9,61.28,82.03,75.52,Tahan,5.54,Urban Resilient,#0284c7,0.9541915724630692,-0.11727465892967608
+33,Jawa Tengah,3327,Pemalang,Kabupaten,Jawa,72.22,61.04,76.43,79.25,Tahan,6.31,Urban Resilient,#0284c7,0.6891202137443018,-0.10062608037404132
+33,Jawa Tengah,3328,Tegal,Kabupaten,Jawa,70.28,53.49,79.75,77.75,Tahan,9.39,Urban Resilient,#0284c7,0.4514209472260152,-0.5588295115129918
+33,Jawa Tengah,3329,Brebes,Kabupaten,Jawa,75.77,72.44,76.56,78.33,Tahan,7.9,Agrarian Resilient,#15803d,0.8726987114298409,0.5537577782227165
+33,Jawa Tengah,3371,Kota Magelang,Kota,Jawa,69.52,45.98,81.33,81.43,Tahan,8.68,Urban Resilient,#0284c7,0.5383575396418909,-1.150194687499057
+33,Jawa Tengah,3372,Kota Surakarta,Kota,Jawa,64.58,27.99,77.38,88.56,Agak Tahan,6.22,Urban Resilient,#0284c7,0.2300196065909096,-2.2780666546355004
+33,Jawa Tengah,3373,Kota Salatiga,Kota,Jawa,77.82,62.97,83.7,86.88,Sangat Tahan,4.04,Urban Resilient,#0284c7,1.6473835414908244,-0.4841935509627796
+33,Jawa Tengah,3374,Kota Semarang,Kota,Jawa,66.21,25.23,86.94,86.77,Agak Tahan,4.15,Urban Resilient,#0284c7,0.8236827705340345,-2.6457269874501375
+33,Jawa Tengah,3375,Kota Pekalongan,Kota,Jawa,68.05,42.67,82.64,79.05,Agak Tahan,5.05,Urban Resilient,#0284c7,0.6594733031559712,-1.2836685645983574
+33,Jawa Tengah,3376,Kota Tegal,Kota,Jawa,68.69,36.23,83.62,86.43,Agak Tahan,5.02,Urban Resilient,#0284c7,0.8418294914980626,-1.9325280208184141
+34,DI Yogyakarta,3401,Kulon Progo,Kabupaten,Jawa,67.64,53.14,70.72,79.11,Agak Tahan,8.75,Urban Resilient,#0284c7,-0.04469797236611332,-0.36135330929900283
+34,DI Yogyakarta,3402,Bantul,Kabupaten,Jawa,74.3,60.22,79.32,83.43,Tahan,9.27,Urban Resilient,#0284c7,0.8376687654620076,-0.3823967933213505
+34,DI Yogyakarta,3403,Gunungkidul,Kabupaten,Jawa,70.47,63.51,74.99,72.98,Tahan,8.84,Agrarian Resilient,#15803d,0.26183512198874737,0.3034089406956574
+34,DI Yogyakarta,3404,Sleman,Kabupaten,Jawa,83.84,79.1,84.45,87.99,Sangat Tahan,8.05,Agrarian Resilient,#15803d,1.9318079290178447,0.33760491740610715
+34,DI Yogyakarta,3471,Kota Yogyakarta,Kota,Jawa,74.23,54.27,84.95,83.62,Tahan,10.35,Urban Resilient,#0284c7,0.9798318233772276,-0.8815064806719104
+35,Jawa Timur,3501,Pacitan,Kabupaten,Jawa,70.74,54.4,81.87,76.11,Tahan,14.05,Urban Resilient,#0284c7,0.26394843657822975,-0.512838363381919
+35,Jawa Timur,3502,Ponorogo,Kabupaten,Jawa,69.5,51.35,77.68,79.61,Agak Tahan,10.41,Urban Resilient,#0284c7,0.2723033038489612,-0.682722033381913
+35,Jawa Timur,3503,Trenggalek,Kabupaten,Jawa,72.03,65.93,77.77,72.47,Tahan,14.75,Agrarian Resilient,#15803d,0.12617937014893194,0.37176259541968865
+35,Jawa Timur,3504,Tulungagung,Kabupaten,Jawa,74.93,65.54,79.89,79.45,Tahan,10.06,Urban Resilient,#0284c7,0.8126688166876073,0.036406604326201936
+35,Jawa Timur,3505,Blitar,Kabupaten,Jawa,64.87,48.91,77.83,68.07,Agak Tahan,11.99,Agrarian Paradox,#d97706,-0.3364509701877054,-0.40397363213743703
+35,Jawa Timur,3506,Kediri,Kabupaten,Jawa,70.43,53.31,78.4,79.7,Tahan,9.37,Urban Resilient,#0284c7,0.4382183302714241,-0.5995097540273031
+35,Jawa Timur,3507,Malang,Kabupaten,Jawa,70.69,54.66,80.73,76.84,Tahan,9.42,Urban Resilient,#0284c7,0.5080580538798415,-0.49061576957472136
+35,Jawa Timur,3508,Lumajang,Kabupaten,Jawa,73.42,64.41,82.6,73.38,Tahan,8.44,Agrarian Resilient,#15803d,0.8144427522928088,0.1145149904388616
+35,Jawa Timur,3509,Jember,Kabupaten,Jawa,67.67,54.58,76.93,71.65,Agak Tahan,9.84,Urban Resilient,#0284c7,0.0313664061121105,-0.19557096449824937
+35,Jawa Timur,3510,Banyuwangi,Kabupaten,Jawa,73.22,57.76,83.65,78.42,Tahan,5.76,Urban Resilient,#0284c7,1.0641989245417176,-0.4629785128832706
+35,Jawa Timur,3511,Bondowoso,Kabupaten,Jawa,67.54,52.62,77.25,72.9,Agak Tahan,14.49,Urban Resilient,#0284c7,-0.23432547723186922,-0.35849287749878767
+35,Jawa Timur,3512,Situbondo,Kabupaten,Jawa,70.49,54.73,79.6,77.27,Tahan,17.35,Urban Resilient,#0284c7,-0.027578369371173545,-0.4705047158999733
+35,Jawa Timur,3513,Probolinggo,Kabupaten,Jawa,63.64,53.8,73.36,63.9,Agak Tahan,11.83,Agrarian Paradox,#d97706,-0.646126941066808,0.14659946387779776
+35,Jawa Timur,3514,Pasuruan,Kabupaten,Jawa,71.94,57.94,82.54,75.49,Tahan,10.37,Urban Resilient,#0284c7,0.6017838692432737,-0.315272760526166
+35,Jawa Timur,3515,Sidoarjo,Kabupaten,Jawa,74.63,51.38,86.99,85.72,Tahan,3.07,Urban Resilient,#0284c7,1.5581693257845717,-1.1747145863837567
+35,Jawa Timur,3516,Mojokerto,Kabupaten,Jawa,83.02,81.61,82.26,85.18,Sangat Tahan,6.94,Agrarian Resilient,#15803d,1.8155612476758483,0.6415158230549123
+35,Jawa Timur,3517,Jombang,Kabupaten,Jawa,72.84,54.2,82.99,81.49,Tahan,7.52,Urban Resilient,#0284c7,0.9399528851387362,-0.7501332436890756
+35,Jawa Timur,3518,Nganjuk,Kabupaten,Jawa,71.42,52.89,81.41,80.1,Tahan,7.71,Urban Resilient,#0284c7,0.7367435747930225,-0.7252881438452614
+35,Jawa Timur,3519,Madiun,Kabupaten,Jawa,73.99,61.37,80.21,80.5,Tahan,10.97,Urban Resilient,#0284c7,0.706659951358809,-0.2398507326990425
+35,Jawa Timur,3520,Magetan,Kabupaten,Jawa,75.28,64.88,79.8,81.22,Tahan,11.19,Urban Resilient,#0284c7,0.7904320102404147,-0.06133472427886701
+35,Jawa Timur,3521,Ngawi,Kabupaten,Jawa,70.1,53.59,74.98,81.81,Tahan,9.4,Urban Resilient,#0284c7,0.30805231378183284,-0.5597775529312031
+35,Jawa Timur,3522,Bojonegoro,Kabupaten,Jawa,71.95,54.55,78.48,82.91,Tahan,9.97,Urban Resilient,#0284c7,0.5673404683867288,-0.6499613810520578
+35,Jawa Timur,3523,Tuban,Kabupaten,Jawa,73.66,60.82,77.53,82.68,Tahan,7.89,Urban Resilient,#0284c7,0.7933438600920768,-0.26947561933090003
+35,Jawa Timur,3524,Lamongan,Kabupaten,Jawa,75.19,68.33,79.1,78.18,Tahan,5.3,Agrarian Resilient,#15803d,1.0766494662723587,0.2594160785872728
+35,Jawa Timur,3525,Gresik,Kabupaten,Jawa,77.82,60.7,84.49,88.38,Sangat Tahan,2.9,Urban Resilient,#0284c7,1.7653104925444414,-0.6860843763282181
+35,Jawa Timur,3526,Bangkalan,Kabupaten,Jawa,62.87,53.18,73.79,61.8,Agak Tahan,12.18,Agrarian Paradox,#d97706,-0.7395395064210589,0.17572716269529393
+35,Jawa Timur,3527,Sampang,Kabupaten,Jawa,63.85,56.97,72.77,61.96,Agak Tahan,9.44,Agrarian Paradox,#d97706,-0.5296220044692851,0.408295045005057
+35,Jawa Timur,3528,Pamekasan,Kabupaten,Jawa,63.96,47.91,78.88,65.32,Agak Tahan,14.36,Agrarian Paradox,#d97706,-0.5489405730908379,-0.3907668460053338
+35,Jawa Timur,3529,Sumenep,Kabupaten,Jawa,73.79,77.11,73.21,71.03,Tahan,6.49,Agrarian Resilient,#15803d,0.58116100062576,1.1727027362995124
+35,Jawa Timur,3571,Kota Kediri,Kota,Jawa,64.71,40.66,80.91,72.82,Agak Tahan,5.31,Urban Resilient,#0284c7,0.2320267573384262,-1.1177603382034424
+35,Jawa Timur,3572,Kota Blitar,Kota,Jawa,64.86,42.27,78.78,73.73,Agak Tahan,5.42,Urban Resilient,#0284c7,0.16819322932846492,-0.9996436515895134
+35,Jawa Timur,3573,Kota Malang,Kota,Jawa,63.07,25.48,87.62,76.49,Agak Tahan,4.99,Urban Resilient,#0284c7,0.41650741916208633,-2.280512110406099
+35,Jawa Timur,3574,Kota Probolinggo,Kota,Jawa,69.5,44.54,85.76,78.45,Agak Tahan,4.47,Urban Resilient,#0284c7,0.921733453521304,-1.2510774719697078
+35,Jawa Timur,3575,Kota Pasuruan,Kota,Jawa,70.83,47.23,86.87,78.63,Tahan,4.29,Urban Resilient,#0284c7,1.0836907126234034,-1.1426293028882606
+35,Jawa Timur,3576,Kota Mojokerto,Kota,Jawa,64.66,34.28,81.12,78.83,Agak Tahan,4.33,Urban Resilient,#0284c7,0.37011433350737777,-1.6909876437579447
+35,Jawa Timur,3577,Kota Madiun,Kota,Jawa,76.67,51.22,86.18,92.75,Tahan,5.34,Urban Resilient,#0284c7,1.6418151849668254,-1.4141523953311959
+35,Jawa Timur,3578,Kota Surabaya,Kota,Jawa,70.8,34.8,84.11,93.69,Tahan,2.37,Urban Resilient,#0284c7,1.2827046745935564,-2.287451345173074
+35,Jawa Timur,3579,Kota Batu,Kota,Jawa,73.99,58.77,90.35,73.1,Tahan,3.49,Urban Resilient,#0284c7,1.4489824603929842,-0.41202384395431946
+36,Banten,3601,Pandeglang,Kabupaten,Jawa,67.94,59.83,84.13,60.12,Agak Tahan,2.7,Agrarian Resilient,#15803d,0.6134004610245657,0.2986283272804321
+36,Banten,3602,Lebak,Kabupaten,Jawa,72.07,74.61,83.32,58.46,Tahan,2.52,Agrarian Resilient,#15803d,0.9063833547046148,1.1932214841579016
+36,Banten,3603,Tangerang,Kabupaten,Jawa,78.41,72.48,84.99,77.87,Sangat Tahan,2.22,Agrarian Resilient,#15803d,1.7416314653611886,0.3255754509351898
+36,Banten,3604,Serang,Kabupaten,Jawa,80.62,82.64,85.39,73.92,Sangat Tahan,2.13,Agrarian Resilient,#15803d,1.8913722649664293,1.013913352386163
+36,Banten,3671,Kota Tangerang,Kota,Jawa,81.0,69.18,87.39,86.52,Sangat Tahan,1.89,Urban Resilient,#0284c7,2.168499875104042,-0.23875770662490023
+36,Banten,3672,Kota Cilegon,Kota,Jawa,77.01,62.92,89.14,79.14,Tahan,1.96,Urban Resilient,#0284c7,1.8154511795237733,-0.3668203273777384
+36,Banten,3673,Kota Serang,Kota,Jawa,76.26,75.75,83.52,69.6,Tahan,2.18,Agrarian Resilient,#15803d,1.4112148577493917,0.8472223935767115
+36,Banten,3674,Kota Tangerang Selatan,Kota,Jawa,77.35,59.61,86.59,85.98,Tahan,3.13,Urban Resilient,#0284c7,1.7616500543068756,-0.7208882591404959
+51,Bali,5101,Jembrana,Kabupaten,Bali-Nusa Tenggara,77.18,62.1,86.34,83.23,Tahan,5.68,Urban Resilient,#0284c7,1.5492515214676434,-0.47793276355063163
+51,Bali,5102,Tabanan,Kabupaten,Bali-Nusa Tenggara,79.37,67.35,88.96,81.94,Sangat Tahan,2.59,Urban Resilient,#0284c7,1.9960959512899172,-0.21989714344003186
+51,Bali,5103,Badung,Kabupaten,Bali-Nusa Tenggara,81.68,63.29,92.09,89.81,Sangat Tahan,1.02,Urban Resilient,#0284c7,2.4937212030887164,-0.8189994436724518
+51,Bali,5104,Gianyar,Kabupaten,Bali-Nusa Tenggara,78.35,58.35,89.05,87.83,Sangat Tahan,1.0,Urban Resilient,#0284c7,2.0880797852169595,-0.9289129960811034
+51,Bali,5105,Klungkung,Kabupaten,Bali-Nusa Tenggara,76.87,59.26,87.68,83.82,Tahan,3.61,Urban Resilient,#0284c7,1.7075784077514429,-0.6941254335782402
+51,Bali,5106,Bangli,Kabupaten,Bali-Nusa Tenggara,73.47,57.67,89.79,73.2,Tahan,2.94,Urban Resilient,#0284c7,1.4207470317130628,-0.45934825640949184
+51,Bali,5107,Karangasem,Kabupaten,Bali-Nusa Tenggara,74.24,67.5,84.42,70.97,Tahan,7.57,Agrarian Resilient,#15803d,0.9723753872400454,0.317698747077284
+51,Bali,5108,Buleleng,Kabupaten,Bali-Nusa Tenggara,72.69,58.0,82.83,77.39,Tahan,6.66,Urban Resilient,#0284c7,0.9226563921298143,-0.3886078771079098
+51,Bali,5171,Kota Denpasar,Kota,Bali-Nusa Tenggara,78.84,53.75,92.33,90.64,Sangat Tahan,1.62,Urban Resilient,#0284c7,2.247470221198106,-1.379421238265677
+52,Nusa Tenggara Barat,5201,Lombok Barat,Kabupaten,Bali-Nusa Tenggara,74.6,67.1,81.67,75.12,Tahan,3.35,Agrarian Resilient,#15803d,1.205779788183351,0.2273459466039256
+52,Nusa Tenggara Barat,5202,Lombok Tengah,Kabupaten,Bali-Nusa Tenggara,76.38,76.24,79.18,73.76,Tahan,3.84,Agrarian Resilient,#15803d,1.2096153320329048,0.8510885861376477
+52,Nusa Tenggara Barat,5203,Lombok Timur,Kabupaten,Bali-Nusa Tenggara,76.56,76.76,79.59,73.39,Tahan,2.37,Agrarian Resilient,#15803d,1.3247229198427888,0.8812163387533887
+52,Nusa Tenggara Barat,5204,Sumbawa,Kabupaten,Bali-Nusa Tenggara,75.14,66.01,79.92,79.57,Tahan,2.55,Agrarian Resilient,#15803d,1.2886669738086618,0.058297549134467656
+52,Nusa Tenggara Barat,5205,Dompu,Kabupaten,Bali-Nusa Tenggara,74.38,67.64,78.54,77.02,Tahan,1.69,Agrarian Resilient,#15803d,1.1956227358551954,0.28073770343308607
+52,Nusa Tenggara Barat,5206,Bima,Kabupaten,Bali-Nusa Tenggara,70.36,65.53,77.53,68.14,Tahan,3.54,Agrarian Resilient,#15803d,0.6102184087113327,0.515397063478594
+52,Nusa Tenggara Barat,5207,Sumbawa Barat,Kabupaten,Bali-Nusa Tenggara,83.03,86.77,79.81,82.46,Sangat Tahan,0.87,Agrarian Resilient,#15803d,2.0593706986326654,1.0960322528791224
+52,Nusa Tenggara Barat,5208,Lombok Utara,Kabupaten,Bali-Nusa Tenggara,77.27,94.09,69.81,67.8,Tahan,3.04,Agrarian Resilient,#15803d,0.9042088177744712,2.321596379800309
+52,Nusa Tenggara Barat,5271,Kota Mataram,Kota,Bali-Nusa Tenggara,75.2,59.69,85.28,80.79,Tahan,1.4,Urban Resilient,#0284c7,1.5797765005586288,-0.49005348653296443
+52,Nusa Tenggara Barat,5272,Kota Bima,Kota,Bali-Nusa Tenggara,75.0,67.35,85.32,72.48,Tahan,1.52,Agrarian Resilient,#15803d,1.4535818100917786,0.2294516877491572
+53,Nusa Tenggara Timur,5301,Kupang,Kabupaten,Bali-Nusa Tenggara,55.32,44.69,65.3,56.11,Agak Rentan,14.39,Agrarian Paradox,#d97706,-1.873195700800059,0.16525470330085718
+53,Nusa Tenggara Timur,5302,Timor Tengah Selatan,Kabupaten,Bali-Nusa Tenggara,55.23,42.13,62.32,61.33,Agak Rentan,12.61,Agrarian Paradox,#d97706,-1.818945052589935,-0.0758621809303504
+53,Nusa Tenggara Timur,5303,Timor Tengah Utara,Kabupaten,Bali-Nusa Tenggara,52.99,45.24,63.04,50.84,Rentan,13.2,Agrarian Paradox,#d97706,-2.13932864232065,0.45267843822303805
+53,Nusa Tenggara Timur,5304,Belu,Kabupaten,Bali-Nusa Tenggara,55.58,44.99,65.5,56.39,Agak Rentan,13.34,Agrarian Paradox,#d97706,-1.7772815815890532,0.16590254367764354
+53,Nusa Tenggara Timur,5305,Alor,Kabupaten,Bali-Nusa Tenggara,54.07,48.91,67.18,46.32,Agak Rentan,13.46,Agrarian Paradox,#d97706,-1.9690106268635634,0.6955781392794689
+53,Nusa Tenggara Timur,5306,Flores Timur,Kabupaten,Bali-Nusa Tenggara,58.79,49.52,74.07,53.01,Agak Rentan,13.45,Agrarian Paradox,#d97706,-1.2454493478342086,0.28437774266870464
+53,Nusa Tenggara Timur,5307,Sikka,Kabupaten,Bali-Nusa Tenggara,57.51,41.22,71.32,60.21,Agak Rentan,12.8,Agrarian Paradox,#d97706,-1.3220056695556774,-0.3502284741969072
+53,Nusa Tenggara Timur,5308,Ende,Kabupaten,Bali-Nusa Tenggara,60.25,50.57,67.59,62.7,Agak Rentan,12.75,Agrarian Paradox,#d97706,-1.2069633978139667,0.18245595841597445
+53,Nusa Tenggara Timur,5309,Ngada,Kabupaten,Bali-Nusa Tenggara,62.42,54.57,67.89,64.88,Agak Tahan,11.42,Agrarian Paradox,#d97706,-0.9124869074545511,0.31441594439402587
+53,Nusa Tenggara Timur,5310,Manggarai,Kabupaten,Bali-Nusa Tenggara,58.2,52.27,66.54,55.9,Agak Rentan,11.03,Agrarian Paradox,#d97706,-1.3926755563729751,0.5526969514371041
+53,Nusa Tenggara Timur,5311,Sumba Timur,Kabupaten,Bali-Nusa Tenggara,62.31,72.8,60.89,53.21,Agak Tahan,10.61,Agrarian Paradox,#d97706,-1.2808793211906107,1.9424621582025121
+53,Nusa Tenggara Timur,5312,Sumba Barat,Kabupaten,Bali-Nusa Tenggara,54.99,47.1,66.46,51.58,Agak Rentan,12.0,Agrarian Paradox,#d97706,-1.767414480418543,0.4274774834031353
+53,Nusa Tenggara Timur,5313,Lembata,Kabupaten,Bali-Nusa Tenggara,55.28,49.69,65.56,50.74,Agak Rentan,12.5,Agrarian Paradox,#d97706,-1.8186832382642304,0.6263389195551954
+53,Nusa Tenggara Timur,5314,Rote Ndao,Kabupaten,Bali-Nusa Tenggara,51.24,39.62,61.42,52.83,Rentan,13.81,Agrarian Paradox,#d97706,-2.353610469738367,0.12009196248487194
+53,Nusa Tenggara Timur,5315,Manggarai Barat,Kabupaten,Bali-Nusa Tenggara,62.9,51.2,73.14,64.5,Agak Tahan,11.03,Agrarian Paradox,#d97706,-0.658143241175239,-0.011127528470516644
+53,Nusa Tenggara Timur,5316,Nagekeo,Kabupaten,Bali-Nusa Tenggara,54.19,41.82,68.84,52.13,Agak Rentan,12.34,Agrarian Paradox,#d97706,-1.7564301376210776,0.04789717724197632
+53,Nusa Tenggara Timur,5317,Sumba Tengah,Kabupaten,Bali-Nusa Tenggara,50.85,50.02,58.49,44.16,Rentan,11.58,Agrarian Paradox,#d97706,-2.467561052957573,1.0905920912479954
+53,Nusa Tenggara Timur,5318,Sumba Barat Daya,Kabupaten,Bali-Nusa Tenggara,48.64,44.45,64.58,37.12,Rentan,10.59,Agrarian Paradox,#d97706,-2.445791699406914,0.8605594752805318
+53,Nusa Tenggara Timur,5319,Manggarai Timur,Kabupaten,Bali-Nusa Tenggara,50.12,49.89,60.31,40.31,Rentan,13.14,Agrarian Paradox,#d97706,-2.6014470321342604,1.1688065909049778
+53,Nusa Tenggara Timur,5320,Sabu Raijua,Kabupaten,Bali-Nusa Tenggara,62.56,75.2,66.92,45.62,Agak Tahan,11.05,Agrarian Paradox,#d97706,-1.1559577516268704,2.171009014590031
+53,Nusa Tenggara Timur,5321,Malaka,Kabupaten,Bali-Nusa Tenggara,57.89,47.41,70.64,55.79,Agak Rentan,12.18,Agrarian Paradox,#d97706,-1.3353240173799001,0.16923864963274796
+53,Nusa Tenggara Timur,5371,Kota Kupang,Kota,Bali-Nusa Tenggara,57.15,22.39,76.77,72.59,Agak Rentan,12.52,Urban Resilient,#0284c7,-0.9750173445645388,-1.9910135176458081
+61,Kalimantan Barat,6101,Sambas,Kabupaten,Kalimantan,67.32,66.82,79.45,55.87,Agak Tahan,12.78,Agrarian Paradox,#d97706,-0.2785843120687872,0.9716894566743294
+61,Kalimantan Barat,6102,Mempawah,Kabupaten,Kalimantan,73.09,83.88,77.98,57.49,Tahan,15.19,Agrarian Resilient,#15803d,0.005940522600469414,1.8916805109511363
+61,Kalimantan Barat,6103,Sanggau,Kabupaten,Kalimantan,73.26,73.24,80.36,66.27,Tahan,16.45,Agrarian Resilient,#15803d,0.14148435653174987,0.9203080319285406
+61,Kalimantan Barat,6104,Ketapang,Kabupaten,Kalimantan,68.17,59.56,81.29,63.85,Agak Tahan,13.48,Agrarian Paradox,#d97706,-0.08388785718609545,0.23060957854376213
+61,Kalimantan Barat,6105,Sintang,Kabupaten,Kalimantan,76.17,77.33,82.13,69.14,Tahan,15.11,Agrarian Resilient,#15803d,0.5605647899879477,0.9890467717336959
+61,Kalimantan Barat,6106,Kapuas Hulu,Kabupaten,Kalimantan,71.69,59.62,84.96,70.69,Tahan,15.53,Urban Resilient,#0284c7,0.2990133036407684,-0.12171151603724738
+61,Kalimantan Barat,6107,Bengkayang,Kabupaten,Kalimantan,72.27,73.45,80.13,63.35,Tahan,12.63,Agrarian Resilient,#15803d,0.24923511403872592,1.044859161248036
+61,Kalimantan Barat,6108,Landak,Kabupaten,Kalimantan,70.23,66.42,80.82,63.6,Tahan,10.89,Agrarian Resilient,#15803d,0.21897192744650448,0.6302522608500213
+61,Kalimantan Barat,6109,Sekadau,Kabupaten,Kalimantan,68.71,63.89,79.54,62.87,Agak Tahan,16.14,Agrarian Paradox,#d97706,-0.27957092991963156,0.5546223502668353
+61,Kalimantan Barat,6110,Melawi,Kabupaten,Kalimantan,58.74,45.46,78.13,52.93,Agak Rentan,20.28,Agrarian Paradox,#d97706,-1.5130698829863833,-0.05619916011879309
+61,Kalimantan Barat,6111,Kayong Utara,Kabupaten,Kalimantan,72.99,77.59,80.4,61.08,Tahan,12.32,Agrarian Resilient,#15803d,0.30752115675779923,1.3461570034249555
+61,Kalimantan Barat,6112,Kubu Raya,Kabupaten,Kalimantan,61.28,52.67,79.58,51.85,Agak Rentan,17.56,Agrarian Paradox,#d97706,-1.1024805117949523,0.33620740688410955
+61,Kalimantan Barat,6171,Kota Pontianak,Kota,Kalimantan,69.77,59.33,80.53,69.61,Tahan,7.05,Urban Resilient,#0284c7,0.47969741175238784,0.033253793250822526
+61,Kalimantan Barat,6172,Kota Singkawang,Kota,Kalimantan,71.76,62.28,87.0,66.23,Tahan,7.39,Agrarian Resilient,#15803d,0.8202455698610318,0.12682087765388245
+62,Kalimantan Tengah,6201,Kotawaringin Barat,Kota,Kalimantan,78.37,60.17,92.0,83.13,Sangat Tahan,6.43,Urban Resilient,#0284c7,1.8105660860106767,-0.7469644215559674
+62,Kalimantan Tengah,6202,Kotawaringin Timur,Kota,Kalimantan,72.14,59.02,87.09,70.53,Tahan,7.57,Urban Resilient,#0284c7,0.8970023831490794,-0.2101162987393665
+62,Kalimantan Tengah,6203,Kapuas,Kabupaten,Kalimantan,73.68,63.18,83.58,74.41,Tahan,14.77,Urban Resilient,#0284c7,0.4999488588271799,-0.02023906994899466
+62,Kalimantan Tengah,6204,Barito Selatan,Kabupaten,Kalimantan,71.8,54.84,88.89,71.91,Tahan,10.82,Urban Resilient,#0284c7,0.7564166580154397,-0.542868770165842
+62,Kalimantan Tengah,6205,Barito Utara,Kabupaten,Kalimantan,70.06,56.02,86.96,67.45,Tahan,9.83,Urban Resilient,#0284c7,0.5483583703711491,-0.2599254115827506
+62,Kalimantan Tengah,6206,Katingan,Kabupaten,Kalimantan,80.66,87.24,86.59,68.24,Sangat Tahan,9.57,Agrarian Resilient,#15803d,1.4158850751898027,1.4349330898266595
+62,Kalimantan Tengah,6207,Seruyan,Kabupaten,Kalimantan,66.47,50.9,86.83,62.0,Agak Tahan,6.37,Urban Resilient,#0284c7,0.3963751469582438,-0.33927444494082093
+62,Kalimantan Tengah,6208,Sukamara,Kabupaten,Kalimantan,68.9,55.97,84.73,66.25,Agak Tahan,6.15,Urban Resilient,#0284c7,0.5801880030444292,-0.15298189601913814
+62,Kalimantan Tengah,6209,Lamandau,Kabupaten,Kalimantan,72.79,58.88,88.45,71.26,Tahan,5.06,Urban Resilient,#0284c7,1.1618841235562827,-0.28379481310511784
+62,Kalimantan Tengah,6210,Gunung Mas,Kabupaten,Kalimantan,70.23,57.7,82.38,70.8,Tahan,5.81,Urban Resilient,#0284c7,0.6768128464968798,-0.15335397898242414
+62,Kalimantan Tengah,6211,Pulang Pisau,Kabupaten,Kalimantan,72.52,64.31,83.71,69.71,Tahan,9.36,Agrarian Resilient,#15803d,0.6819543347990444,0.20878198587122826
+62,Kalimantan Tengah,6212,Murung Raya,Kabupaten,Kalimantan,64.91,42.24,86.59,66.22,Agak Tahan,8.71,Urban Resilient,#0284c7,0.17146950043474626,-0.9601842804634079
+62,Kalimantan Tengah,6213,Barito Timur,Kabupaten,Kalimantan,73.96,63.59,82.76,75.65,Tahan,8.67,Urban Resilient,#0284c7,0.8783393920766001,-0.017385736595787935
+62,Kalimantan Tengah,6271,Kota Palangkaraya,Kota,Kalimantan,70.56,40.24,92.44,79.32,Tahan,6.06,Urban Resilient,#0284c7,1.1716751642729548,-1.715284760388973
+63,Kalimantan Selatan,6301,Tanah Laut,Kabupaten,Kalimantan,73.08,70.37,84.76,64.29,Tahan,4.14,Agrarian Resilient,#15803d,1.016173281929464,0.7072094055085717
+63,Kalimantan Selatan,6302,Kotabaru,Kota,Kalimantan,82.22,85.49,90.1,71.18,Sangat Tahan,3.7,Agrarian Resilient,#15803d,2.066789224019031,1.1303795496001687
+63,Kalimantan Selatan,6303,Banjar,Kabupaten,Kalimantan,73.82,71.05,81.89,68.65,Tahan,3.97,Agrarian Resilient,#15803d,1.0331657355841382,0.6713383164672737
+63,Kalimantan Selatan,6304,Barito Kuala,Kabupaten,Kalimantan,81.49,80.83,89.85,73.92,Sangat Tahan,5.36,Agrarian Resilient,#15803d,1.9321484507125952,0.7828180021019996
+63,Kalimantan Selatan,6305,Tapin,Kabupaten,Kalimantan,82.39,78.55,92.33,76.44,Sangat Tahan,3.05,Agrarian Resilient,#15803d,2.2697319957573123,0.49400760537668365
+63,Kalimantan Selatan,6306,Hulu Sungai Selatan,Kabupaten,Kalimantan,85.63,94.75,90.25,71.94,Sangat Tahan,4.9,Agrarian Resilient,#15803d,2.283954442047495,1.6062008285600025
+63,Kalimantan Selatan,6307,Hulu Sungai Tengah,Kabupaten,Kalimantan,74.54,73.12,74.41,76.08,Tahan,4.95,Agrarian Resilient,#15803d,0.8435492895119909,0.736192900636537
+63,Kalimantan Selatan,6308,Hulu Sungai Utara,Kabupaten,Kalimantan,69.36,64.03,79.48,64.71,Agak Tahan,5.18,Agrarian Resilient,#15803d,0.4594693245288578,0.49947231081784466
+63,Kalimantan Selatan,6309,Tabalong,Kabupaten,Kalimantan,81.95,89.16,82.95,73.76,Sangat Tahan,3.06,Agrarian Resilient,#15803d,1.8482718474987367,1.4489769003723316
+63,Kalimantan Selatan,6310,Tanah Bumbu,Kabupaten,Kalimantan,78.3,70.87,89.25,74.93,Sangat Tahan,2.17,Agrarian Resilient,#15803d,1.858247404898952,0.21817089956942576
+63,Kalimantan Selatan,6311,Balangan,Kabupaten,Kalimantan,75.34,70.65,86.87,68.67,Tahan,3.41,Agrarian Resilient,#15803d,1.376689506212152,0.5022611000976628
+63,Kalimantan Selatan,6371,Kota Banjarmasin,Kota,Kalimantan,77.93,63.89,89.64,80.44,Sangat Tahan,3.52,Urban Resilient,#0284c7,1.8303532981875328,-0.37567692799357627
+63,Kalimantan Selatan,6372,Kota Banjarbaru,Kota,Kalimantan,76.62,64.89,81.63,83.4,Tahan,2.75,Urban Resilient,#0284c7,1.507288760356994,-0.19196394766470667
+64,Kalimantan Timur,6401,Paser,Kabupaten,Kalimantan,80.94,84.54,78.55,79.69,Sangat Tahan,8.44,Agrarian Resilient,#15803d,1.3485093726339665,1.109670004321578
+64,Kalimantan Timur,6402,Kutai Kartanegara,Kabupaten,Kalimantan,80.81,77.98,81.35,83.12,Sangat Tahan,8.06,Agrarian Resilient,#15803d,1.5094767942249232,0.5434491707391294
+64,Kalimantan Timur,6403,Berau,Kabupaten,Kalimantan,81.57,85.65,77.86,81.16,Sangat Tahan,6.66,Agrarian Resilient,#15803d,1.5005973436557083,1.1380332303553584
+64,Kalimantan Timur,6407,Kutai Barat,Kabupaten,Kalimantan,69.12,55.92,79.39,72.21,Agak Tahan,7.23,Urban Resilient,#0284c7,0.4062880832413262,-0.2142338935578099
+64,Kalimantan Timur,6408,Kutai Timur,Kabupaten,Kalimantan,80.38,85.57,79.51,76.05,Sangat Tahan,6.6,Agrarian Resilient,#15803d,1.405896173957927,1.2698756597899417
+64,Kalimantan Timur,6409,Penajam Paser Utara,Kabupaten,Kalimantan,75.4,68.53,79.45,78.29,Tahan,8.2,Agrarian Resilient,#15803d,0.932533658520356,0.25568360388519124
+64,Kalimantan Timur,6411,Mahakam Ulu,Kabupaten,Kalimantan,60.6,40.45,75.86,65.71,Agak Rentan,8.18,Agrarian Paradox,#d97706,-0.5532830393944695,-0.7241124251104457
+64,Kalimantan Timur,6471,Kota Balikpapan,Kota,Kalimantan,78.4,63.02,88.06,84.27,Sangat Tahan,5.9,Urban Resilient,#0284c7,1.7121480383381202,-0.5157397356461757
+64,Kalimantan Timur,6472,Kota Samarinda,Kota,Kalimantan,73.06,49.8,86.83,82.78,Tahan,7.31,Urban Resilient,#0284c7,1.1311778716352185,-1.1510586845764412
+64,Kalimantan Timur,6474,Kota Bontang,Kota,Kalimantan,77.66,60.09,87.51,85.55,Sangat Tahan,7.73,Urban Resilient,#0284c7,1.5369824684035376,-0.7069042085932521
+65,Kalimantan Utara,6501,Bulungan,Kabupaten,Kalimantan,73.67,60.92,82.85,77.36,Tahan,12.74,Urban Resilient,#0284c7,0.6321184837354945,-0.22896577860271516
+65,Kalimantan Utara,6502,Malinau,Kabupaten,Kalimantan,66.2,52.91,83.33,62.61,Agak Tahan,11.44,Agrarian Paradox,#d97706,-0.05787246127367848,-0.14895326051085925
+65,Kalimantan Utara,6503,Nunukan,Kabupaten,Kalimantan,69.27,61.12,82.52,64.36,Agak Tahan,17.73,Agrarian Paradox,#d97706,-0.200958568727424,0.26080288977651545
+65,Kalimantan Utara,6504,Tana Tidung,Kabupaten,Kalimantan,65.75,35.14,84.81,77.58,Agak Tahan,14.96,Urban Resilient,#0284c7,-0.06554124499220963,-1.7090724337268144
+65,Kalimantan Utara,6571,Kota Tarakan,Kota,Kalimantan,74.62,56.56,84.61,82.84,Tahan,14.05,Urban Resilient,#0284c7,0.7641780371497882,-0.7183726960111603
+71,Sulawesi Utara,7101,Bolaang Mongondow,Kabupaten,Sulawesi,65.27,57.67,77.33,60.98,Agak Tahan,5.38,Agrarian Paradox,#d97706,-0.010104298777929748,0.34876771453338995
+71,Sulawesi Utara,7102,Minahasa,Kabupaten,Sulawesi,76.91,66.4,85.22,79.24,Tahan,5.51,Urban Resilient,#0284c7,1.446250708408201,-0.06490272102560593
+71,Sulawesi Utara,7103,Kepulauan Sangihe,Kabupaten,Sulawesi,65.13,46.81,79.45,69.34,Agak Tahan,12.6,Urban Resilient,#0284c7,-0.2761704206396559,-0.6129475519357148
+71,Sulawesi Utara,7104,Kepulauan Talaud,Kabupaten,Sulawesi,70.11,65.6,84.23,60.72,Tahan,7.33,Agrarian Resilient,#15803d,0.5181268842333218,0.5896784529390009
+71,Sulawesi Utara,7105,Minahasa Selatan,Kabupaten,Sulawesi,69.07,62.39,83.22,61.81,Agak Tahan,8.38,Agrarian Resilient,#15803d,0.34579080966462294,0.4037835388968194
+71,Sulawesi Utara,7106,Minahasa Utara,Kabupaten,Sulawesi,81.58,86.11,85.54,73.16,Sangat Tahan,7.47,Agrarian Resilient,#15803d,1.6401497395474878,1.226315506803331
+71,Sulawesi Utara,7107,Minahasa Tenggara,Kabupaten,Sulawesi,72.57,60.8,79.42,77.6,Tahan,6.93,Urban Resilient,#0284c7,0.7715876991411531,-0.1422665902972592
+71,Sulawesi Utara,7108,Bolaang Mongondow Utara,Kabupaten,Sulawesi,75.55,74.16,81.97,70.63,Tahan,8.51,Agrarian Resilient,#15803d,0.9247158537381744,0.7672637388743653
+71,Sulawesi Utara,7109,Kep. Siau Tagulandang Biaro,Kabupaten,Sulawesi,57.82,35.17,82.14,56.5,Agak Rentan,8.24,Agrarian Paradox,#d97706,-0.6609626175174208,-0.8655189793648016
+71,Sulawesi Utara,7110,Bolaang Mongondow Timur,Kabupaten,Sulawesi,68.97,59.48,86.46,61.24,Agak Tahan,6.24,Agrarian Resilient,#15803d,0.5825712903062096,0.1697581908064152
+71,Sulawesi Utara,7111,Bolaang Mongondow Selatan,Kabupaten,Sulawesi,71.36,75.77,79.75,58.68,Tahan,6.46,Agrarian Resilient,#15803d,0.47796637916932205,1.3532106795452379
+71,Sulawesi Utara,7171,Kota Manado,Kota,Sulawesi,75.19,61.08,86.85,77.81,Tahan,4.46,Urban Resilient,#0284c7,1.4142004925211997,-0.35278636403180785
+71,Sulawesi Utara,7172,Kota Bitung,Kota,Sulawesi,73.26,61.89,88.58,69.54,Tahan,4.16,Agrarian Resilient,#15803d,1.2383293602041294,-0.06017420290442804
+71,Sulawesi Utara,7173,Kota Tomohon,Kota,Sulawesi,86.58,85.48,88.95,85.35,Sangat Tahan,4.15,Agrarian Resilient,#15803d,2.5257120642738315,0.6512903118177711
+71,Sulawesi Utara,7174,Kota Kotamobagu,Kota,Sulawesi,71.84,58.12,87.46,70.17,Tahan,4.0,Urban Resilient,#0284c7,1.0991501392594396,-0.2567626302999923
+72,Sulawesi Tengah,7201,Banggai,Kabupaten,Sulawesi,69.9,62.32,84.72,62.87,Tahan,10.91,Agrarian Resilient,#15803d,0.32828199873590536,0.3170051624061496
+72,Sulawesi Tengah,7202,Poso,Kabupaten,Sulawesi,68.54,60.32,75.46,69.96,Agak Tahan,8.15,Agrarian Resilient,#15803d,0.12826529159662703,0.2239742462442741
+72,Sulawesi Tengah,7203,Donggala,Kabupaten,Sulawesi,66.55,67.6,72.99,59.16,Agak Tahan,10.82,Agrarian Paradox,#d97706,-0.4226853399415626,1.0859452464194266
+72,Sulawesi Tengah,2,Toli-Toli,Kabupaten,Sulawesi,63.99,51.73,81.67,58.85,Agak Tahan,15.48,Agrarian Paradox,#d97706,-0.5905259662861206,-0.02961268977631042
+72,Sulawesi Tengah,7205,Buol,Kabupaten,Sulawesi,66.36,56.99,80.33,61.95,Agak Tahan,10.42,Agrarian Paradox,#d97706,-0.10408981480750377,0.1871098686007699
+72,Sulawesi Tengah,7206,Morowali,Kabupaten,Sulawesi,70.58,63.43,78.47,69.96,Tahan,4.14,Agrarian Resilient,#15803d,0.6491802815400614,0.30668661317253487
+72,Sulawesi Tengah,7207,Banggai Kepulauan,Kabupaten,Sulawesi,72.14,74.76,76.67,65.07,Tahan,18.73,Agrarian Resilient,#15803d,-0.2401523088636001,1.1553328909978144
+72,Sulawesi Tengah,7208,Parigi Moutong,Kabupaten,Sulawesi,63.87,52.14,78.92,60.77,Agak Tahan,9.83,Agrarian Paradox,#d97706,-0.33651956077800205,0.0054432526592921495
+72,Sulawesi Tengah,7209,Tojo Una Una,Kabupaten,Sulawesi,63.59,47.6,77.13,66.25,Agak Tahan,12.29,Agrarian Paradox,#d97706,-0.5069782480685984,-0.3895525635463762
+72,Sulawesi Tengah,7210,Sigi,Kabupaten,Sulawesi,65.81,60.11,75.75,61.73,Agak Tahan,12.6,Agrarian Paradox,#d97706,-0.45478469192625487,0.5006684936903913
+72,Sulawesi Tengah,7211,Banggai Laut,Kabupaten,Sulawesi,59.02,33.78,81.2,62.4,Agak Rentan,15.79,Agrarian Paradox,#d97706,-0.9845707952521972,-1.1287781928021636
+72,Sulawesi Tengah,7212,Morowali Utara,Kabupaten,Sulawesi,66.56,58.0,76.61,65.2,Agak Tahan,6.31,Agrarian Paradox,#d97706,0.06290085411517661,0.23523666595405318
+72,Sulawesi Tengah,7271,Kota Palu,Kota,Sulawesi,69.42,50.76,85.1,72.63,Agak Tahan,6.96,Urban Resilient,#0284c7,0.6660638272536396,-0.6805321750656944
+73,Sulawesi Selatan,7301,Kepulauan Selayar,Kabupaten,Sulawesi,65.44,58.79,78.08,59.63,Agak Tahan,8.45,Agrarian Paradox,#d97706,-0.17176527198688957,0.43635098016012647
+73,Sulawesi Selatan,7302,Bulukumba,Kabupaten,Sulawesi,79.91,86.23,81.84,71.69,Sangat Tahan,9.6,Agrarian Resilient,#15803d,1.2183860311627381,1.394588720975453
+73,Sulawesi Selatan,7303,Bantaeng,Kabupaten,Sulawesi,74.47,65.73,79.34,78.41,Tahan,4.48,Agrarian Resilient,#15803d,1.0806274313803375,0.10160678301032804
+73,Sulawesi Selatan,7304,Jeneponto,Kabupaten,Sulawesi,74.56,76.47,74.95,72.26,Tahan,13.4,Agrarian Resilient,#15803d,0.30408104957556664,1.0407365872079
+73,Sulawesi Selatan,7305,Takalar,Kabupaten,Sulawesi,71.92,71.23,82.38,62.31,Tahan,11.14,Agrarian Resilient,#15803d,0.3829849146359056,0.8947639222661208
+73,Sulawesi Selatan,7306,Gowa,Kabupaten,Sulawesi,71.97,67.42,82.2,66.45,Tahan,6.44,Agrarian Resilient,#15803d,0.7178274221217575,0.5422446068869358
+73,Sulawesi Selatan,7307,Sinjai,Kabupaten,Sulawesi,75.41,75.95,79.22,71.11,Tahan,6.8,Agrarian Resilient,#15803d,0.9197122238829182,0.9292510461365403
+73,Sulawesi Selatan,7308,Bone,Kabupaten,Sulawesi,66.99,54.99,79.23,66.94,Agak Tahan,12.69,Agrarian Paradox,#d97706,-0.16940101193855933,-0.07103112258008537
+73,Sulawesi Selatan,7309,Maros,Kabupaten,Sulawesi,72.56,64.69,81.06,72.05,Tahan,7.23,Agrarian Resilient,#15803d,0.7442271636744913,0.22342592580583095
+73,Sulawesi Selatan,7310,Pangkajene dan Kepulauan,Kabupaten,Sulawesi,77.21,76.54,79.78,75.36,Tahan,4.0,Agrarian Resilient,#15803d,1.30978969473669,0.7919494926535162
+73,Sulawesi Selatan,7311,Barru,Kabupaten,Sulawesi,71.55,60.15,80.95,73.67,Tahan,8.7,Urban Resilient,#0284c7,0.589121110405364,-0.08117114208544947
+73,Sulawesi Selatan,7312,Soppeng,Kabupaten,Sulawesi,70.93,65.77,77.67,69.46,Tahan,12.87,Agrarian Resilient,#15803d,0.11067482435394706,0.4750714993650657
+73,Sulawesi Selatan,7313,Wajo,Kabupaten,Sulawesi,73.38,65.97,82.79,71.53,Tahan,8.14,Agrarian Resilient,#15803d,0.8139365527513077,0.26132889362503287
+73,Sulawesi Selatan,7314,Sidenreng Rappang,Kabupaten,Sulawesi,71.14,60.49,86.41,66.73,Tahan,4.58,Agrarian Resilient,#15803d,0.9246104254365984,0.028460007952672547
+73,Sulawesi Selatan,7315,Pinrang,Kabupaten,Sulawesi,71.74,62.41,80.4,72.52,Tahan,5.99,Agrarian Resilient,#15803d,0.7341278475519875,0.10100815361349991
+73,Sulawesi Selatan,7316,Enrekang,Kabupaten,Sulawesi,70.3,61.99,77.54,71.48,Tahan,4.94,Agrarian Resilient,#15803d,0.5620749056633149,0.19994867099485705
+73,Sulawesi Selatan,7317,Luwu,Kabupaten,Sulawesi,68.53,65.19,79.88,60.7,Agak Tahan,6.8,Agrarian Resilient,#15803d,0.259463254786463,0.696015910046922
+73,Sulawesi Selatan,7318,Tana Toraja,Kabupaten,Sulawesi,63.92,55.41,79.73,56.86,Agak Tahan,7.94,Agrarian Paradox,#d97706,-0.23578050481532684,0.30266071051484605
+73,Sulawesi Selatan,7322,Luwu Utara,Kabupaten,Sulawesi,77.58,79.21,79.91,73.65,Sangat Tahan,4.16,Agrarian Resilient,#15803d,1.3129668444396656,0.996378445364379
+73,Sulawesi Selatan,7324,Luwu Timur,Kabupaten,Sulawesi,71.34,69.05,77.48,67.58,Tahan,5.23,Agrarian Resilient,#15803d,0.5773354965661267,0.7298795198572174
+73,Sulawesi Selatan,7326,Toraja Utara,Kabupaten,Sulawesi,64.71,54.77,80.59,59.02,Agak Tahan,5.13,Agrarian Paradox,#d97706,0.058307635838272816,0.16458225811306387
+73,Sulawesi Selatan,7371,Kota Makassar,Kota,Sulawesi,72.58,51.66,85.61,80.67,Tahan,3.97,Urban Resilient,#0284c7,1.2227932184732822,-0.9362635071947716
+73,Sulawesi Selatan,7372,Kota Parepare,Kota,Sulawesi,75.7,62.55,82.98,81.68,Tahan,4.92,Urban Resilient,#0284c7,1.3307401547266984,-0.2982499502439393
+73,Sulawesi Selatan,7373,Kota Palopo,Kota,Sulawesi,72.54,60.02,84.38,73.39,Tahan,2.98,Urban Resilient,#0284c7,1.1422542450327318,-0.17812948970432407
+74,Sulawesi Tenggara,7401,Kolaka,Kabupaten,Sulawesi,73.95,66.04,78.47,77.41,Tahan,6.33,Agrarian Resilient,#15803d,0.8811835835676475,0.18005418289418468
+74,Sulawesi Tenggara,7402,Konawe,Kabupaten,Sulawesi,68.35,61.67,77.78,65.76,Agak Tahan,8.15,Agrarian Resilient,#15803d,0.14755429393574052,0.3815679729964352
+74,Sulawesi Tenggara,7403,Muna,Kabupaten,Sulawesi,55.75,47.96,66.99,52.46,Agak Rentan,19.36,Agrarian Paradox,#d97706,-2.1227549322149892,0.42594078071849484
+74,Sulawesi Tenggara,7404,Buton,Kabupaten,Sulawesi,65.07,60.59,76.25,58.56,Agak Tahan,12.43,Agrarian Paradox,#d97706,-0.5247099320785785,0.6269308001176264
+74,Sulawesi Tenggara,7405,Konawe Selatan,Kabupaten,Sulawesi,67.06,64.88,73.98,62.42,Agak Tahan,11.82,Agrarian Paradox,#d97706,-0.36463209974424,0.7895637771601409
+74,Sulawesi Tenggara,7406,Bombana,Kabupaten,Sulawesi,67.08,59.06,80.95,61.44,Agak Tahan,10.04,Agrarian Paradox,#d97706,-0.00540734897371756,0.3009224175014325
+74,Sulawesi Tenggara,7407,Wakatobi,Kabupaten,Sulawesi,61.3,53.88,75.6,54.65,Agak Rentan,9.48,Agrarian Paradox,#d97706,-0.7231280491328973,0.4198635945887403
+74,Sulawesi Tenggara,7408,Kolaka Utara,Kabupaten,Sulawesi,63.06,50.72,73.05,65.56,Agak Tahan,6.39,Agrarian Paradox,#d97706,-0.35291059432732647,-0.07231007760993441
+74,Sulawesi Tenggara,7409,Konawe Utara,Kabupaten,Sulawesi,65.45,56.27,79.98,60.33,Agak Tahan,4.68,Agrarian Paradox,#d97706,0.13883900664835186,0.2175302078820717
+74,Sulawesi Tenggara,7410,Buton Utara,Kabupaten,Sulawesi,62.92,56.0,73.67,59.26,Agak Tahan,12.12,Agrarian Paradox,#d97706,-0.7678436480703147,0.42580357407643854
+74,Sulawesi Tenggara,7411,Kolaka Timur,Kabupaten,Sulawesi,73.87,73.99,78.35,69.35,Tahan,10.67,Agrarian Resilient,#15803d,0.5060218942716375,0.9103487041831674
+74,Sulawesi Tenggara,7412,Konawe Kepulauan,Kabupaten,Sulawesi,53.46,35.57,70.22,54.83,Agak Rentan,8.71,Agrarian Paradox,#d97706,-1.509475559440291,-0.432538010163626
+74,Sulawesi Tenggara,7413,Muna Barat,Kabupaten,Sulawesi,58.4,51.04,72.35,52.01,Agak Rentan,15.28,Agrarian Paradox,#d97706,-1.4654475390000945,0.45417053268780294
+74,Sulawesi Tenggara,7414,Buton Tengah,Kabupaten,Sulawesi,58.4,45.91,74.78,54.75,Agak Rentan,16.01,Agrarian Paradox,#d97706,-1.384291313660775,0.0020957352212479163
+74,Sulawesi Tenggara,7415,Buton Selatan,Kabupaten,Sulawesi,60.15,55.69,74.16,50.81,Agak Rentan,9.6,Agrarian Paradox,#d97706,-0.925751077552622,0.7003432583460212
+74,Sulawesi Tenggara,7471,Kota Kendari,Kota,Sulawesi,69.46,39.31,84.03,85.26,Agak Tahan,5.46,Urban Resilient,#0284c7,0.8784090701334089,-1.7334160295654533
+74,Sulawesi Tenggara,2,Kota Bau-Bau,Kota,Sulawesi,66.77,42.5,85.9,72.21,Agak Tahan,12.95,Urban Resilient,#0284c7,0.11324932197234952,-1.1429827942754585
+75,Gorontalo,7501,Gorontalo,Kabupaten,Sulawesi,66.88,59.38,73.69,67.68,Agak Tahan,18.12,Agrarian Paradox,#d97706,-0.7070048524741633,0.3051908779990925
+75,Gorontalo,7502,Boalemo,Kabupaten,Sulawesi,71.7,63.71,75.15,76.29,Tahan,15.72,Urban Resilient,#0284c7,-0.009846520835952898,0.18872502052679985
+75,Gorontalo,7503,Bone Bolango,Kabupaten,Sulawesi,66.63,50.59,72.18,77.19,Agak Tahan,15.54,Agrarian Paradox,#d97706,-0.5086823772938147,-0.4759943904155114
+75,Gorontalo,7504,Pohuwato,Kabupaten,Sulawesi,68.81,62.8,73.88,69.82,Agak Tahan,18.22,Agrarian Paradox,#d97706,-0.5237488672263849,0.409777502344833
+75,Gorontalo,7505,Gorontalo Utara,Kabupaten,Sulawesi,67.42,60.88,72.85,68.61,Agak Tahan,20.52,Agrarian Paradox,#d97706,-0.8294206594932698,0.378093108693771
+75,Gorontalo,7571,Kota Gorontalo,Kota,Sulawesi,68.09,46.81,84.96,72.76,Agak Tahan,9.16,Urban Resilient,#0284c7,0.4216651997833584,-0.8981442742868158
+76,Sulawesi Barat,7601,Pasangkayu,Kabupaten,Sulawesi,59.39,38.05,79.5,60.91,Agak Rentan,4.97,Agrarian Paradox,#d97706,-0.37932511046969797,-0.7887777795453061
+76,Sulawesi Barat,7602,Mamuju,Kabupaten,Sulawesi,70.96,74.82,82.72,55.53,Tahan,7.37,Agrarian Resilient,#15803d,0.462952851042239,1.3274778972688575
+76,Sulawesi Barat,7603,Mamasa,Kabupaten,Sulawesi,56.54,51.18,76.46,42.28,Agak Rentan,7.16,Agrarian Paradox,#d97706,-1.0890594151028579,0.6941330099853502
+76,Sulawesi Barat,7604,Polewali Mandar,Kabupaten,Sulawesi,69.16,65.59,77.09,64.93,Agak Tahan,6.58,Agrarian Resilient,#15803d,0.2719003405854586,0.6472235036852431
+76,Sulawesi Barat,7605,Majene,Kabupaten,Sulawesi,64.56,53.56,77.73,62.6,Agak Tahan,5.47,Agrarian Paradox,#d97706,-0.03702326274130819,0.05292197687431222
+76,Sulawesi Barat,7606,Mamuju Tengah,Kabupaten,Sulawesi,64.04,54.41,82.52,55.47,Agak Tahan,6.18,Agrarian Paradox,#d97706,-0.031864360223887375,0.21622926407705997
+81,Maluku,8101,Maluku Tengah,Kabupaten,Maluku,63.35,53.94,67.97,68.22,Agak Tahan,34.3,Agrarian Paradox,#d97706,-2.1832708859540046,0.15271548249744862
+81,Maluku,8102,Maluku Tenggara,Kabupaten,Maluku,45.29,24.14,60.73,51.23,Sangat Rentan,30.97,Chronic Crisis,#dc2626,-3.9228827240543276,-0.6539412740654859
+81,Maluku,8103,Kepulauan Tanimbar,Kabupaten,Maluku,45.14,18.78,62.13,54.75,Sangat Rentan,35.83,Chronic Crisis,#dc2626,-4.1343424274317915,-1.1172732023260754
+81,Maluku,8104,Buru,Kabupaten,Maluku,63.45,50.23,72.22,68.02,Agak Tahan,32.66,Agrarian Paradox,#d97706,-1.9191288103205084,-0.16844439890181329
+81,Maluku,8105,Seram Bagian Timur,Kabupaten,Maluku,60.92,56.72,64.96,61.15,Agak Rentan,33.34,Chronic Crisis,#dc2626,-2.5224152454328617,0.6495505698057046
+81,Maluku,8106,Seram Bagian Barat,Kabupaten,Maluku,59.41,49.67,62.27,66.33,Agak Rentan,32.71,Chronic Crisis,#dc2626,-2.6425019244187724,0.15481458641029205
+81,Maluku,8107,Kepulauan Aru,Kabupaten,Maluku,48.33,24.52,65.66,55.08,Rentan,33.39,Chronic Crisis,#dc2626,-3.59125111948399,-0.9178584961430954
+81,Maluku,8108,Maluku Barat Daya,Kabupaten,Maluku,56.03,56.62,57.25,54.24,Agak Rentan,30.33,Chronic Crisis,#dc2626,-3.10992284686284,1.1213373768252017
+81,Maluku,8109,Buru Selatan,Kabupaten,Maluku,48.21,32.09,66.93,45.9,Rentan,33.01,Chronic Crisis,#dc2626,-3.6449526644346664,-0.20801053101063546
+81,Maluku,8171,Kota Ambon,Kota,Maluku,60.55,24.74,80.12,77.09,Agak Rentan,27.62,Urban Resilient,#0284c7,-1.4365767481517013,-2.1260539220984533
+81,Maluku,8172,Kota Tual,Kota,Maluku,49.72,26.31,67.86,55.25,Rentan,27.91,Chronic Crisis,#dc2626,-3.0618653574755794,-0.889537197735284
+82,Maluku Utara,8201,Halmahera Barat,Kabupaten,Maluku,56.09,38.99,69.57,59.91,Agak Rentan,33.55,Chronic Crisis,#dc2626,-2.7679397148327096,-0.4138827714299212
+82,Maluku Utara,8202,Halmahera Tengah,Kabupaten,Maluku,55.3,32.82,78.07,55.35,Agak Rentan,19.43,Agrarian Paradox,#d97706,-1.7113239521107084,-0.8350998595159427
+82,Maluku Utara,8203,Halmahera Utara,Kabupaten,Maluku,59.4,38.03,79.23,61.22,Agak Rentan,29.24,Agrarian Paradox,#d97706,-1.8602618728883213,-0.7973910451485092
+82,Maluku Utara,8204,Halmahera Selatan,Kabupaten,Maluku,53.73,31.13,73.77,56.6,Agak Rentan,28.3,Chronic Crisis,#dc2626,-2.5227134803772264,-0.8480040468059513
+82,Maluku Utara,8205,Kepulauan Sula,Kabupaten,Maluku,46.55,16.68,71.18,52.15,Rentan,35.11,Chronic Crisis,#dc2626,-3.669560194934692,-1.4046427360695324
+82,Maluku Utara,8206,Halmahera Timur,Kabupaten,Maluku,59.94,48.83,72.98,58.2,Agak Rentan,29.13,Agrarian Paradox,#d97706,-2.0819844010646102,0.08813651722774903
+82,Maluku Utara,8207,Pulau Morotai,Kabupaten,Maluku,66.23,51.27,78.35,69.26,Agak Tahan,30.13,Agrarian Paradox,#d97706,-1.294972898154538,-0.3360765541100376
+82,Maluku Utara,8208,Pulau Taliabu,Kabupaten,Maluku,51.92,33.78,68.66,53.57,Rentan,32.64,Chronic Crisis,#dc2626,-3.1625067098341737,-0.4434612570423227
+82,Maluku Utara,8271,Kota Ternate,Kota,Maluku,61.75,28.79,84.53,72.28,Agak Tahan,22.16,Urban Resilient,#0284c7,-0.9024030622896451,-1.8588407972372063
+82,Maluku Utara,8272,Kota Tidore Kepulauan,Kota,Maluku,60.41,32.92,81.69,66.94,Agak Rentan,29.05,Agrarian Paradox,#d97706,-1.6029705225042548,-1.3569280038931641
+91,Papua,9103,Jayapura,Kabupaten,Papua,64.87,59.42,71.54,63.75,Agak Tahan,21.1,Agrarian Paradox,#d97706,-1.1803517980494336,0.5121366718853234
+91,Papua,9105,Kepulauan Yapen,Kabupaten,Papua,49.35,30.67,62.35,55.22,Rentan,28.05,Chronic Crisis,#dc2626,-3.3070867618674753,-0.48720912079032536
+91,Papua,9106,Biak Numfor,Kabupaten,Papua,44.82,22.24,64.69,47.83,Sangat Rentan,32.14,Chronic Crisis,#dc2626,-3.9257898507014595,-0.7519588150044131
+91,Papua,9110,Sarmi,Kabupaten,Papua,57.28,49.43,62.68,59.81,Agak Rentan,41.91,Chronic Crisis,#dc2626,-3.4397154547528195,0.36366481153597835
+91,Papua,9111,Keerom,Kabupaten,Papua,46.22,30.61,62.84,45.44,Rentan,37.83,Chronic Crisis,#dc2626,-4.258623826721261,-0.15305610565691874
+91,Papua,9115,Waropen,Kabupaten,Papua,48.76,34.82,60.01,51.61,Rentan,36.35,Chronic Crisis,#dc2626,-3.992325391657916,-0.06169452758020968
+91,Papua,9119,Supiori,Kabupaten,Papua,48.51,41.04,55.22,49.36,Rentan,33.58,Chronic Crisis,#dc2626,-4.0519572105662744,0.5023502528353436
+91,Papua,9120,Mamberamo Raya,Kabupaten,Papua,44.96,45.22,52.46,37.31,Sangat Rentan,52.1,Chronic Crisis,#dc2626,-5.718367249316397,1.2452184413971619
+92,Papua,9171,Kota Jayapura,Kota,Papua,64.91,43.67,78.8,72.48,Agak Tahan,15.85,Urban Resilient,#0284c7,-0.4761634762441356,-0.8801296700314317
+92,Papua Barat,9202,Manokwari,Kabupaten,Papua,65.99,68.58,65.96,63.42,Agak Tahan,22.18,Agrarian Paradox,#d97706,-1.3693043163157272,1.1905793481852291
+92,Papua Barat,9203,Fak Fak,Kabupaten,Papua,50.52,26.93,71.33,53.6,Rentan,20.76,Agrarian Paradox,#d97706,-2.453070655709757,-0.8967982761009182
+92,Papua Barat,9206,Teluk Bintuni,Kabupaten,Papua,52.88,31.85,61.96,64.96,Rentan,19.24,Agrarian Paradox,#d97706,-2.3795541554390285,-0.76157526498832
+92,Papua Barat,9207,Teluk Wondama,Kabupaten,Papua,44.62,29.47,51.67,52.82,Sangat Rentan,21.08,Chronic Crisis,#dc2626,-3.6958670665599764,-0.15072138204535063
+92,Papua Barat,9208,Kaimana,Kabupaten,Papua,63.43,57.39,71.56,61.45,Agak Tahan,20.45,Agrarian Paradox,#d97706,-1.2853932916990025,0.48348819937904636
+92,Papua Barat,9211,Manokwari Selatan,Kabupaten,Papua,60.38,50.67,63.83,66.69,Agak Rentan,20.01,Agrarian Paradox,#d97706,-1.7290316502041188,0.15302926755365862
+93,Papua Barat,9212,Pegunungan Arfak,Kabupaten,Papua,35.03,16.35,48.36,40.57,Sangat Rentan,32.68,Chronic Crisis,#dc2626,-5.452593981455995,-0.3320619010273893
+93,Papua Selatan,9301,Merauke,Kabupaten,Papua,65.08,63.74,62.68,68.79,Agak Tahan,14.29,Agrarian Paradox,#d97706,-1.0186385983744244,0.8288647071041784
+93,Papua Selatan,9302,Boven Digoel,Kabupaten,Papua,43.44,23.14,52.48,54.82,Sangat Rentan,39.74,Chronic Crisis,#dc2626,-4.870391056079098,-0.5973719372081633
+93,Papua Selatan,9303,Mappi,Kabupaten,Papua,37.16,25.85,47.59,38.18,Sangat Rentan,46.32,Chronic Crisis,#dc2626,-6.168768768599108,0.29569911674566984
+94,Papua Selatan,9304,Asmat,Kabupaten,Papua,44.17,42.21,47.72,42.62,Sangat Rentan,37.04,Chronic Crisis,#dc2626,-4.978336623257688,1.0302764401391862
+94,Papua Tengah,9401,Nabire,Kabupaten,Papua,61.43,48.96,68.03,67.4,Agak Rentan,24.93,Agrarian Paradox,#d97706,-1.7768668660936875,-0.09091808276388816
+94,Papua Tengah,9402,Puncak Jaya,Kabupaten,Papua,34.01,18.68,56.46,27.22,Sangat Rentan,16.97,Chronic Crisis,#dc2626,-4.442753154956543,0.04281804164582466
+94,Papua Tengah,9403,Paniai,Kabupaten,Papua,33.25,23.26,48.8,27.91,Sangat Rentan,56.52,Chronic Crisis,#dc2626,-7.1873413672309026,0.4874823277408563
+94,Papua Tengah,9404,Mimika,Kabupaten,Papua,65.9,57.38,74.88,65.57,Agak Tahan,22.09,Agrarian Paradox,#d97706,-1.0094700629674611,0.23592616701734698
+94,Papua Tengah,9405,Puncak,Kabupaten,Papua,32.46,9.39,55.03,33.3,Sangat Rentan,52.86,Chronic Crisis,#dc2626,-6.727085228762294,-0.650890894330789
+94,Papua Tengah,9406,Dogiyai,Kabupaten,Papua,36.31,21.88,48.57,38.66,Sangat Rentan,57.88,Chronic Crisis,#dc2626,-6.897014839519994,0.029641074524945105
+94,Papua Tengah,9407,Intan Jaya,Kabupaten,Papua,31.08,19.83,52.57,21.15,Sangat Rentan,38.16,Chronic Crisis,#dc2626,-6.189399399491281,0.43611072675418805
+94,Papua Tengah,9408,Deiyai,Kabupaten,Papua,31.94,22.9,43.34,29.75,Sangat Rentan,57.91,Chronic Crisis,#dc2626,-7.559098210191267,0.5616455251190503
+95,Papua Pegunungan,9501,Jayawijaya,Kabupaten,Papua,38.26,15.95,58.28,40.84,Sangat Rentan,26.85,Chronic Crisis,#dc2626,-4.4619011207987604,-0.6547400434905628
+95,Papua Pegunungan,9502,Pegunungan Bintang,Kabupaten,Papua,34.13,14.64,63.66,24.54,Sangat Rentan,17.89,Chronic Crisis,#dc2626,-4.252032731486894,-0.29394138721326996
+95,Papua Pegunungan,9503,Yahukimo,Kabupaten,Papua,30.95,13.49,46.61,33.0,Sangat Rentan,46.36,Chronic Crisis,#dc2626,-6.773159881407433,-0.16618726460524766
+95,Papua Pegunungan,9504,Tolikara,Kabupaten,Papua,30.05,21.26,51.88,17.34,Sangat Rentan,38.64,Chronic Crisis,#dc2626,-6.374812108130031,0.6724848199653511
+95,Papua Pegunungan,9505,Mamberamo Tengah,Kabupaten,Papua,35.49,16.73,59.36,30.72,Sangat Rentan,29.91,Chronic Crisis,#dc2626,-4.957713882289603,-0.27834329393121243
+95,Papua Pegunungan,9506,Yalimo,Kabupaten,Papua,44.88,24.31,65.81,44.84,Sangat Rentan,14.72,Chronic Crisis,#dc2626,-2.8572455498394866,-0.5601878026721971
+95,Papua Pegunungan,9507,Lanny Jaya,Kabupaten,Papua,38.16,23.88,60.69,30.26,Sangat Rentan,12.0,Chronic Crisis,#dc2626,-3.6084918742066434,0.09455862741536628
+95,Papua Pegunungan,9508,Nduga,Kabupaten,Papua,30.48,11.64,60.34,19.91,Sangat Rentan,21.67,Chronic Crisis,#dc2626,-4.95904735170433,-0.19409069807553642
+96,Papua Barat Daya,9601,Sorong,Kabupaten,Papua,53.21,44.73,58.8,56.19,Rentan,23.54,Chronic Crisis,#dc2626,-2.84209859737274,0.35421918810678277
+96,Papua Barat Daya,9602,Sorong Selatan,Kabupaten,Papua,46.32,29.51,67.8,41.99,Rentan,20.94,Chronic Crisis,#dc2626,-3.079815755094127,-0.23155783834118865
+96,Papua Barat Daya,9603,Raja Ampat,Kabupaten,Papua,56.84,53.07,66.4,51.2,Agak Rentan,21.95,Agrarian Paradox,#d97706,-2.2297608674355787,0.7686853332171906
+96,Papua Barat Daya,9604,Tambrauw,Kabupaten,Papua,44.1,19.41,56.38,56.69,Sangat Rentan,21.21,Chronic Crisis,#dc2626,-3.520666340806444,-0.9810672377535001
+96,Papua Barat Daya,9605,Maybrat,Kabupaten,Papua,42.79,19.6,62.93,46.14,Sangat Rentan,18.16,Chronic Crisis,#dc2626,-3.327050969249186,-0.7814146316760688
+96,Papua Barat Daya,9671,Kota Sorong,Kota,Papua,58.97,34.3,75.47,67.39,Agak Rentan,19.2,Agrarian Paradox,#d97706,-1.3480812658554768,-1.1126191318204341

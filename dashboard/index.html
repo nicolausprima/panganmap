@@ -5,491 +5,482 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Ketahanan Pangan Indonesia 2018 sampai 2026</title>
   <meta name="description" content="Dashboard pemantauan multidimensi Indeks Ketahanan Pangan kabupaten dan kota di Indonesia periode 2018 sampai 2026 bersumber dari Badan Pangan Nasional dan BPS.">
+  <meta name="theme-color" content="#14120F">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://api.fontshare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Chivo+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <div class="saas-layout">
-    
-    <!-- Left Sidebar (SaaS Style) -->
-    <aside class="saas-sidebar" aria-label="Navigasi utama">
-      <div class="sidebar-top">
-        <div class="brand-badge">
-          <div class="brand-logo-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-          </div>
-          <div>
-            <div class="brand-name">SIKAP Pangan</div>
-            <div class="brand-tagline">IKP Bapanas 2018 sampai 2026</div>
-          </div>
-        </div>
+  <a class="skip-link" href="#mapSection">Lewati ke peta</a>
 
-        <nav class="sidebar-nav" aria-label="Menu dashboard">
-          <a href="#dashboardTop" class="nav-link is-active">
-            <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7"></rect>
-              <rect x="14" y="3" width="7" height="7"></rect>
-              <rect x="14" y="14" width="7" height="7"></rect>
-              <rect x="3" y="14" width="7" height="7"></rect>
-            </svg>
-            <span>Dashboard</span>
-          </a>
-          <a href="#mapSection" class="nav-link">
-            <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-              <line x1="8" y1="2" x2="8" y2="18"></line>
-              <line x1="16" y1="6" x2="16" y2="22"></line>
-            </svg>
-            <span>Peta wilayah</span>
-          </a>
-          <a href="#chartsSection" class="nav-link">
-            <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <line x1="18" y1="20" x2="18" y2="10"></line>
-              <line x1="12" y1="20" x2="12" y2="4"></line>
-              <line x1="6" y1="20" x2="6" y2="14"></line>
-            </svg>
-            <span>Analisis grafik</span>
-          </a>
-          <a href="#tableSection" class="nav-link">
-            <svg class="nav-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-              <line x1="3" y1="9" x2="21" y2="9"></line>
-              <line x1="3" y1="15" x2="21" y2="15"></line>
-              <line x1="9" y1="3" x2="9" y2="21"></line>
-            </svg>
-            <span>Rincian daerah</span>
-          </a>
-        </nav>
+  <header class="topbar">
+    <div class="topbar-inner container">
+      <a class="brand" href="#dashboardTop" aria-label="SIKAP Pangan, kembali ke awal halaman">
+        <img class="brand-mark" src="./assets/sikap-symbol.svg" width="28" height="28" alt="">
+        <span class="brand-text">
+          <span class="brand-name">SIKAP Pangan</span>
+          <span class="brand-tagline">IKP Bapanas 2018 sampai 2026</span>
+        </span>
+      </a>
+
+      <nav class="topbar-nav" aria-label="Menu dashboard">
+        <a href="#dashboardTop" class="nav-link is-active">Dashboard</a>
+        <a href="#mapSection" class="nav-link">Peta wilayah</a>
+        <a href="#chartsSection" class="nav-link">Analisis grafik</a>
+        <a href="#inferentialSection" class="nav-link">Model statistik</a>
+        <a href="#tableSection" class="nav-link">Rincian daerah</a>
+      </nav>
+
+      <button type="button" id="exportBtn" class="btn btn--primary" data-export>Ekspor data</button>
+    </div>
+  </header>
+
+  <div id="dashboardTop"></div>
+
+  <nav class="filterbar" aria-label="Filter data panel">
+    <div class="filterbar-inner container">
+      <div class="year-picker" id="yearPicker" role="group" aria-label="Pilihan tahun panel">
+        <!-- Rendered via app.js -->
       </div>
 
-      <!-- Promo Card at Bottom of Sidebar -->
-      <div class="sidebar-promo-card">
-        <div class="promo-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          </svg>
-        </div>
-        <div>
-          <div class="promo-card-title">Storytelling data</div>
-          <p class="promo-card-desc">Visualisasi eksplanatori bebas clutter sesuai kaidah Cole Knaflic.</p>
-        </div>
-        <button type="button" id="sidebarExportBtn" class="btn-pill btn-pill--lime">
-          Ekspor CSV
-        </button>
+      <div class="filter-actions">
+        <label for="provSelect" class="visually-hidden">Wilayah provinsi</label>
+        <select id="provSelect" class="select">
+          <option value="">Semua Provinsi (Nasional)</option>
+        </select>
+
+        <label for="metricSelect" class="visually-hidden">Metrik peta</label>
+        <select id="metricSelect" class="select">
+          <option value="ikp">Skor IKP komposit</option>
+          <option value="rentan_pct">Persentase daerah rentan</option>
+          <option value="kemiskinan">Tingkat kemiskinan P0</option>
+        </select>
+
+        <button type="button" id="resetBtn" class="btn">Reset filter</button>
       </div>
-    </aside>
+    </div>
+  </nav>
 
-    <!-- Main Content Area -->
-    <div class="saas-main" id="dashboardTop">
-      
-      <!-- Top Bar -->
-      <header class="saas-topbar">
-        <div class="topbar-left">
-          <h1 class="page-title">Dashboard Ketahanan Pangan</h1>
-          <p class="page-breadcrumb">Panel longitudinal nasional periode 2018 sampai 2026</p>
+  <main id="main" class="page container">
+
+    <section class="page-head" aria-labelledby="pageTitle">
+      <div class="page-head-title">
+        <h1 id="pageTitle">Dashboard Ketahanan Pangan</h1>
+        <p class="page-sub">Panel longitudinal nasional periode 2018 sampai 2026</p>
+      </div>
+      <dl class="brief">
+        <div class="brief-item">
+          <dt>Audiens</dt>
+          <dd>
+            <strong>Pembuat kebijakan pangan</strong>
+            Bapanas, Kementerian Pertanian, Bappenas, dan pemerintah daerah pengambil keputusan alokasi intervensi logistik.
+          </dd>
         </div>
-
-        <div class="topbar-right">
-          <div class="search-box-pill">
-            <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <label for="searchInput" class="visually-hidden">Cari kabupaten atau kota</label>
-            <input type="search" id="searchInput" class="search-input-pill" placeholder="Cari kabupaten atau kota…">
-          </div>
-
-          <div class="user-profile-badge">
-            <div class="user-avatar">AP</div>
-            <div class="user-info">
-              <div class="user-name">Analis Kebijakan</div>
-              <div class="user-role">Bapanas dan Kementan RI</div>
-            </div>
-          </div>
-
-          <button type="button" id="exportBtn" class="btn-pill btn-pill--lime">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Ekspor data
-          </button>
+        <div class="brief-item">
+          <dt>Tujuan</dt>
+          <dd>
+            <strong>Arah kebijakan intervensi</strong>
+            Mengidentifikasi disparitas wilayah, memantau tren ketahanan pangan, dan memprioritaskan daerah rentan kelompok 1 sampai 3.
+          </dd>
         </div>
+        <div class="brief-item">
+          <dt>Mekanisme</dt>
+          <dd>
+            <strong>Visualisasi eksplanatori</strong>
+            Peta sebaran choropleth, angka kunci, grafik tren longitudinal bebas clutter, serta dekomposisi tiga pilar pangan.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Loading and error states (the full state is the rest of the page) -->
+    <div id="loadingState" class="state-block state-block--loading" role="status" aria-live="polite" style="display: none;">
+      <div class="skeleton-figures" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="skeleton-map" aria-hidden="true"></div>
+      <div class="state-block-text">
+        <div class="state-title">Memuat data ketahanan pangan…</div>
+        <p class="state-desc">Mengagregasi 4.626 data kabupaten dan kota seluruh Indonesia periode 2018 sampai 2026.</p>
+      </div>
+    </div>
+
+    <div id="errorState" class="state-block state-block--error" role="alert" style="display: none;">
+      <div class="state-block-text">
+        <div class="state-title">Terjadi kendala pemuatan data</div>
+        <p class="state-desc" id="errorMessage">Pastikan berkas dataset tersedia.</p>
+      </div>
+      <button type="button" id="reloadBtn" class="btn">Muat ulang halaman</button>
+    </div>
+
+    <!-- Key figures -->
+    <section class="figures" aria-label="Metrik kunci ketahanan pangan">
+      <article class="figure figure--lead">
+        <p class="figure-label">Skor ketahanan nasional</p>
+        <div class="figure-line">
+          <span id="kpiMean" class="figure-value num">71.70</span>
+          <span class="figure-unit">/ 100</span>
+          <span id="kpiMeanBadge" class="figure-status">Tahan</span>
+        </div>
+        <p class="figure-note" id="kpiMeanDelta">+2.00 vs tahun sebelumnya</p>
+        <p class="figure-note"><span id="kpiTahanCount" class="tnum">447 daerah tahan</span></p>
+      </article>
+
+      <article class="figure">
+        <p class="figure-label">Ketahanan daerah</p>
+        <div class="figure-line">
+          <span id="kpiTahanPct" class="figure-value num">87.0%</span>
+        </div>
+        <p class="figure-note">Proporsi kabupaten dan kota</p>
+      </article>
+
+      <article class="figure">
+        <p class="figure-label">Daerah rentan pangan</p>
+        <div class="figure-line">
+          <span id="kpiRentanTotal" class="figure-value num">67</span>
+          <span class="figure-unit">prioritas 1 sampai 3</span>
+        </div>
+        <p class="figure-note" id="kpiRentanLabel">Butuh intervensi rantai pasok</p>
+      </article>
+
+      <article class="figure">
+        <p class="figure-label">Kesenjangan skor wilayah</p>
+        <div class="figure-line">
+          <span id="kpiRange" class="figure-value num">72.6</span>
+          <span class="figure-unit">poin</span>
+        </div>
+        <p class="figure-note tnum" id="kpiRangeDetail">Skor 20.4 sampai 93.0</p>
+      </article>
+
+      <article class="figure">
+        <p class="figure-label">Kemiskinan P0</p>
+        <div class="figure-line">
+          <span id="kpiPoverty" class="figure-value num">9.36%</span>
+          <span class="figure-unit">BPS</span>
+        </div>
+        <p class="figure-note" id="kpiPovertySub">Rata-rata persentase provinsi</p>
+      </article>
+    </section>
+
+    <!-- Interactive map: the signature object -->
+    <section class="panel panel--map" id="mapSection" aria-labelledby="mapTitle">
+      <header class="panel-head">
+        <div class="panel-title">
+          <h2 id="mapTitle">Peta sebaran ketahanan pangan wilayah</h2>
+          <p class="panel-desc">Klik provinsi pada peta untuk menyaring data daerah secara interaktif</p>
+        </div>
+        <p id="selectedProvBadge" class="selection-note" style="display: none;">
+          <span>Provinsi aktif:</span>
+          <strong id="selectedProvName">Aceh</strong>
+        </p>
       </header>
 
-      <!-- Content Body -->
-      <main class="content-body">
-        
-        <!-- Context Strip (Storytelling with Data Ch. 1) -->
-        <section class="context-strip" aria-label="Konteks analisis data">
-          <div class="context-box">
-            <div class="context-box-title">
-              <span class="context-pill">Audiens</span>
-              Pembuat kebijakan pangan
-            </div>
-            <p class="context-box-desc">Bapanas, Kementerian Pertanian, Bappenas, dan pemerintah daerah pengambil keputusan alokasi intervensi logistik.</p>
-          </div>
-          <div class="context-box">
-            <div class="context-box-title">
-              <span class="context-pill">Tujuan</span>
-              Arah kebijakan intervensi
-            </div>
-            <p class="context-box-desc">Mengidentifikasi disparitas wilayah, memantau tren ketahanan pangan, dan memprioritaskan 67 daerah rentan kelompok 1 sampai 3.</p>
-          </div>
-          <div class="context-box">
-            <div class="context-box-title">
-              <span class="context-pill">Mekanisme</span>
-              Visualisasi eksplanatori
-            </div>
-            <p class="context-box-desc">Peta sebaran choropleth, kartu metrik terpadu, grafik tren longitudinal bebas clutter, serta dekomposisi tiga pilar pangan.</p>
-          </div>
-        </section>
+      <div class="map-layout">
+        <div class="map-well ticks" id="mapWell">
+          <svg id="mapSvg" class="map-svg" role="img" aria-label="Peta choropleth Indonesia"></svg>
+          <div id="mapTooltip" class="map-tooltip" role="tooltip"></div>
+        </div>
 
-        <!-- Global Filter Row -->
-        <nav class="controls-row" aria-label="Filter data panel">
-          <div class="year-picker-saas" id="yearPicker" role="group" aria-label="Pilihan tahun panel">
+        <aside class="map-rail" aria-label="Legenda dan filter klasifikasi">
+          <h3 class="rail-title" id="legendTitle">Klasifikasi warna, klik untuk filter</h3>
+          <div class="legend" id="legendScaleGroup" role="group" aria-labelledby="legendTitle">
+            <button type="button" class="legend-step" data-step="5" aria-pressed="false" title="Filter daerah Sangat Tahan">
+              <span class="legend-swatch legend-swatch--5" aria-hidden="true"></span>
+              <span class="legend-name">Sangat tahan</span>
+              <span class="legend-range">82 ke atas</span>
+            </button>
+            <button type="button" class="legend-step" data-step="4" aria-pressed="false" title="Filter daerah Tahan">
+              <span class="legend-swatch legend-swatch--4" aria-hidden="true"></span>
+              <span class="legend-name">Tahan</span>
+              <span class="legend-range">75 sampai 81</span>
+            </button>
+            <button type="button" class="legend-step" data-step="3" aria-pressed="false" title="Filter daerah Agak Tahan">
+              <span class="legend-swatch legend-swatch--3" aria-hidden="true"></span>
+              <span class="legend-name">Agak tahan</span>
+              <span class="legend-range">68 sampai 74</span>
+            </button>
+            <button type="button" class="legend-step" data-step="2" aria-pressed="false" title="Filter daerah Rentan">
+              <span class="legend-swatch legend-swatch--2" aria-hidden="true"></span>
+              <span class="legend-name">Rentan</span>
+              <span class="legend-range">55 sampai 67</span>
+            </button>
+            <button type="button" class="legend-step" data-step="1" aria-pressed="false" title="Filter daerah Sangat Rentan">
+              <span class="legend-swatch legend-swatch--1" aria-hidden="true"></span>
+              <span class="legend-name">Sangat rentan</span>
+              <span class="legend-range">kurang dari 55</span>
+            </button>
+          </div>
+          <button type="button" id="clearLegendFilterBtn" class="btn btn--quiet" style="display: none;">Reset klasifikasi ×</button>
+          <p class="source">Sumber: Badan Pangan Nasional dan BPS Republik Indonesia</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts" id="chartsSection" aria-label="Grafik analisis eksplanatori ketahanan pangan">
+
+      <article class="panel chart chart--trend">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Tren temporal ketahanan pangan 2018 sampai 2026</h3>
+            <p class="panel-desc">Grafik garis longitudinal rata-rata skor IKP dengan garis acuan nasional</p>
+          </div>
+        </header>
+        <div class="chart-body" id="chartTrend">
+          <!-- Rendered via app.js -->
+        </div>
+        <footer class="chart-caption">
+          <span>Metodologi: Garis kontinu dengan anotasi langsung pada tahun aktif</span>
+          <span>Skor agregat</span>
+        </footer>
+      </article>
+
+      <article class="panel chart chart--ranking">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Kesenjangan daerah tertinggi dan terendah</h3>
+            <p class="panel-desc">Diagram batang horizontal perbandingan skor IKP daerah</p>
+          </div>
+        </header>
+        <div class="chart-body" id="chartRanking">
+          <!-- Rendered via app.js -->
+        </div>
+        <footer class="chart-caption">
+          <span>Warna biru untuk tahan, warna amber untuk rentan</span>
+          <span>Skala 0 ke 100</span>
+        </footer>
+      </article>
+
+      <article class="panel chart chart--pillars">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Dekomposisi tiga pilar ketahanan pangan 2024 sampai 2026</h3>
+            <p class="panel-desc">Evaluasi ketersediaan, keterjangkauan, dan pemanfaatan pangan</p>
+          </div>
+        </header>
+        <div class="chart-body" id="chartPillars">
+          <!-- Rendered via app.js -->
+        </div>
+        <footer class="chart-caption">
+          <span>Ketersediaan merupakan faktor pembatas utama nasional</span>
+          <span>Indeks pilar</span>
+        </footer>
+      </article>
+
+      <article class="panel chart chart--scatter">
+        <header class="panel-head">
+          <div class="panel-title">
+            <h3>Korelasi tingkat kemiskinan dan ketahanan pangan</h3>
+            <p class="panel-desc">Diagram pencar hubungan kemiskinan P0 dengan skor IKP provinsi</p>
+          </div>
+        </header>
+        <div class="chart-body" id="chartScatter">
+          <!-- Rendered via app.js -->
+        </div>
+        <footer class="chart-caption">
+          <span>Kuadran kanan bawah menunjukkan prioritas intervensi ganda</span>
+          <span>Persentase P0 vs IKP</span>
+        </footer>
+      </article>
+
+    </section>
+
+    <!-- Inferential models: ANOVA, K-Means, regression -->
+    <section class="studies" id="inferentialSection" aria-labelledby="studiesTitle">
+      <header class="studies-head">
+        <h2 id="studiesTitle">Analisis inferensial: disparitas, persona wilayah, dan tuas kebijakan</h2>
+        <p class="panel-desc">Pembuktian empiris berbasis ANOVA faktorial, klasterisasi multidimensi K-Means, dan simulasi elastisitas regresi berganda (N = 514 daerah).</p>
+      </header>
+
+      <!-- 1. ANOVA and disparity -->
+      <article class="study">
+        <div class="study-text">
+          <h3>Uji kesenjangan geografis nasional</h3>
+          <p class="panel-desc">Pembuktian disparitas struktural antar-7 gugus kepulauan dan tipe wilayah, diuji dengan ANOVA dan Tukey HSD.</p>
+          <dl class="stat-list">
+            <div class="stat-list-item">
+              <dt>F-statistik gugus</dt>
+              <dd class="num" id="anovaFStat">99.95</dd>
+              <dd class="stat-list-sub text-success">p &lt; 10⁻⁸⁰ (signifikan)</dd>
+            </div>
+            <div class="stat-list-item">
+              <dt>Effect size (ηₚ²)</dt>
+              <dd class="num" id="anovaEtaSq">54.5%</dd>
+              <dd class="stat-list-sub">Variansi dijelaskan pulau</dd>
+            </div>
+            <div class="stat-list-item">
+              <dt>Jurang kabupaten dan kota</dt>
+              <dd class="num" id="anovaTipeF">F = 10.26</dd>
+              <dd class="stat-list-sub">Interaksi p = 0.0215*</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="study-body">
+          <div class="chart-body" id="chartAnovaDisparity">
+            <!-- Rendered via app.js -->
+          </div>
+          <div class="tukey">
+            <h4 class="tukey-title">Defisit kesenjangan terbesar (Tukey HSD post-hoc)</h4>
+            <ul class="tukey-list" id="tukeyList">
+              <!-- Rendered via app.js -->
+            </ul>
+          </div>
+          <p class="chart-caption chart-caption--solo">Kesimpulan: ketimpangan Barat vs Timur bersifat struktural kronis.</p>
+        </div>
+      </article>
+
+      <!-- 2. K-Means personas -->
+      <article class="study">
+        <div class="study-text">
+          <h3>4 persona kerentanan daerah</h3>
+          <p class="panel-desc">Segmentasi 514 daerah berdasarkan 3 pilar IKP dan tingkat kelaparan (PoU), dihitung dengan K-Means.</p>
+          <div class="persona-list" id="personaPillsRow" role="group" aria-label="Pilih persona wilayah">
+            <!-- Rendered via app.js -->
+          </div>
+          <p class="chart-caption chart-caption--solo">Klik persona untuk melihat profil mendalam dan intervensi presisi</p>
+        </div>
+        <div class="study-body">
+          <div class="chart-body" id="chartKmeansRadar">
+            <!-- Rendered via app.js -->
+          </div>
+          <div class="persona-detail" id="personaDetailCard">
+            <!-- Rendered via app.js -->
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Regression and simulator -->
+      <article class="study">
+        <div class="study-text">
+          <h3>Tuas kebijakan dan simulator PoU</h3>
+          <p class="panel-desc">Identifikasi pengungkit utama penurunan angka kelaparan (R² = 58.5%), dari regresi berganda.</p>
+          <p class="bottleneck">
+            <strong>Uji bottleneck ketersediaan (p &lt; 0.001).</strong>
+            Pada 130 daerah dengan ketersediaan &lt; 50, angka kelaparan melonjak 2x lipat (17.8% vs 8.8%). Ketersediaan fisik adalah prasyarat mutlak sebelum subsidi daya beli efektif.
+          </p>
+          <p class="chart-caption chart-caption--solo">Model regresi OLS dengan koreksi HC3, data 514 kabupaten dan kota 2024</p>
+        </div>
+        <div class="study-body">
+          <div class="chart-body" id="chartRegressionTornado">
             <!-- Rendered via app.js -->
           </div>
 
-          <div class="filter-actions">
-            <label for="provSelect" class="visually-hidden">Wilayah provinsi</label>
-            <select id="provSelect" class="select-pill">
-              <option value="">Semua Provinsi (Nasional)</option>
-            </select>
+          <div class="simulator">
+            <div class="simulator-head">
+              <h4 class="simulator-title">Simulator alokasi intervensi (what-if)</h4>
+              <button type="button" id="resetSimBtn" class="btn btn--quiet">Reset</button>
+            </div>
 
-            <label for="metricSelect" class="visually-hidden">Metrik peta</label>
-            <select id="metricSelect" class="select-pill">
-              <option value="ikp">Skor IKP komposit</option>
-              <option value="rentan_pct">Persentase daerah rentan</option>
-              <option value="kemiskinan">Tingkat kemiskinan P0</option>
-            </select>
+            <div class="sliders">
+              <div class="slider-row">
+                <label for="simSliderAccess">
+                  <span>Keterjangkauan (daya beli)</span>
+                  <span class="slider-value tnum" id="simValAccess">+0 poin</span>
+                </label>
+                <input type="range" id="simSliderAccess" min="0" max="20" value="0" step="1">
+              </div>
+              <div class="slider-row">
+                <label for="simSliderAvail">
+                  <span>Ketersediaan (produksi dan logistik)</span>
+                  <span class="slider-value tnum" id="simValAvail">+0 poin</span>
+                </label>
+                <input type="range" id="simSliderAvail" min="0" max="20" value="0" step="1">
+              </div>
+              <div class="slider-row">
+                <label for="simSliderUtil">
+                  <span>Pemanfaatan (sanitasi dan gizi)</span>
+                  <span class="slider-value tnum" id="simValUtil">+0 poin</span>
+                </label>
+                <input type="range" id="simSliderUtil" min="0" max="20" value="0" step="1">
+              </div>
+            </div>
 
-            <button type="button" id="resetBtn" class="btn-pill">
-              Reset filter
-            </button>
+            <dl class="outcome">
+              <div class="outcome-item">
+                <dt>Baseline PoU nasional</dt>
+                <dd class="num">11.08%</dd>
+              </div>
+              <div class="outcome-item">
+                <dt>Proyeksi PoU baru</dt>
+                <dd class="num" id="simNewPou">11.08%</dd>
+              </div>
+              <div class="outcome-item">
+                <dt>Estimasi penurunan</dt>
+                <dd class="num" id="simDeltaPou">0.0%</dd>
+              </div>
+            </dl>
           </div>
-        </nav>
+        </div>
+      </article>
+    </section>
 
-        <!-- Hero Metric Grid (Exemplar layout: 1 Dark Card + 3 White Stat Cards) -->
-        <section class="hero-metric-grid" aria-label="Metrik kunci ketahanan pangan">
-          
-          <!-- Dark Hero Card -->
-          <article class="dark-highlight-card">
-            <div class="dark-card-top">
-              <span class="dark-card-title">Skor ketahanan nasional</span>
-              <span id="kpiMeanBadge" class="dark-card-pill">Tahan</span>
-            </div>
-            <div class="dark-card-main">
-              <div>
-                <span id="kpiMean" class="dark-card-val num">71.70</span>
-                <span class="dark-card-unit">/ 100</span>
-              </div>
-              <p class="dark-card-sub" id="kpiMeanDelta">+2.00 vs tahun sebelumnya</p>
-            </div>
-            <div class="dark-card-bottom">
-              <span id="kpiTahanCount" class="num">447 daerah tahan</span>
-              <span>Evaluasi agregat Bapanas</span>
-            </div>
-          </article>
+    <!-- Data explorer table -->
+    <section class="panel panel--table" id="tableSection" aria-labelledby="tableTitle">
+      <header class="panel-head">
+        <div class="panel-title">
+          <h2 id="tableTitle">Rincian data kabupaten dan kota</h2>
+          <p class="panel-desc tnum" id="tableInfo">Memuat data daerah…</p>
+        </div>
+        <div class="table-tools">
+          <label for="searchInput" class="visually-hidden">Cari kabupaten atau kota</label>
+          <input type="search" id="searchInput" class="input" name="q" autocomplete="off" placeholder="Cari kabupaten atau kota…">
+          <button type="button" class="btn" data-export>Ekspor CSV</button>
+        </div>
+      </header>
 
-          <!-- White Stat Card 1: Ketahanan Daerah -->
-          <article class="saas-stat-card">
-            <div class="stat-card-header">
-              <div class="stat-card-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-              </div>
-              <span class="stat-card-badge">Status</span>
-            </div>
-            <div>
-              <div id="kpiTahanPct" class="stat-card-val num">87.0%</div>
-              <div class="stat-card-label">Ketahanan daerah</div>
-            </div>
-            <div class="stat-card-sub">
-              <span>Proporsi kabupaten dan kota</span>
-            </div>
-          </article>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel rincian daerah, dapat digulir">
+        <table class="data-table">
+          <caption class="visually-hidden">Rincian skor IKP kabupaten dan kota. Klik judul kolom untuk mengurutkan data.</caption>
+          <thead>
+            <tr>
+              <th class="num" data-sort="no">No</th>
+              <th data-sort="kab">Kabupaten dan Kota</th>
+              <th data-sort="tipe">Tipe</th>
+              <th data-sort="prov">Provinsi</th>
+              <th class="num" data-sort="ikp">Skor IKP</th>
+              <th class="num" data-sort="rank">Peringkat</th>
+              <th class="num" data-sort="grp">Kelompok</th>
+              <th data-sort="status">Status Kerentanan</th>
+              <th class="num" data-sort="avail">Ketersediaan</th>
+              <th class="num" data-sort="access">Keterjangkauan</th>
+              <th class="num" data-sort="util">Pemanfaatan</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rendered via app.js -->
+          </tbody>
+        </table>
 
-          <!-- White Stat Card 2: Daerah Rentan Pangan -->
-          <article class="saas-stat-card">
-            <div class="stat-card-header">
-              <div class="stat-card-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                  <line x1="12" y1="9" x2="12" y2="13"></line>
-                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                </svg>
-              </div>
-              <span class="stat-card-badge stat-card-badge--alert">Prioritas 1 sampai 3</span>
-            </div>
-            <div>
-              <div id="kpiRentanTotal" class="stat-card-val num">67</div>
-              <div class="stat-card-label">Daerah rentan pangan</div>
-            </div>
-            <div class="stat-card-sub">
-              <span id="kpiRentanLabel">Butuh intervensi rantai pasok</span>
-            </div>
-          </article>
-
-          <!-- White Stat Card 3: Disparitas Skor -->
-          <article class="saas-stat-card">
-            <div class="stat-card-header">
-              <div class="stat-card-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-              </div>
-              <span class="stat-card-badge">Rentang</span>
-            </div>
-            <div>
-              <div id="kpiRange" class="stat-card-val num">72.6</div>
-              <div class="stat-card-label">Kesenjangan skor wilayah</div>
-            </div>
-            <div class="stat-card-sub">
-              <span id="kpiRangeDetail" class="num">Skor 20.4 sampai 93.0</span>
-            </div>
-          </article>
-
-          <!-- White Stat Card 4: Kemiskinan P0 -->
-          <article class="saas-stat-card">
-            <div class="stat-card-header">
-              <div class="stat-card-icon-wrap">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <span class="stat-card-badge">BPS</span>
-            </div>
-            <div>
-              <div id="kpiPoverty" class="stat-card-val num">9.36%</div>
-              <div class="stat-card-label">Kemiskinan P0</div>
-            </div>
-            <div class="stat-card-sub">
-              <span id="kpiPovertySub">Rata-rata persentase provinsi</span>
-            </div>
-          </article>
-
-        </section>
-
-        <!-- Interactive Map Section (Requirement #1) -->
-        <section class="saas-card" id="mapSection" aria-label="Peta sebaran ketahanan pangan">
-          <header class="card-header-clean">
-            <div class="card-title-group">
-              <h2 class="saas-card-title">Peta sebaran ketahanan pangan wilayah</h2>
-              <p class="saas-card-desc">Klik provinsi pada peta untuk menyaring data daerah secara interaktif</p>
-            </div>
-            <div id="selectedProvBadge" class="context-pill" style="display: none;">
-              <span>Provinsi aktif:</span>
-              <strong id="selectedProvName">Aceh</strong>
-            </div>
-          </header>
-
-          <div class="map-body-container">
-            <svg id="mapSvg" class="map-svg" role="img" aria-label="Peta choropleth Indonesia"></svg>
-            <div id="mapTooltip" class="map-tooltip" role="tooltip"></div>
+        <!-- Empty state -->
+        <div id="emptyState" class="state-block state-block--empty" style="display: none;">
+          <div class="state-block-text">
+            <div class="state-title">Tidak ada daerah yang cocok</div>
+            <p class="state-desc">Tidak ditemukan kabupaten atau kota dengan kata kunci pencarian tersebut pada tahun dan wilayah terpilih.</p>
           </div>
-
-          <footer class="card-footer-clean">
-            <div class="map-legend-saas">
-              <span class="legend-title-saas">Klasifikasi warna (klik untuk filter):</span>
-              <div class="legend-scale-saas" id="legendScaleGroup" role="group" aria-label="Filter klasifikasi ketahanan pangan">
-                <button type="button" class="legend-step-saas" data-step="1" aria-pressed="false" title="Filter daerah Sangat Rentan">
-                  <span class="legend-color-box legend-color-box--step-1"></span>
-                  <span>Sangat rentan (kurang dari 55)</span>
-                </button>
-                <button type="button" class="legend-step-saas" data-step="2" aria-pressed="false" title="Filter daerah Rentan">
-                  <span class="legend-color-box legend-color-box--step-2"></span>
-                  <span>Rentan (55 sampai 67)</span>
-                </button>
-                <button type="button" class="legend-step-saas" data-step="3" aria-pressed="false" title="Filter daerah Agak Tahan">
-                  <span class="legend-color-box legend-color-box--step-3"></span>
-                  <span>Agak tahan (68 sampai 74)</span>
-                </button>
-                <button type="button" class="legend-step-saas" data-step="4" aria-pressed="false" title="Filter daerah Tahan">
-                  <span class="legend-color-box legend-color-box--step-4"></span>
-                  <span>Tahan (75 sampai 81)</span>
-                </button>
-                <button type="button" class="legend-step-saas" data-step="5" aria-pressed="false" title="Filter daerah Sangat Tahan">
-                  <span class="legend-color-box legend-color-box--step-5"></span>
-                  <span>Sangat tahan (82 ke atas)</span>
-                </button>
-              </div>
-              <button type="button" id="clearLegendFilterBtn" class="btn-pill" style="display: none; height: 28px; padding: 0 var(--space-xs); font-size: 11px;">
-                Reset klasifikasi ×
-              </button>
-            </div>
-            <div class="saas-card-desc">
-              Sumber: Badan Pangan Nasional dan BPS Republik Indonesia
-            </div>
-          </footer>
-        </section>
-
-        <!-- Analytical Charts Section (Requirement #3) -->
-        <section class="charts-grid-saas" id="chartsSection" aria-label="Grafik analisis eksplanatori ketahanan pangan">
-          
-          <!-- Chart 1: Tren Temporal Longitudinal -->
-          <article class="saas-card">
-            <header class="card-header-clean">
-              <div class="card-title-group">
-                <h3 class="saas-card-title">Tren temporal ketahanan pangan 2018 sampai 2026</h3>
-                <p class="saas-card-desc">Grafik garis longitudinal rata-rata skor IKP dengan garis acuan nasional</p>
-              </div>
-            </header>
-            <div class="chart-body-saas" id="chartTrend">
-              <!-- Rendered via app.js -->
-            </div>
-            <footer class="card-footer-clean">
-              <span>Metodologi: Garis kontinu dengan anotasi langsung pada tahun aktif</span>
-              <span>Skor agregat</span>
-            </footer>
-          </article>
-
-          <!-- Chart 2: Disparitas Wilayah (Top vs Bottom) -->
-          <article class="saas-card">
-            <header class="card-header-clean">
-              <div class="card-title-group">
-                <h3 class="saas-card-title">Kesenjangan daerah tertinggi dan terendah</h3>
-                <p class="saas-card-desc">Diagram batang horizontal perbandingan skor IKP daerah</p>
-              </div>
-            </header>
-            <div class="chart-body-saas" id="chartRanking">
-              <!-- Rendered via app.js -->
-            </div>
-            <footer class="card-footer-clean">
-              <span>Warna hijau botol untuk tahan, warna amber untuk rentan</span>
-              <span>Skala 0 ke 100</span>
-            </footer>
-          </article>
-
-          <!-- Chart 3: Dekomposisi 3 Pilar Utama -->
-          <article class="saas-card">
-            <header class="card-header-clean">
-              <div class="card-title-group">
-                <h3 class="saas-card-title">Dekomposisi tiga pilar ketahanan pangan 2024 sampai 2026</h3>
-                <p class="saas-card-desc">Evaluasi ketersediaan, keterjangkauan, dan pemanfaatan pangan</p>
-              </div>
-            </header>
-            <div class="chart-body-saas" id="chartPillars">
-              <!-- Rendered via app.js -->
-            </div>
-            <footer class="card-footer-clean">
-              <span>Ketersediaan merupakan faktor pembatas utama nasional</span>
-              <span>Indeks pilar</span>
-            </footer>
-          </article>
-
-          <!-- Chart 4: Korelasi Kemiskinan vs IKP -->
-          <article class="saas-card">
-            <header class="card-header-clean">
-              <div class="card-title-group">
-                <h3 class="saas-card-title">Korelasi tingkat kemiskinan dan ketahanan pangan</h3>
-                <p class="saas-card-desc">Diagram pencar hubungan kemiskinan P0 dengan skor IKP provinsi</p>
-              </div>
-            </header>
-            <div class="chart-body-saas" id="chartScatter">
-              <!-- Rendered via app.js -->
-            </div>
-            <footer class="card-footer-clean">
-              <span>Kuadran kanan bawah menunjukkan prioritas intervensi ganda</span>
-              <span>Persentase P0 vs IKP</span>
-            </footer>
-          </article>
-
-        </section>
-
-        <!-- Data Explorer Table Card -->
-        <section class="saas-card" id="tableSection" aria-label="Tabel rincian kabupaten dan kota">
-          <header class="card-header-clean">
-            <div class="card-title-group">
-              <h2 class="saas-card-title">Rincian data kabupaten dan kota</h2>
-              <p class="saas-card-desc" id="tableInfo">Memuat data daerah…</p>
-            </div>
-            <div class="saas-card-desc">
-              Klik judul kolom untuk mengurutkan data
-            </div>
-          </header>
-
-          <div class="table-container-saas">
-            <table class="data-table-saas">
-              <thead>
-                <tr>
-                  <th class="num" data-sort="no">No</th>
-                  <th data-sort="kab">Kabupaten dan Kota</th>
-                  <th data-sort="tipe">Tipe</th>
-                  <th data-sort="prov">Provinsi</th>
-                  <th class="num" data-sort="ikp">Skor IKP</th>
-                  <th class="num" data-sort="rank">Peringkat</th>
-                  <th class="num" data-sort="grp">Kelompok</th>
-                  <th data-sort="status">Status Kerentanan</th>
-                  <th class="num" data-sort="avail">Ketersediaan</th>
-                  <th class="num" data-sort="access">Keterjangkauan</th>
-                  <th class="num" data-sort="util">Pemanfaatan</th>
-                </tr>
-              </thead>
-              <tbody id="tableBody">
-                <!-- Rendered via app.js -->
-              </tbody>
-            </table>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="state-empty" style="display: none;">
-              <svg class="state-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <div class="state-empty-title">Tidak ada daerah yang cocok</div>
-              <p class="state-empty-desc">Tidak ditemukan kabupaten atau kota dengan kata kunci pencarian tersebut pada tahun dan wilayah terpilih.</p>
-              <button type="button" id="resetEmptyBtn" class="btn-pill">Bersihkan pencarian</button>
-            </div>
-          </div>
-
-          <footer class="card-footer-clean">
-            <div class="saas-card-desc">Menampilkan rincian indikator komposit per daerah</div>
-            <div class="pagination-saas" id="pagination">
-              <!-- Rendered via app.js -->
-            </div>
-          </footer>
-        </section>
-
-        <!-- Loading State Overlay -->
-        <div id="loadingState" class="state-empty" style="display: none;">
-          <div class="state-empty-title">Memuat data ketahanan pangan…</div>
-          <p class="state-empty-desc">Mengagregasi 4.626 data kabupaten dan kota seluruh Indonesia periode 2018 sampai 2026.</p>
+          <button type="button" id="resetEmptyBtn" class="btn">Bersihkan pencarian</button>
         </div>
+      </div>
 
-        <!-- Error State -->
-        <div id="errorState" class="state-empty" style="display: none;">
-          <div class="state-empty-title">Terjadi kendala pemuatan data</div>
-          <p class="state-empty-desc" id="errorMessage">Pastikan berkas dataset tersedia.</p>
-        </div>
-
-      </main>
-
-      <!-- App Footer -->
-      <footer class="saas-footer">
-        <div>
-          <span>Data: Badan Pangan Nasional dan BPS Republik Indonesia (2018 sampai 2026)</span>
-        </div>
-        <div>
-          <span>Prinsip visualisasi: Storytelling with Data oleh Cole Nussbaumer Knaflic</span>
+      <footer class="table-foot">
+        <p class="panel-desc">Menampilkan rincian indikator komposit per daerah. Klik judul kolom untuk mengurutkan data.</p>
+        <div class="pagination" id="pagination">
+          <!-- Rendered via app.js -->
         </div>
       </footer>
+    </section>
 
+  </main>
+
+  <footer class="site-foot">
+    <div class="site-foot-inner container">
+      <span>Data: Badan Pangan Nasional dan BPS Republik Indonesia (2018 sampai 2026)</span>
+      <span>Prinsip visualisasi: Storytelling with Data oleh Cole Nussbaumer Knaflic</span>
     </div>
-
-  </div>
+  </footer>
 
   <script src="./js/dashboard_data.js"></script>
   <script src="./js/app.js"></script>

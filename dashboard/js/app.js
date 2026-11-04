@@ -1,7 +1,7 @@
 /**
  * Dashboard Ketahanan Pangan Indonesia (IKP 2018-2026)
  * Storytelling with Data Implementation
- * Built with Hallmark Design System (Wayfind theme)
+ * Visual system: Hallmark, Rim theme. Every colour below is a CSS token from tokens.css.
  */
 
 (function () {
@@ -24,7 +24,8 @@
   const elMetricSelect = document.getElementById('metricSelect');
   const elResetBtn = document.getElementById('resetBtn');
   const elSearchInput = document.getElementById('searchInput');
-  const elExportBtn = document.getElementById('exportBtn');
+  const elExportBtns = document.querySelectorAll('[data-export]');
+  const elReloadBtn = document.getElementById('reloadBtn');
   const elClearLegendFilterBtn = document.getElementById('clearLegendFilterBtn');
 
   // KPI elements
@@ -82,10 +83,13 @@
 
       setupYearPicker();
       setupProvinceSelect();
+      elMetricSelect.value = activeMetric;
       setupEventListeners();
       setupLegendFilter();
+      updateLegendUI();
 
       renderAll();
+      watchChartWidths();
       showLoading(false);
     } catch (err) {
       console.error(err);
@@ -199,15 +203,16 @@
       renderTable();
     });
 
-    elExportBtn.addEventListener('click', exportCsv);
-    const elSidebarExportBtn = document.getElementById('sidebarExportBtn');
-    if (elSidebarExportBtn) {
-      elSidebarExportBtn.addEventListener('click', exportCsv);
+    elExportBtns.forEach(btn => btn.addEventListener('click', exportCsv));
+    if (elReloadBtn) {
+      elReloadBtn.addEventListener('click', () => window.location.reload());
     }
 
-    // Table sorting headers
+    // Table sorting headers (mouse and keyboard)
     document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
-      th.addEventListener('click', () => {
+      th.tabIndex = 0;
+      th.setAttribute('aria-sort', 'none');
+      const sortBy = () => {
         const field = th.dataset.sort;
         if (sortField === field) {
           sortAsc = !sortAsc;
@@ -215,17 +220,33 @@
           sortField = field;
           sortAsc = field === 'kab' || field === 'prov';
         }
+        currentPage = 1;
         renderTable();
+      };
+      th.addEventListener('click', sortBy);
+      th.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          sortBy();
+        }
       });
     });
 
-    // Sidebar navigation smooth scrolling and active tracking
+    // Top bar navigation: smooth scrolling and active tracking
     setupNavigation();
   }
 
   function setupNavigation() {
-    const navLinks = document.querySelectorAll('.sidebar-nav .nav-link');
+    const navLinks = document.querySelectorAll('.topbar-nav .nav-link');
     if (navLinks.length === 0) return;
+
+    const markActive = (activeLink) => {
+      navLinks.forEach(l => {
+        l.classList.toggle('is-active', l === activeLink);
+        if (l === activeLink) l.setAttribute('aria-current', 'location');
+        else l.removeAttribute('aria-current');
+      });
+    };
 
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -234,8 +255,7 @@
           const target = document.querySelector(href);
           if (target) {
             e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('is-active'));
-            link.classList.add('is-active');
+            markActive(link);
             target.scrollIntoView({ behavior: 'smooth' });
           }
         }
@@ -247,6 +267,7 @@
         'dashboardTop': document.querySelector('a[href="#dashboardTop"]'),
         'mapSection': document.querySelector('a[href="#mapSection"]'),
         'chartsSection': document.querySelector('a[href="#chartsSection"]'),
+        'inferentialSection': document.querySelector('a[href="#inferentialSection"]'),
         'tableSection': document.querySelector('a[href="#tableSection"]')
       };
 
@@ -254,19 +275,53 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const activeLink = sectionMap[entry.target.id];
-            if (activeLink) {
-              navLinks.forEach(l => l.classList.remove('is-active'));
-              activeLink.classList.add('is-active');
-            }
+            if (activeLink) markActive(activeLink);
           }
         });
-      }, { rootMargin: '-20% 0px -60% 0px' });
+      }, { rootMargin: '-25% 0px -60% 0px' });
 
       Object.keys(sectionMap).forEach(id => {
         const el = document.getElementById(id);
         if (el) observer.observe(el);
       });
     }
+  }
+
+  // =========================================================================
+  // Chart sizing: charts are drawn at the width of their container so type
+  // stays at its real size, and redrawn when that width changes.
+  // =========================================================================
+  function chartWidth(el, fallback) {
+    const w = el && el.clientWidth ? Math.floor(el.clientWidth) : 0;
+    return w >= 240 ? w : fallback;
+  }
+
+  function watchChartWidths() {
+    if (typeof ResizeObserver === 'undefined') return;
+    const targets = [elChartTrend, elChartRanking, elChartPillars, elChartScatter,
+      document.getElementById('chartAnovaDisparity'),
+      document.getElementById('chartKmeansRadar'),
+      document.getElementById('chartRegressionTornado')].filter(Boolean);
+    const lastWidth = new Map();
+    let timer = null;
+    const observer = new ResizeObserver((entries) => {
+      let changed = false;
+      entries.forEach(entry => {
+        const w = Math.round(entry.contentRect.width);
+        const prev = lastWidth.get(entry.target);
+        if (prev !== undefined && Math.abs(prev - w) >= 8) changed = true;
+        lastWidth.set(entry.target, w);
+      });
+      if (changed) {
+        clearTimeout(timer);
+        timer = setTimeout(renderCharts, 120);
+      }
+    });
+    targets.forEach(el => observer.observe(el));
+  }
+
+  function emptyBlock(message) {
+    return `<div class="state-block state-block--chart"><p class="state-desc">${message}</p></div>`;
   }
 
   function renderAll() {
@@ -284,7 +339,7 @@
   const caf = typeof window !== 'undefined' && window.cancelAnimationFrame ? window.cancelAnimationFrame.bind(window) : clearTimeout;
   const nowFn = () => (typeof window !== 'undefined' && window.performance && window.performance.now ? window.performance.now() : Date.now());
 
-  function animateNumber(el, targetVal, decimals = 2, suffix = '', duration = 350) {
+  function animateNumber(el, targetVal, decimals = 2, suffix = '', duration = 220) {
     if (!el) return;
     if (typeof targetVal !== 'number' || isNaN(targetVal)) {
       el.textContent = targetVal !== null && targetVal !== undefined ? targetVal : '–';
@@ -302,11 +357,6 @@
       el.textContent = targetVal.toFixed(decimals) + suffix;
       return;
     }
-
-    // Trigger visual feedback
-    el.classList.remove('val-pulse');
-    void el.offsetWidth;
-    el.classList.add('val-pulse');
 
     const startTime = nowFn();
     function tick(now) {
@@ -401,7 +451,7 @@
     }
     if (elKpiMeanBadge) {
       elKpiMeanBadge.textContent = statusClass;
-      elKpiMeanBadge.className = 'dark-card-pill';
+      elKpiMeanBadge.className = 'figure-status';
     }
 
     // Tile 2: Ketahanan Daerah
@@ -416,7 +466,7 @@
     // Tile 4: Disparitas
     const rangeVal = maxVal - minVal;
     if (elKpiRange) animateNumber(elKpiRange, rangeVal, 1);
-    if (elKpiRangeDetail) elKpiRangeDetail.textContent = `Skor ${minVal.toFixed(1)} s/d ${maxVal.toFixed(1)}`;
+    if (elKpiRangeDetail) elKpiRangeDetail.textContent = `Skor ${minVal.toFixed(1)} sampai ${maxVal.toFixed(1)}`;
 
     // Tile 5: Kemiskinan
     if (elKpiPoverty) {
@@ -468,9 +518,45 @@
     }
   }
 
+  // Legend ranges follow the metric the map is showing, so the labels never
+  // describe thresholds the map is not using.
+  const LEGEND_RANGES = {
+    ikp: { 5: '82 ke atas', 4: '75 sampai 81', 3: '68 sampai 74', 2: '55 sampai 67', 1: 'kurang dari 55' },
+    rentan_pct: { 5: '0%', 4: '1 sampai 15%', 3: '16 sampai 35%', 2: '36 sampai 60%', 1: 'lebih dari 60%' },
+    kemiskinan: { 5: '6% atau kurang', 4: '7 sampai 10%', 3: '11 sampai 15%', 2: '16 sampai 22%', 1: 'lebih dari 22%' }
+  };
+
+  // Bapanas groups 1 to 6 folded onto the map's five classes.
+  function groupStep(grp) {
+    if (grp === 1) return 1;
+    if (grp === 2 || grp === 3) return 2;
+    if (grp === 4) return 3;
+    if (grp === 5) return 4;
+    if (grp === 6) return 5;
+    return 0;
+  }
+
+  function updateSortIndicators() {
+    document.querySelectorAll('.data-table th[data-sort]').forEach(th => {
+      const isSorted = th.dataset.sort === sortField;
+      th.setAttribute('aria-sort', isSorted ? (sortAsc ? 'ascending' : 'descending') : 'none');
+    });
+  }
+
+  // Step of a table record under the metric the map is showing. Provincial
+  // metrics are looked up through the record's province.
+  function recordStep(record) {
+    if (activeMetric === 'ikp') return getStepForValue(record.ikp);
+    const y = data.provinces[record.prov]?.yearly[currentYear];
+    if (!y) return 0;
+    return getStepForValue(activeMetric === 'rentan_pct' ? y.rentan_pct : y.kemiskinan_persen);
+  }
+
   // =========================================================================
   // Map Rendering (Requirement #1: Interactive Indonesia Choropleth)
   // =========================================================================
+  let refocusMapCode = null;
+
   function renderMap() {
     elMapSvg.innerHTML = '';
     const [vx, vy, vw, vh] = data.viewbox || [0, 0, 960, 420];
@@ -519,6 +605,9 @@
       path.setAttribute('data-code', geoCode);
       path.setAttribute('data-name', geoInfo.name);
       path.setAttribute('data-step', step);
+      path.setAttribute('tabindex', '0');
+      path.setAttribute('role', 'button');
+      path.setAttribute('aria-label', `${geoInfo.provinces.join(', ')}: ${val !== null && val !== undefined ? val : 'data tidak tersedia'}`);
 
       // Check if this polygon matches classification filter
       if (selectedClassification !== null && step === selectedClassification) {
@@ -540,6 +629,18 @@
       });
       path.addEventListener('mouseleave', () => {
         hideTooltip();
+      });
+      path.addEventListener('focus', () => {
+        const box = path.getBoundingClientRect();
+        showTooltip({ clientX: box.left + box.width / 2, clientY: box.top + box.height / 2 }, geoInfo, val);
+      });
+      path.addEventListener('blur', hideTooltip);
+      path.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          refocusMapCode = geoCode;
+          path.dispatchEvent(new MouseEvent('click'));
+        }
       });
 
       // Click to select
@@ -565,7 +666,19 @@
       g.appendChild(path);
     });
 
+    // Paint the selected and filtered provinces last so their outline is not
+    // overdrawn by neighbours.
+    g.querySelectorAll('.is-class-match').forEach(el => g.appendChild(el));
+    const selectedPath = g.querySelector('.is-selected');
+    if (selectedPath) g.appendChild(selectedPath);
+
     elMapSvg.appendChild(g);
+
+    if (refocusMapCode) {
+      const again = elMapSvg.querySelector(`[data-code="${refocusMapCode}"]`);
+      refocusMapCode = null;
+      if (again) again.focus({ preventScroll: true });
+    }
   }
 
   function showTooltip(e, geoInfo, val) {
@@ -600,12 +713,34 @@
 
   // =========================================================================
   // Analytical Charts (Requirement #3, adhering strictly to @information)
+  // Charts are drawn at the width of their container (1 SVG unit = 1 CSS px),
+  // so text keeps its real size. All colour lives in CSS (style.css) or in the
+  // tokens named below.
   // =========================================================================
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+
+  function svgEl(name, attrs, text) {
+    const el = document.createElementNS(SVG_NS, name);
+    Object.entries(attrs || {}).forEach(([k, v]) => el.setAttribute(k, v));
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function newChartSvg(width, height, label) {
+    return svgEl('svg', {
+      viewBox: `0 0 ${width} ${height}`,
+      class: 'chart-svg',
+      role: 'img',
+      'aria-label': label
+    });
+  }
+
   function renderCharts() {
     renderChartTrend();
     renderChartRanking();
     renderChartPillars();
     renderChartScatter();
+    renderInferentialSection();
   }
 
   /**
@@ -616,22 +751,19 @@
    */
   function renderChartTrend() {
     elChartTrend.innerHTML = '';
-    const width = 480;
-    const height = 220;
-    const pad = { top: 28, right: 68, bottom: 36, left: 42 };
+    const width = chartWidth(elChartTrend, 560);
+    const height = 260;
+    const pad = { top: 28, right: width < 420 ? 56 : 80, bottom: 34, left: 40 };
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('class', 'chart-svg');
+    const svg = newChartSvg(width, height, 'Grafik garis rata-rata skor IKP tahun 2018 sampai 2026');
 
-    // Years
     const years = data.years;
     const xStep = (width - pad.left - pad.right) / (years.length - 1);
 
     // Get trend data (Selected Province or National)
-    let activeSeries = [];
-    let natSeries = [];
-    years.forEach((y, i) => {
+    const activeSeries = [];
+    const natSeries = [];
+    years.forEach((y) => {
       const natVal = data.national[y]?.mean_ikp || 0;
       natSeries.push({ year: y, val: natVal });
 
@@ -643,76 +775,53 @@
       }
     });
 
-    // Determine adaptive Y bounds so low-scoring regions (e.g. Papua 31-53) never pierce the bottom axis
+    // Adaptive Y bounds so low-scoring regions (e.g. Papua 31-53) never pierce the bottom axis
     const allVals = [...natSeries, ...activeSeries]
       .map(p => p.val)
       .filter(v => v !== null && v !== undefined && !isNaN(v));
     const minDataVal = allVals.length > 0 ? Math.min(...allVals) : 50;
 
     let yMin = 50;
-    let yMax = 100;
+    const yMax = 100;
     let gridVals = [50, 65, 80, 100];
 
     if (minDataVal < 42) {
       yMin = 20;
-      yMax = 100;
       gridVals = [20, 40, 60, 80, 100];
     } else if (minDataVal < 52) {
       yMin = 35;
-      yMax = 100;
       gridVals = [35, 50, 65, 80, 100];
     }
 
-    function scaleX(i) { return pad.left + i * xStep; }
-    function scaleY(v) { return height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom); }
+    const scaleX = (i) => pad.left + i * xStep;
+    const scaleY = (v) => height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom);
 
-    // Gridlines (Hairline 1px)
     gridVals.forEach(gv => {
       const yPos = scaleY(gv);
-      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', pad.left);
-      line.setAttribute('x2', width - pad.right);
-      line.setAttribute('y1', yPos);
-      line.setAttribute('y2', yPos);
-      line.setAttribute('class', 'chart-gridline');
-      svg.appendChild(line);
-
-      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      text.setAttribute('x', pad.left - 8);
-      text.setAttribute('y', yPos + 3);
-      text.setAttribute('text-anchor', 'end');
-      text.setAttribute('class', 'chart-axis-text');
-      text.textContent = gv;
-      svg.appendChild(text);
+      svg.appendChild(svgEl('line', { x1: pad.left, x2: width - pad.right, y1: yPos, y2: yPos, class: 'chart-gridline' }));
+      svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
 
-    // If province selected, render National benchmark as dashed muted line
+    // National benchmark when a province is selected
     if (selectedProvince) {
       const natPathD = natSeries.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${scaleX(i)},${scaleY(pt.val)}`).join(' ');
-      const natPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      natPath.setAttribute('d', natPathD);
-      natPath.setAttribute('class', 'chart-line-national');
-      svg.appendChild(natPath);
+      svg.appendChild(svgEl('path', { d: natPathD, class: 'chart-line-national' }));
 
-      // Label at end of national line
       const lastNat = natSeries[natSeries.length - 1];
-      const lblNat = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      lblNat.setAttribute('x', scaleX(natSeries.length - 1) + 6);
-      lblNat.setAttribute('y', scaleY(lastNat.val) + 3);
-      lblNat.setAttribute('class', 'chart-axis-text');
-      lblNat.setAttribute('font-size', '11px');
-      lblNat.textContent = `Nasional`;
-      svg.appendChild(lblNat);
+      svg.appendChild(svgEl('text', {
+        x: scaleX(natSeries.length - 1) + 8,
+        y: scaleY(lastNat.val) + 4,
+        class: 'chart-axis-text'
+      }, 'Nasional'));
     }
 
-    // Active line with segmented continuity (avoids artificial diagonal bridges over missing years)
+    // Active line with segmented continuity (no artificial bridges over missing years)
     let activePathD = '';
     let inSeg = false;
     years.forEach((y, i) => {
       const pt = activeSeries[i];
       if (pt && pt.val !== null && !isNaN(pt.val)) {
-        const cmd = inSeg ? 'L' : 'M';
-        activePathD += `${cmd} ${scaleX(i)},${scaleY(pt.val)} `;
+        activePathD += `${inSeg ? 'L' : 'M'} ${scaleX(i)},${scaleY(pt.val)} `;
         inSeg = true;
       } else {
         inSeg = false;
@@ -720,46 +829,40 @@
     });
 
     if (activePathD.trim()) {
-      const activePath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      activePath.setAttribute('d', activePathD.trim());
-      activePath.setAttribute('class', 'chart-line');
-      svg.appendChild(activePath);
+      svg.appendChild(svgEl('path', { d: activePathD.trim(), class: 'chart-line' }));
     }
 
-    // Draw points and X-axis year labels
+    // Points and X-axis year labels
     years.forEach((y, i) => {
       const pt = activeSeries[i];
       const xPos = scaleX(i);
+      const isCurrent = y === currentYear;
 
-      // Year text
-      const xText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      xText.setAttribute('x', xPos);
-      xText.setAttribute('y', height - 12);
-      xText.setAttribute('text-anchor', 'middle');
-      xText.setAttribute('class', 'chart-axis-text');
-      if (y === currentYear) xText.setAttribute('font-weight', '800');
-      xText.textContent = y;
-      svg.appendChild(xText);
+      svg.appendChild(svgEl('text', {
+        x: xPos,
+        y: height - 10,
+        'text-anchor': 'middle',
+        class: isCurrent ? 'chart-axis-text is-current' : 'chart-axis-text'
+      }, y));
 
       if (pt && pt.val !== null && !isNaN(pt.val)) {
         const yPos = scaleY(pt.val);
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('cx', xPos);
-        circle.setAttribute('cy', yPos);
-        circle.setAttribute('r', y === currentYear ? 5.5 : 3.5);
-        circle.setAttribute('class', y === currentYear ? 'chart-point is-active' : 'chart-point');
-        svg.appendChild(circle);
+        svg.appendChild(svgEl('circle', {
+          cx: xPos,
+          cy: yPos,
+          r: isCurrent ? 6 : 3,
+          class: isCurrent ? 'chart-point is-active' : 'chart-point'
+        }));
 
-        // Direct annotation for current year (Ch. 4)
-        if (y === currentYear) {
-          const valText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          valText.setAttribute('x', xPos);
-          const labelY = yPos < pad.top + 16 ? yPos + 18 : yPos - 10;
-          valText.setAttribute('y', labelY);
-          valText.setAttribute('text-anchor', 'middle');
-          valText.setAttribute('class', 'chart-bar-val val-pulse');
-          valText.textContent = pt.val.toFixed(2);
-          svg.appendChild(valText);
+        // Direct annotation for the current year (Ch. 4)
+        if (isCurrent) {
+          const labelY = yPos < pad.top + 16 ? yPos + 22 : yPos - 12;
+          svg.appendChild(svgEl('text', {
+            x: xPos,
+            y: labelY,
+            'text-anchor': 'middle',
+            class: 'chart-bar-val'
+          }, pt.val.toFixed(2)));
         }
       }
     });
@@ -768,20 +871,13 @@
   }
 
   /**
-   * Visual 2: Horizontal Bar Chart - Disparitas Daerah (Top 5 vs Bottom 5)
-   * Adheres to Storytelling with Data Ch. 2 (Horizontal bar for comparison)
-   * Baseline at zero always, sorted logically
-   * Color: Cobalt for high/tahan, Amber for low/rentan
+   * Visual 2: Horizontal Bar Chart - Disparitas Daerah (Top 3 vs Bottom 3)
+   * Baseline at zero always, sorted logically. Blue for tahan, amber for rentan.
    */
   function renderChartRanking() {
     elChartRanking.innerHTML = '';
-    const width = 480;
-    const height = 240;
-    const pad = { top: 12, right: 60, bottom: 16, left: 150 };
-
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('class', 'chart-svg');
+    const width = chartWidth(elChartRanking, 420);
+    const pad = { top: 8, right: 52, bottom: 8, left: Math.min(172, Math.round(width * 0.42)) };
 
     let items = [];
     if (!selectedProvince) {
@@ -804,54 +900,41 @@
     }
 
     if (items.length === 0) {
-      elChartRanking.innerHTML = '<div class="state-empty" style="padding:var(--space-md);"><span class="section-desc">Data tidak tersedia untuk filter ini</span></div>';
+      elChartRanking.innerHTML = emptyBlock('Data tidak tersedia untuk filter ini');
       return;
     }
 
-    const rowH = (height - pad.top - pad.bottom) / items.length;
-    const barH = Math.min(rowH - 6, 20);
-    const maxVal = 100;
-    const scaleW = (width - pad.left - pad.right) / maxVal;
+    const rowH = 38;
+    const barH = 16;
+    const height = pad.top + pad.bottom + rowH * items.length;
+    const svg = newChartSvg(width, height, 'Diagram batang skor IKP daerah tertinggi dan terendah');
+    const scaleW = (width - pad.left - pad.right) / 100;
+    const maxChars = Math.max(8, Math.floor((pad.left - 10) / 7.6));
 
     items.forEach((item, i) => {
       const y = pad.top + i * rowH + (rowH - barH) / 2;
       const barW = Math.max(item.val * scaleW, 2);
 
-      // Label (Left)
-      const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      lbl.setAttribute('x', pad.left - 8);
-      lbl.setAttribute('y', y + barH / 2);
-      lbl.setAttribute('text-anchor', 'end');
-      lbl.setAttribute('class', 'chart-bar-label');
-      // Truncate long names cleanly
-      lbl.textContent = item.name.length > 18 ? item.name.slice(0, 17) + '…' : item.name;
-      svg.appendChild(lbl);
+      svg.appendChild(svgEl('text', {
+        x: pad.left - 10,
+        y: y + barH / 2,
+        'text-anchor': 'end',
+        class: 'chart-bar-label'
+      }, item.name.length > maxChars ? item.name.slice(0, maxChars - 1) + '…' : item.name));
 
-      // Bar Background
-      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      bg.setAttribute('x', pad.left);
-      bg.setAttribute('y', y);
-      bg.setAttribute('width', 100 * scaleW);
-      bg.setAttribute('height', barH);
-      bg.setAttribute('class', 'chart-bar-bg');
-      svg.appendChild(bg);
-
-      // Bar Fill
-      const fill = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      fill.setAttribute('x', pad.left);
-      fill.setAttribute('y', y);
-      fill.setAttribute('width', barW);
-      fill.setAttribute('height', barH);
-      fill.setAttribute('class', `chart-bar-fill ${!item.isTop ? 'chart-bar-fill--rentan' : ''}`);
-      svg.appendChild(fill);
-
-      // Value text at end of bar
-      const val = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      val.setAttribute('x', pad.left + barW + 6);
-      val.setAttribute('y', y + barH / 2);
-      val.setAttribute('class', 'chart-bar-val');
-      val.textContent = item.val.toFixed(1);
-      svg.appendChild(val);
+      svg.appendChild(svgEl('rect', { x: pad.left, y, width: 100 * scaleW, height: barH, class: 'chart-bar-bg' }));
+      svg.appendChild(svgEl('rect', {
+        x: pad.left,
+        y,
+        width: barW,
+        height: barH,
+        class: `chart-bar-fill ${!item.isTop ? 'chart-bar-fill--rentan' : ''}`
+      }));
+      svg.appendChild(svgEl('text', {
+        x: pad.left + barW + 8,
+        y: y + barH / 2,
+        class: 'chart-bar-val'
+      }, item.val.toFixed(1)));
     });
 
     elChartRanking.appendChild(svg);
@@ -864,9 +947,7 @@
    */
   function renderChartPillars() {
     elChartPillars.innerHTML = '';
-    const width = 480;
-    const height = 220;
-    const pad = { top: 22, right: 90, bottom: 24, left: 154 };
+    const width = chartWidth(elChartPillars, 420);
 
     let pData = null;
     if (selectedProvince) {
@@ -876,77 +957,53 @@
     }
 
     if (!pData || pData.indeks_ketersediaan === null || pData.indeks_ketersediaan === undefined) {
-      elChartPillars.innerHTML = `
-        <div class="state-empty" style="padding:var(--space-md);">
-          <span class="section-desc">Data 3 pilar (Ketersediaan, Keterjangkauan, Pemanfaatan) tersedia mulai tahun 2024–2026.</span>
-        </div>`;
+      elChartPillars.innerHTML = emptyBlock('Data 3 pilar (Ketersediaan, Keterjangkauan, Pemanfaatan) tersedia mulai tahun 2024 sampai 2026.');
       return;
     }
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('class', 'chart-svg');
-
     const pillars = [
-      { key: 'indeks_keterjangkauan', name: 'Keterjangkauan', val: pData.indeks_keterjangkauan, desc: 'Akses fisik & ekonomi' },
-      { key: 'indeks_pemanfaatan', name: 'Pemanfaatan', val: pData.indeks_pemanfaatan, desc: 'Gizi, air, sanitasi' },
-      { key: 'indeks_ketersediaan', name: 'Ketersediaan', val: pData.indeks_ketersediaan, desc: 'Produksi & cadangan' }
+      { key: 'indeks_keterjangkauan', name: 'Keterjangkauan', val: pData.indeks_keterjangkauan, desc: 'akses fisik dan ekonomi' },
+      { key: 'indeks_pemanfaatan', name: 'Pemanfaatan', val: pData.indeks_pemanfaatan, desc: 'gizi, air, sanitasi' },
+      { key: 'indeks_ketersediaan', name: 'Ketersediaan', val: pData.indeks_ketersediaan, desc: 'produksi dan cadangan' }
     ];
 
-    const rowH = (height - pad.top - pad.bottom) / pillars.length;
-    const barH = 24;
-    const maxVal = 100;
-    const scaleW = (width - pad.left - pad.right) / maxVal;
+    // Direct labels sit above each bar, so the plot can use the full width.
+    const pad = { top: 6, right: 56, bottom: 6, left: 0 };
+    const rowH = 62;
+    const barH = 18;
+    const height = pad.top + pad.bottom + rowH * pillars.length;
+    const svg = newChartSvg(width, height, 'Diagram batang tiga pilar ketahanan pangan');
+    const scaleW = (width - pad.left - pad.right) / 100;
 
     pillars.forEach((p, i) => {
-      const y = pad.top + i * rowH + (rowH - barH) / 2;
+      const top = pad.top + i * rowH;
+      const barY = top + 28;
       const barW = Math.max(p.val * scaleW, 2);
       const isBottleneck = p.key === 'indeks_ketersediaan';
 
-      // Label
-      const lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      lbl.setAttribute('x', pad.left - 10);
-      lbl.setAttribute('y', y + barH / 2 - 3);
-      lbl.setAttribute('text-anchor', 'end');
-      lbl.setAttribute('class', 'chart-bar-label');
-      lbl.setAttribute('font-weight', '800');
-      lbl.textContent = p.name;
-      svg.appendChild(lbl);
+      const label = svgEl('text', { x: pad.left, y: top + 16, class: 'chart-bar-label chart-bar-label--strong' });
+      label.appendChild(svgEl('tspan', {}, p.name));
+      label.appendChild(svgEl('tspan', { dx: 8, class: 'chart-axis-text' }, p.desc));
+      svg.appendChild(label);
 
-      // Sub-label
-      const sub = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      sub.setAttribute('x', pad.left - 10);
-      sub.setAttribute('y', y + barH / 2 + 10);
-      sub.setAttribute('text-anchor', 'end');
-      sub.setAttribute('class', 'chart-axis-text');
-      sub.textContent = p.desc;
-      svg.appendChild(sub);
+      svg.appendChild(svgEl('rect', { x: pad.left, y: barY, width: 100 * scaleW, height: barH, class: 'chart-bar-bg' }));
+      svg.appendChild(svgEl('rect', {
+        x: pad.left,
+        y: barY,
+        width: barW,
+        height: barH,
+        class: `chart-bar-fill ${isBottleneck ? 'chart-bar-fill--rentan' : ''}`
+      }));
 
-      // BG
-      const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      bg.setAttribute('x', pad.left);
-      bg.setAttribute('y', y);
-      bg.setAttribute('width', 100 * scaleW);
-      bg.setAttribute('height', barH);
-      bg.setAttribute('class', 'chart-bar-bg');
-      svg.appendChild(bg);
-
-      // Fill
-      const fill = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      fill.setAttribute('x', pad.left);
-      fill.setAttribute('y', y);
-      fill.setAttribute('width', barW);
-      fill.setAttribute('height', barH);
-      fill.setAttribute('class', `chart-bar-fill ${isBottleneck ? 'chart-bar-fill--rentan' : ''}`);
-      svg.appendChild(fill);
-
-      // Value
-      const val = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      val.setAttribute('x', pad.left + barW + 8);
-      val.setAttribute('y', y + barH / 2);
-      val.setAttribute('class', 'chart-bar-val');
-      val.textContent = isBottleneck ? `${p.val.toFixed(1)} (Bottleneck)` : p.val.toFixed(1);
+      const val = svgEl('text', { x: pad.left + barW + 8, y: barY + barH / 2, class: 'chart-bar-val' }, p.val.toFixed(1));
       svg.appendChild(val);
+      if (isBottleneck) {
+        svg.appendChild(svgEl('text', {
+          x: pad.left + barW + 8 + 44,
+          y: barY + barH / 2,
+          class: 'chart-axis-text chart-axis-text--mid'
+        }, 'faktor pembatas'));
+      }
     });
 
     elChartPillars.appendChild(svg);
@@ -954,18 +1011,15 @@
 
   /**
    * Visual 4: Scatterplot - Korelasi IKP vs Kemiskinan (P0)
-   * Adheres to Storytelling with Data Ch. 2 (Scatterplot for correlation)
-   * Shows how regions with high poverty correlate with lower food security
+   * Shows how regions with high poverty correlate with lower food security.
+   * The lower right quadrant (poverty above 15%, IKP below 60) is the
+   * double-vulnerability zone.
    */
   function renderChartScatter() {
     elChartScatter.innerHTML = '';
-    const width = 480;
-    const height = 224;
-    const pad = { top: 24, right: 40, bottom: 44, left: 42 };
-
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('class', 'chart-svg');
+    const width = chartWidth(elChartScatter, 560);
+    const height = 300;
+    const pad = { top: 26, right: 28, bottom: 46, left: 42 };
 
     // Collect all provinces data for current year (fallback to 2025 for poverty if current year not yet published)
     const povYear = currentYear > 2025 ? 2025 : currentYear;
@@ -974,100 +1028,88 @@
       const yData = pInfo.yearly[currentYear];
       const povVal = pInfo.yearly[povYear]?.kemiskinan_persen;
       if (yData && yData.mean_ikp && povVal !== null && povVal !== undefined) {
-        points.push({
-          prov: prov,
-          ikp: yData.mean_ikp,
-          pov: povVal
-        });
+        points.push({ prov, ikp: yData.mean_ikp, pov: povVal });
       }
     });
 
     if (points.length === 0) {
-      elChartScatter.innerHTML = `
-        <div class="state-empty" style="padding:var(--space-md);">
-          <span class="section-desc">Data kemiskinan tahun ini belum dipublikasikan oleh BPS</span>
-        </div>`;
+      elChartScatter.innerHTML = emptyBlock('Data kemiskinan tahun ini belum dipublikasikan oleh BPS');
       return;
     }
 
+    const svg = newChartSvg(width, height, 'Diagram pencar tingkat kemiskinan P0 terhadap skor IKP provinsi');
+
     const xMin = 0, xMax = 35; // Kemiskinan %
-    const yMin = 20, yMax = 100; // IKP (aligned to 20-100 to prevent bottom clipping)
+    const yMin = 20, yMax = 100; // IKP
 
-    function scaleX(v) { return pad.left + ((v - xMin) / (xMax - xMin)) * (width - pad.left - pad.right); }
-    function scaleY(v) { return height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom); }
+    const scaleX = (v) => pad.left + ((v - xMin) / (xMax - xMin)) * (width - pad.left - pad.right);
+    const scaleY = (v) => height - pad.bottom - ((v - yMin) / (yMax - yMin)) * (height - pad.top - pad.bottom);
 
-    // Gridlines
+    // Double-vulnerability quadrant
+    svg.appendChild(svgEl('rect', {
+      x: scaleX(15),
+      y: scaleY(60),
+      width: scaleX(xMax) - scaleX(15),
+      height: scaleY(yMin) - scaleY(60),
+      class: 'chart-quadrant'
+    }));
+    svg.appendChild(svgEl('text', {
+      x: scaleX(xMax) - 6,
+      y: scaleY(yMin) - 8,
+      'text-anchor': 'end',
+      class: 'chart-axis-text'
+    }, 'Prioritas ganda'));
+
     [20, 40, 60, 80, 100].forEach(gv => {
       const yPos = scaleY(gv);
-      const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      l.setAttribute('x1', pad.left);
-      l.setAttribute('x2', width - pad.right);
-      l.setAttribute('y1', yPos);
-      l.setAttribute('y2', yPos);
-      l.setAttribute('class', 'chart-gridline');
-      svg.appendChild(l);
-
-      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t.setAttribute('x', pad.left - 6);
-      t.setAttribute('y', yPos + 3);
-      t.setAttribute('text-anchor', 'end');
-      t.setAttribute('class', 'chart-axis-text');
-      t.textContent = gv;
-      svg.appendChild(t);
+      svg.appendChild(svgEl('line', { x1: pad.left, x2: width - pad.right, y1: yPos, y2: yPos, class: 'chart-gridline' }));
+      svg.appendChild(svgEl('text', { x: pad.left - 8, y: yPos + 4, 'text-anchor': 'end', class: 'chart-axis-text' }, gv));
     });
 
-    // X Axis ticks
     [5, 15, 25, 35].forEach(xv => {
-      const xPos = scaleX(xv);
-      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t.setAttribute('x', xPos);
-      t.setAttribute('y', height - pad.bottom + 16);
-      t.setAttribute('text-anchor', 'middle');
-      t.setAttribute('class', 'chart-axis-text');
-      t.textContent = `${xv}%`;
-      svg.appendChild(t);
+      svg.appendChild(svgEl('text', {
+        x: scaleX(xv),
+        y: height - pad.bottom + 18,
+        'text-anchor': 'middle',
+        class: 'chart-axis-text'
+      }, `${xv}%`));
     });
 
-    // Axis Labels
-    const yLbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    yLbl.setAttribute('x', pad.left);
-    yLbl.setAttribute('y', 14);
-    yLbl.setAttribute('class', 'chart-axis-text');
-    yLbl.textContent = 'Skor IKP →';
-    svg.appendChild(yLbl);
+    svg.appendChild(svgEl('text', { x: pad.left, y: 12, class: 'chart-axis-text' }, 'Skor IKP'));
+    svg.appendChild(svgEl('text', {
+      x: pad.left + (width - pad.left - pad.right) / 2,
+      y: height - 8,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text'
+    }, 'Tingkat kemiskinan P0 (%)'));
 
-    const xLbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    xLbl.setAttribute('x', pad.left + (width - pad.left - pad.right) / 2);
-    xLbl.setAttribute('y', height - 6);
-    xLbl.setAttribute('text-anchor', 'middle');
-    xLbl.setAttribute('class', 'chart-axis-text');
-    xLbl.setAttribute('font-weight', '600');
-    xLbl.textContent = 'Tingkat Kemiskinan P0 (%) →';
-    svg.appendChild(xLbl);
-
-    // Render points
     points.forEach(pt => {
       const isSel = selectedProvince === pt.prov;
-      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('cx', scaleX(pt.pov));
-      circle.setAttribute('cy', scaleY(pt.ikp));
-      circle.setAttribute('r', isSel ? 7 : 4);
-      circle.setAttribute('fill', pt.ikp < 60 ? 'var(--color-accent-2)' : 'var(--color-accent)');
-      circle.setAttribute('stroke', isSel ? 'var(--color-ink)' : 'var(--color-paper-3)');
-      circle.setAttribute('stroke-width', isSel ? 2.5 : 1);
-      circle.style.cursor = 'pointer';
+      const circle = svgEl('circle', {
+        cx: scaleX(pt.pov),
+        cy: scaleY(pt.ikp),
+        r: isSel ? 7 : 4.5,
+        class: `scatter-dot ${pt.ikp < 60 ? 'scatter-dot--rentan' : ''} ${isSel ? 'is-selected' : ''}`,
+        tabindex: 0,
+        role: 'button',
+        'aria-label': `${pt.prov}: IKP ${pt.ikp.toFixed(1)}, kemiskinan ${pt.pov.toFixed(1)}%`
+      });
 
-      // Tooltip title
-      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-      title.textContent = `${pt.prov}: IKP ${pt.ikp.toFixed(1)}, Kemiskinan ${pt.pov.toFixed(1)}%`;
-      circle.appendChild(title);
+      circle.appendChild(svgEl('title', {}, `${pt.prov}: IKP ${pt.ikp.toFixed(1)}, Kemiskinan ${pt.pov.toFixed(1)}%`));
 
-      circle.addEventListener('click', () => {
+      const choose = () => {
         selectedProvince = selectedProvince === pt.prov ? null : pt.prov;
         elProvSelect.value = selectedProvince || '';
         currentPage = 1;
         updateUrlParams();
         renderAll();
+      };
+      circle.addEventListener('click', choose);
+      circle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          choose();
+        }
       });
 
       svg.appendChild(circle);
@@ -1076,26 +1118,433 @@
       if (isSel || pt.pov >= 25 || (pt.ikp >= 85 && pt.pov <= 5)) {
         const xDot = scaleX(pt.pov);
         const yDot = scaleY(pt.ikp);
-        const isNearRight = xDot > width - pad.right - 90;
-        const textX = isNearRight ? xDot - 8 : xDot + 8;
-        const anchor = isNearRight ? 'end' : 'start';
+        const isNearRight = xDot > width - pad.right - 110;
+        const textX = isNearRight ? xDot - 10 : xDot + 10;
 
-        let yOffset = 3;
-        if (pt.prov === 'Papua Pegunungan') yOffset += 6;
-        if (pt.prov === 'Papua Tengah') yOffset -= 6;
+        let yOffset = 4;
+        if (pt.prov === 'Papua Pegunungan') yOffset += 7;
+        if (pt.prov === 'Papua Tengah') yOffset -= 7;
 
-        const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        t.setAttribute('x', textX);
-        t.setAttribute('y', yDot + yOffset);
-        t.setAttribute('text-anchor', anchor);
-        t.setAttribute('class', 'chart-axis-text');
-        t.setAttribute('font-weight', isSel ? '800' : '500');
-        t.textContent = pt.prov;
-        svg.appendChild(t);
+        svg.appendChild(svgEl('text', {
+          x: textX,
+          y: yDot + yOffset,
+          'text-anchor': isNearRight ? 'end' : 'start',
+          class: isSel ? 'chart-axis-text is-current' : 'chart-axis-text'
+        }, pt.prov));
       }
     });
 
     elChartScatter.appendChild(svg);
+  }
+
+  // =========================================================================
+  // Inferential & Storytelling Models (ANOVA, K-Means, Multiple Regression)
+  // =========================================================================
+  let selectedPersonaKey = 'Urban Resilient';
+  let isSimulatorInitialized = false;
+
+  // Personas read on the same diverging scale as the map: the stronger the
+  // persona, the closer to blue; the harder the crisis, the closer to amber.
+  const PERSONA_COLOR = {
+    'Agrarian Resilient': 'var(--color-scale-5)',
+    'Urban Resilient': 'var(--color-scale-4)',
+    'Agrarian Paradox': 'var(--color-scale-2)',
+    'Chronic Crisis': 'var(--color-scale-1)'
+  };
+
+  const PERSONA_INFO = {
+    'Urban Resilient': {
+      title: 'Urban Resilient (Pusat Konsumsi Modern)',
+      desc: 'Keterjangkauan & pemanfaatan gizi tertinggi (82.5 & 78.5), produksi lokal minim, angka kelaparan sangat rendah (8.0%). Dominan kota besar di Jawa & Sumatera.',
+      policy: 'Intervensi: Penguatan rantai pasok logistik perkotaan, pemantauan stabilitas harga pangan esensial, dan mitigasi pemborosan makanan (food waste).'
+    },
+    'Agrarian Resilient': {
+      title: 'Agrarian Resilient (Lumbung Pangan Berdaulat)',
+      desc: 'Ketersediaan surplus tertinggi (73.4), ketahanan prima (IKP 75.2), kelaparan terendah (7.4%). Mayoritas kabupaten sentra pertanian di Sumatera, Jawa, Kalimantan, Sulawesi.',
+      policy: 'Intervensi: Modernisasi teknologi pascapanen, perlindungan lahan pertanian abadi (LP2B), dan perluasan asuransi usaha tani.'
+    },
+    'Agrarian Paradox': {
+      title: 'Agrarian Paradox (Rentan Kesejahteraan)',
+      desc: 'Ketersediaan fisik cukup (52.9) tetapi akses daya beli dan sanitasi tertinggal; angka kelaparan mulai waspada (13.1%). Kabupaten transisi di Sumatera, Sulawesi, Bali-Nusra.',
+      policy: 'Intervensi: Bantuan pangan bersyarat (PKH), penguatan ekonomi petani gurem untuk daya beli, edukasi gizi balita, dan penyediaan sanitasi air bersih.'
+    },
+    'Chronic Crisis': {
+      title: 'Chronic Crisis (Krisis Multidimensi Akut)',
+      desc: 'Defisit ketersediaan kritis (<28), akses ekonomi terisolasi, angka kelaparan melonjak drastis (>33%). 100% berada di Kawasan Timur (30 Papua, 12 Maluku).',
+      policy: 'Intervensi: Pembangunan jalur logistik perintis, subsidi ongkos angkut pangan, revitalisasi pangan lokal (sagu/umbi), dan intervensi darurat stunting.'
+    }
+  };
+
+  function renderInferentialSection() {
+    if (!data || !data.analytics) return;
+    renderAnovaCard();
+    renderKmeansCard();
+    renderRegressionCard();
+    if (!isSimulatorInitialized) {
+      initPolicySimulator();
+      isSimulatorInitialized = true;
+    }
+  }
+
+  // Pilar 1: ANOVA Card
+  function renderAnovaCard() {
+    const elContainer = document.getElementById('chartAnovaDisparity');
+    const elTukeyList = document.getElementById('tukeyList');
+    if (!elContainer || !elTukeyList) return;
+
+    elContainer.innerHTML = '';
+    elTukeyList.innerHTML = '';
+
+    const width = chartWidth(elContainer, 520);
+    const height = 270;
+    const pad = { top: 40, right: 44, bottom: 28, left: 92 };
+
+    const svg = newChartSvg(width, height, 'Rata-rata skor IKP tujuh gugus kepulauan, dipisah kabupaten dan kota');
+
+    // Rata-rata IKP 2024 per gugus pulau, dihitung dinamis dari data 514 daerah
+    const kabs2024 = data.kabupaten.filter(k => k.tahun === 2024 && k.gugus_pulau);
+    const gugusMap = {};
+    kabs2024.forEach(k => {
+      const g = k.gugus_pulau;
+      if (!gugusMap[g]) gugusMap[g] = { name: g, all: [], kab: [], kota: [] };
+      if (k.ikp !== null) {
+        gugusMap[g].all.push(k.ikp);
+        if (k.tipe === 'Kota') gugusMap[g].kota.push(k.ikp);
+        else gugusMap[g].kab.push(k.ikp);
+      }
+    });
+
+    const avg = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
+    const gugusData = Object.values(gugusMap).map(g => ({
+      name: g.name === 'Bali-Nusa Tenggara' ? 'Bali-Nusra' : g.name,
+      mean: Math.round(avg(g.all) * 10) / 10,
+      kab: Math.round(avg(g.kab) * 10) / 10,
+      kota: Math.round(avg(g.kota) * 10) / 10
+    })).sort((a, b) => b.mean - a.mean);
+
+    const nationalMean = Math.round(avg(kabs2024.map(k => k.ikp).filter(v => v !== null)) * 100) / 100;
+
+    const minX = 40;
+    const maxX = 85;
+    const xScale = (v) => pad.left + ((v - minX) / (maxX - minX)) * (width - pad.left - pad.right);
+    const rowH = (height - pad.top - pad.bottom) / gugusData.length;
+
+    // Direct legend, drawn in the plot instead of a separate key
+    const legendY = 12;
+    svg.appendChild(svgEl('circle', { cx: pad.left + 4, cy: legendY - 4, r: 4, class: 'anova-dot anova-dot--kab' }));
+    svg.appendChild(svgEl('text', { x: pad.left + 14, y: legendY, class: 'chart-axis-text' }, 'Kabupaten'));
+    svg.appendChild(svgEl('circle', { cx: pad.left + 100, cy: legendY - 4, r: 4, class: 'anova-dot anova-dot--kota' }));
+    svg.appendChild(svgEl('text', { x: pad.left + 110, y: legendY, class: 'chart-axis-text' }, 'Kota'));
+
+    [45, 60, 75].forEach(gx => {
+      const x = xScale(gx);
+      svg.appendChild(svgEl('line', { x1: x, x2: x, y1: pad.top, y2: height - pad.bottom, class: 'chart-gridline' }));
+      svg.appendChild(svgEl('text', { x, y: height - pad.bottom + 18, 'text-anchor': 'middle', class: 'chart-axis-text' }, gx));
+    });
+
+    // National average line, labelled in place
+    const natX = xScale(nationalMean);
+    svg.appendChild(svgEl('line', { x1: natX, x2: natX, y1: pad.top - 8, y2: height - pad.bottom, class: 'chart-reference' }));
+    svg.appendChild(svgEl('text', {
+      x: natX,
+      y: pad.top - 14,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text is-current'
+    }, `Rata-rata nasional ${nationalMean}`));
+
+    gugusData.forEach((d, idx) => {
+      const y = pad.top + idx * rowH + rowH / 2;
+      const barLen = xScale(d.mean) - pad.left;
+      const isLow = d.mean < 60;
+
+      svg.appendChild(svgEl('text', {
+        x: pad.left - 10,
+        y: y + 4,
+        'text-anchor': 'end',
+        class: isLow ? 'chart-bar-label chart-bar-label--strong' : 'chart-bar-label'
+      }, d.name));
+
+      svg.appendChild(svgEl('rect', {
+        x: pad.left,
+        y: y - 4,
+        width: Math.max(0, barLen),
+        height: 8,
+        class: isLow ? 'anova-bar anova-bar--low' : 'anova-bar'
+      }));
+      svg.appendChild(svgEl('circle', { cx: xScale(d.kab), cy: y, r: 4.5, class: 'anova-dot anova-dot--kab' }));
+      svg.appendChild(svgEl('circle', { cx: xScale(d.kota), cy: y, r: 4.5, class: 'anova-dot anova-dot--kota' }));
+
+      svg.appendChild(svgEl('text', {
+        x: Math.max(xScale(d.mean), xScale(d.kota)) + 12,
+        y: y + 4,
+        class: 'chart-bar-val'
+      }, d.mean.toFixed(1)));
+    });
+
+    elContainer.appendChild(svg);
+
+    // Statistik dan Tukey HSD dibaca dari anova_results.json (tertanam di dashboard_data.js)
+    const anova = data.analytics.anova;
+    const gugus = anova.two_way_anova.gugus_pulau;
+    const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+    setText('anovaFStat', gugus.f_statistic.toFixed(2));
+    setText('anovaEtaSq', `${(gugus.partial_eta_sq * 100).toFixed(1)}%`);
+    setText('anovaTipeF', `F = ${anova.two_way_anova.tipe_daerah.f_statistic.toFixed(2)}`);
+
+    const fmtP = (p) => (p < 0.0001 ? '< 0.0001' : p.toFixed(4));
+    const topTukey = [...anova.tukey_top_disparities]
+      .sort((a, b) => a.meandiff - b.meandiff)
+      .slice(0, 4)
+      .map(t => ({
+        pair: `${t.group2} vs ${t.group1}`.replace('Bali-Nusa Tenggara', 'Bali-Nusra'),
+        diff: `${t.meandiff.toFixed(2)} poin`,
+        p: fmtP(t['p-adj'])
+      }));
+
+    topTukey.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'tukey-item';
+      li.innerHTML = `
+        <span>${escapeHtml(item.pair)}</span>
+        <span class="tukey-diff num">${item.diff} (${item.p})</span>
+      `;
+      elTukeyList.appendChild(li);
+    });
+  }
+
+  // Pilar 2: K-Means Card
+  function renderKmeansCard() {
+    const elPills = document.getElementById('personaPillsRow');
+    const elRadar = document.getElementById('chartKmeansRadar');
+    const elDetail = document.getElementById('personaDetailCard');
+    if (!elPills || !elRadar || !elDetail) return;
+
+    const personas = data.analytics.kmeans.personas;
+    const personaKeys = Object.keys(personas);
+
+    elPills.innerHTML = '';
+    personaKeys.forEach(key => {
+      const p = personas[key];
+      const isActive = key === selectedPersonaKey;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `persona-item ${isActive ? 'is-active' : ''}`;
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      btn.style.setProperty('--persona', PERSONA_COLOR[key] || 'var(--color-scale-3)');
+      btn.innerHTML = `
+        <span class="persona-swatch" aria-hidden="true"></span>
+        <span class="persona-name">${escapeHtml(key)}</span>
+        <span class="persona-count num">${p.count}</span>
+      `;
+      btn.addEventListener('click', () => {
+        selectedPersonaKey = key;
+        renderKmeansCard();
+        const again = document.querySelector('#personaPillsRow .persona-item.is-active');
+        if (again) again.focus({ preventScroll: true });
+      });
+      elPills.appendChild(btn);
+    });
+
+    // Radar chart
+    elRadar.innerHTML = '';
+    const width = chartWidth(elRadar, 520);
+    const height = 320;
+    const cx = width / 2;
+    const cy = height / 2;
+    const maxR = Math.max(44, Math.min(120, width / 2 - 104));
+
+    const svg = newChartSvg(width, height, 'Diagram radar profil persona wilayah pada empat dimensi');
+
+    const axes = [
+      { name: 'Ketersediaan', angle: -Math.PI / 2, getVal: p => p.ketersediaan },
+      { name: 'Keterjangkauan', angle: 0, getVal: p => p.keterjangkauan },
+      { name: 'Bebas Kelaparan', angle: Math.PI / 2, getVal: p => Math.max(0, 100 - p.pou) },
+      { name: 'Pemanfaatan', angle: Math.PI, getVal: p => p.pemanfaatan }
+    ];
+
+    // Background rings
+    [0.25, 0.5, 0.75, 1.0].forEach(frac => {
+      const r = maxR * frac;
+      const polyPts = axes.map(a => `${(cx + r * Math.cos(a.angle)).toFixed(1)},${(cy + r * Math.sin(a.angle)).toFixed(1)}`).join(' ');
+      svg.appendChild(svgEl('polygon', { points: polyPts, class: 'chart-ring' }));
+    });
+
+    // Axis lines and labels
+    axes.forEach(a => {
+      svg.appendChild(svgEl('line', {
+        x1: cx,
+        y1: cy,
+        x2: cx + maxR * Math.cos(a.angle),
+        y2: cy + maxR * Math.sin(a.angle),
+        class: 'chart-gridline'
+      }));
+
+      const anchor = a.angle === 0 ? 'start' : (a.angle === Math.PI ? 'end' : 'middle');
+      svg.appendChild(svgEl('text', {
+        x: cx + (maxR + 14) * Math.cos(a.angle),
+        y: cy + (maxR + 14) * Math.sin(a.angle) + 4,
+        'text-anchor': anchor,
+        class: 'chart-axis-text'
+      }, a.name));
+    });
+
+    // Polygons for all personas (selected on top)
+    const sortedKeys = [...personaKeys].sort(k => k === selectedPersonaKey ? 1 : -1);
+    sortedKeys.forEach(key => {
+      const p = personas[key];
+      const isSelected = key === selectedPersonaKey;
+      const color = PERSONA_COLOR[key] || 'var(--color-scale-3)';
+
+      const pts = axes.map(a => {
+        const r = (a.getVal(p) / 100) * maxR;
+        return `${(cx + r * Math.cos(a.angle)).toFixed(1)},${(cy + r * Math.sin(a.angle)).toFixed(1)}`;
+      }).join(' ');
+
+      svg.appendChild(svgEl('polygon', {
+        points: pts,
+        fill: isSelected ? color : 'none',
+        'fill-opacity': isSelected ? '0.2' : '0',
+        stroke: color,
+        'stroke-width': isSelected ? '2' : '1',
+        'stroke-opacity': isSelected ? '1' : '0.5'
+      }));
+
+      if (isSelected) {
+        axes.forEach(a => {
+          const r = (a.getVal(p) / 100) * maxR;
+          svg.appendChild(svgEl('circle', {
+            cx: cx + r * Math.cos(a.angle),
+            cy: cy + r * Math.sin(a.angle),
+            r: 3.5,
+            fill: color
+          }));
+        });
+      }
+    });
+
+    elRadar.appendChild(svg);
+
+    // Detail
+    const info = PERSONA_INFO[selectedPersonaKey] || {};
+    const curP = personas[selectedPersonaKey];
+    const policyHtml = escapeHtml(info.policy || '').replace(/^([^:]+:)/, '<strong>$1</strong>');
+    elDetail.innerHTML = `
+      <div class="persona-detail-head">
+        <h4 class="persona-detail-name">${escapeHtml(info.title || selectedPersonaKey)}</h4>
+        <span class="persona-detail-count num">${curP.count} daerah (${curP.pct}%)</span>
+      </div>
+      <p class="persona-detail-desc">${escapeHtml(info.desc || '')}</p>
+      <p class="persona-policy">${policyHtml}</p>
+    `;
+  }
+
+  // Pilar 3: Regression Card
+  function renderRegressionCard() {
+    const elContainer = document.getElementById('chartRegressionTornado');
+    if (!elContainer) return;
+
+    elContainer.innerHTML = '';
+    const width = chartWidth(elContainer, 520);
+    const height = 150;
+    const pad = { top: 12, right: 88, bottom: 12, left: Math.min(176, Math.round(width * 0.42)) };
+
+    const svg = newChartSvg(width, height, 'Diagram batang koefisien regresi tiga tuas kebijakan');
+
+    const reg = data.analytics?.regression;
+    const levers = reg?.levers ? [
+      { name: '1. Keterjangkauan (Akses)', beta: reg.levers.indeks_keterjangkauan.standardized_beta },
+      { name: '2. Ketersediaan (Stok)', beta: reg.levers.indeks_ketersediaan.standardized_beta },
+      { name: '3. Pemanfaatan (Gizi)', beta: reg.levers.indeks_pemanfaatan.standardized_beta }
+    ] : [
+      { name: '1. Keterjangkauan (Akses)', beta: -0.5176 },
+      { name: '2. Ketersediaan (Stok)', beta: -0.2288 },
+      { name: '3. Pemanfaatan (Gizi)', beta: -0.1460 }
+    ];
+
+    const maxAbsBeta = 0.6;
+    const rowH = (height - pad.top - pad.bottom) / levers.length;
+
+    levers.forEach((l, idx) => {
+      const y = pad.top + idx * rowH + rowH / 2;
+      const barLen = (Math.abs(l.beta) / maxAbsBeta) * (width - pad.left - pad.right);
+
+      svg.appendChild(svgEl('text', {
+        x: pad.left - 10,
+        y: y + 4,
+        'text-anchor': 'end',
+        class: idx === 0 ? 'chart-bar-label chart-bar-label--strong' : 'chart-bar-label'
+      }, l.name));
+
+      svg.appendChild(svgEl('rect', {
+        x: pad.left,
+        y: y - 7,
+        width: Math.max(0, barLen),
+        height: 14,
+        class: idx === 0 ? 'chart-bar-fill' : 'chart-bar-fill chart-bar-fill--quiet'
+      }));
+
+      svg.appendChild(svgEl('text', {
+        x: pad.left + barLen + 8,
+        y: y + 4,
+        class: 'chart-bar-val'
+      }, `β = ${l.beta.toFixed(3)}`));
+    });
+
+    elContainer.appendChild(svg);
+  }
+
+  // Interactive Policy Simulator
+  function initPolicySimulator() {
+    const sAccess = document.getElementById('simSliderAccess');
+    const sAvail = document.getElementById('simSliderAvail');
+    const sUtil = document.getElementById('simSliderUtil');
+    const vAccess = document.getElementById('simValAccess');
+    const vAvail = document.getElementById('simValAvail');
+    const vUtil = document.getElementById('simValUtil');
+    const elNewPou = document.getElementById('simNewPou');
+    const elDeltaPou = document.getElementById('simDeltaPou');
+    const btnReset = document.getElementById('resetSimBtn');
+
+    if (!sAccess || !sAvail || !sUtil) return;
+
+    const reg = data.analytics?.regression;
+    const bAccess = reg?.levers?.indeks_keterjangkauan?.unstandardized_coef ?? -0.5348;
+    const bAvail = reg?.levers?.indeks_ketersediaan?.unstandardized_coef ?? -0.1281;
+    const bUtil = reg?.levers?.indeks_pemanfaatan?.unstandardized_coef ?? -0.1012;
+    const baseline = reg?.scenarios?.[0]?.['Baseline PoU Nasional (%)'] ?? 11.08;
+
+    function updateSimulation() {
+      const dAccess = parseFloat(sAccess.value) || 0;
+      const dAvail = parseFloat(sAvail.value) || 0;
+      const dUtil = parseFloat(sUtil.value) || 0;
+
+      vAccess.textContent = `+${dAccess} poin`;
+      vAvail.textContent = `+${dAvail} poin`;
+      vUtil.textContent = `+${dUtil} poin`;
+
+      const deltaPou = (bAccess * dAccess) + (bAvail * dAvail) + (bUtil * dUtil);
+      const newPou = Math.max(0, baseline + deltaPou);
+      const reductionPct = Math.abs(deltaPou) / baseline * 100;
+
+      elNewPou.textContent = `${newPou.toFixed(2)}%`;
+      elDeltaPou.textContent = deltaPou === 0 ? '0.0%' : `-${reductionPct.toFixed(1)}%`;
+      elDeltaPou.classList.toggle('is-gain', deltaPou < 0);
+    }
+
+    sAccess.addEventListener('input', updateSimulation);
+    sAvail.addEventListener('input', updateSimulation);
+    sUtil.addEventListener('input', updateSimulation);
+
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        sAccess.value = 0;
+        sAvail.value = 0;
+        sUtil.value = 0;
+        updateSimulation();
+      });
+    }
+
+    updateSimulation();
   }
 
   // =========================================================================
@@ -1110,7 +1559,7 @@
       records = records.filter(k => k.prov === selectedProvince);
     }
     if (selectedClassification !== null) {
-      records = records.filter(k => getStepForValue(k.ikp) === selectedClassification);
+      records = records.filter(k => recordStep(k) === selectedClassification);
     }
     if (searchQuery) {
       records = records.filter(k =>
@@ -1132,6 +1581,8 @@
       return sortAsc ? va - vb : vb - va;
     });
 
+    updateSortIndicators();
+
     const totalRows = records.length;
     if (totalRows === 0) {
       elEmptyState.style.display = 'flex';
@@ -1149,21 +1600,23 @@
 
     pageRows.forEach((r, idx) => {
       const tr = document.createElement('tr');
-      tr.style.animationDelay = `${idx * 20}ms`;
 
-      let statusTagClass = 'status-tag-saas--tahan';
-      if (r.grp === 1) statusTagClass = 'status-tag-saas--sangat-rentan';
-      else if (r.grp === 2 || r.grp === 3) statusTagClass = 'status-tag-saas--rentan';
+      // Status carries the same scale colour the map uses for its IKP class.
+      const statusStep = groupStep(r.grp);
+
+      const personaLabel = r.persona
+        ? `<span class="persona-tag" style="--persona: ${PERSONA_COLOR[r.persona] || 'var(--color-scale-3)'};"><span class="persona-swatch" aria-hidden="true"></span>${escapeHtml(r.persona)}</span>`
+        : '';
 
       tr.innerHTML = `
         <td class="num">${startIdx + idx + 1}</td>
-        <td><strong>${escapeHtml(r.kab)}</strong></td>
+        <td><strong>${escapeHtml(r.kab)}</strong>${personaLabel}</td>
         <td>${escapeHtml(r.tipe || 'Kabupaten')}</td>
         <td>${escapeHtml(r.prov)}</td>
         <td class="num"><strong>${r.ikp !== null ? r.ikp.toFixed(2) : '–'}</strong></td>
         <td class="num">${r.rank || '–'}</td>
         <td class="num">${r.grp || '–'}</td>
-        <td><span class="status-tag-saas ${statusTagClass}">${escapeHtml(r.status || '–')}</span></td>
+        <td><span class="status-mark status-mark--${statusStep}"><span class="status-swatch" aria-hidden="true"></span>${escapeHtml(r.status || '–')}</span></td>
         <td class="num">${r.avail !== null ? r.avail.toFixed(1) : '–'}</td>
         <td class="num">${r.access !== null ? r.access.toFixed(1) : '–'}</td>
         <td class="num">${r.util !== null ? r.util.toFixed(1) : '–'}</td>
@@ -1189,18 +1642,14 @@
 
     function goToPage(targetPage) {
       if (targetPage < 1 || targetPage > totalPages || targetPage === currentPage) return;
-      if (elTableBody) elTableBody.classList.add('table-page-fade');
-      setTimeout(() => {
-        currentPage = targetPage;
-        renderTable();
-        if (elTableBody) elTableBody.classList.remove('table-page-fade');
-      }, 110);
+      currentPage = targetPage;
+      renderTable();
     }
 
     // Prev Button
     const prevBtn = document.createElement('button');
     prevBtn.type = 'button';
-    prevBtn.className = 'btn-pill';
+    prevBtn.className = 'btn';
     prevBtn.textContent = 'Sebelumnya';
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener('click', () => {
@@ -1210,15 +1659,15 @@
 
     // Current page indicator
     const pageIndicator = document.createElement('span');
-    pageIndicator.className = 'btn-pill';
-    pageIndicator.style.cursor = 'default';
+    pageIndicator.className = 'pagination-status num';
+    pageIndicator.setAttribute('aria-live', 'polite');
     pageIndicator.textContent = `Hal ${currentPage} / ${totalPages}`;
     elPagination.appendChild(pageIndicator);
 
     // Next Button
     const nextBtn = document.createElement('button');
     nextBtn.type = 'button';
-    nextBtn.className = 'btn-pill';
+    nextBtn.className = 'btn';
     nextBtn.textContent = 'Berikutnya';
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.addEventListener('click', () => {
@@ -1233,7 +1682,7 @@
       records = records.filter(k => k.prov === selectedProvince);
     }
     if (selectedClassification !== null) {
-      records = records.filter(k => getStepForValue(k.ikp) === selectedClassification);
+      records = records.filter(k => recordStep(k) === selectedClassification);
     }
     if (searchQuery) {
       records = records.filter(k =>
@@ -1271,7 +1720,7 @@
   // Interactive Legend Classification Filter
   // =========================================================================
   function setupLegendFilter() {
-    const stepBtns = document.querySelectorAll('.legend-step-saas');
+    const stepBtns = document.querySelectorAll('.legend-step');
     stepBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const step = parseInt(btn.dataset.step, 10);
@@ -1299,9 +1748,12 @@
   }
 
   function updateLegendUI() {
-    const stepBtns = document.querySelectorAll('.legend-step-saas');
+    const stepBtns = document.querySelectorAll('.legend-step');
+    const ranges = LEGEND_RANGES[activeMetric] || LEGEND_RANGES.ikp;
     stepBtns.forEach(btn => {
       const step = parseInt(btn.dataset.step, 10);
+      const rangeEl = btn.querySelector('.legend-range');
+      if (rangeEl) rangeEl.textContent = ranges[step];
       const isActive = selectedClassification === step;
       if (isActive) {
         btn.classList.add('is-active');
@@ -1320,6 +1772,8 @@
   function showLoading(isLoading) {
     const el = document.getElementById('loadingState');
     if (el) el.style.display = isLoading ? 'flex' : 'none';
+    const main = document.getElementById('main');
+    if (main) main.setAttribute('aria-busy', isLoading ? 'true' : 'false');
   }
 
   function showError(msg) {

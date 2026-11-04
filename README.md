@@ -30,7 +30,7 @@ Dokumen ini merangkum secara lengkap dan rinci seluruh metode statistik, logika 
 .
 ├── dashboard/
 │   ├── css/
-│   │   ├── style.css             # Desain antarmuka utama (tema Slate & Cobalt)
+│   │   ├── style.css             # Desain antarmuka utama (tema Rim: gelap, garis rambut, skala amber dan biru langit)
 │   │   ├── tokens.css            # Token desain (palet warna, tipografi, radius)
 │   │   └── base.css              # Reset dasar & utilitas layout UI
 │   ├── js/
@@ -67,8 +67,8 @@ Seluruh visualisasi dirancang mengikuti kaidah Cole Nussbaumer Knaflic (*Storyte
 1. **Meminimalkan Beban Kognitif (*Clutter Reduction*):** Menghilangkan garis tepi tebal (*heavy borders*), latar belakang gelap yang tidak perlu, dan efek 3D. Gridline menggunakan garis rambut 1px yang samar (*hairline gridlines*).
 2. **Pelabelan Langsung (*Direct Labeling*):** Menghindari legenda terpisah yang memaksa mata bolak-balik membaca kode. Teks angka dan kategori ditempatkan langsung di ujung batang atau titik garis.
 3. **Pewarnaan Bertujuan (*Intentional & Colorblind-Safe Palette*):**
-   - **Biru Cobalt / Hijau:** Menandakan kondisi positif, aman pangan (*Tahan / Sangat Tahan*).
-   - **Amber / Oranye / Merah:** Menandakan kondisi waspada, risiko tinggi (*Rentan / Sangat Rentan* atau *Bottleneck*).
+   - **Biru langit:** Menandakan kondisi positif, aman pangan (*Tahan / Sangat Tahan*).
+   - **Amber:** Menandakan kondisi waspada, risiko tinggi (*Rentan / Sangat Rentan* atau *Bottleneck*). Oranye hanya dipakai antarmuka (tahun aktif, tombol utama, fokus), tidak pernah menandai data.
    - **Abu-abu / Slate:** Digunakan untuk baseline netral dan konteks latar belakang.
 
 ---
@@ -81,9 +81,9 @@ Seluruh visualisasi dirancang mengikuti kaidah Cole Nussbaumer Knaflic (*Storyte
 
 | Kartu Metrik | Nilai Contoh (2025) | Variabel Sumber | Metode & Formula Perhitungan | Tujuan & Penjelasan Visual |
 |---|---|---|---|---|
-| **1. Skor Ketahanan Nasional** | `69.70 / 100`<br>`+1.66 vs tahun lalu`<br>*Agak Tahan* | `IKP` ([`IKP 2024-2026.csv`](file:///C:/Coding%20SDT/VS%20Code/Python/Semester%205/Presentasi%20dan%20Storytelling%20Data/Tugas%20Kelompok/data/raw/data/raw/dataset_ikp/IKP%202024-2026.csv)) | **Rata-rata Aritmatika Agregat:**<br>Rata-rata = (Total Skor IKP 514 Kab/Kota) / 514 = 69.70<br>**Delta Tahunan:**<br>Delta = Rata-rata 2025 - Rata-rata 2024 = 69.70 - 68.04 = +1.66<br>**Klasifikasi Status:**<br>Rentang skor 65.0 sampai 74.9 masuk kategori *Agak Tahan* | *Dark Hero Card* berkontras tinggi untuk memfokuskan perhatian utama audiens pada performa makro nasional. |
+| **1. Skor Ketahanan Nasional** | `69.70 / 100`<br>`+1.66 vs tahun lalu`<br>*Agak Tahan* | `IKP` ([`IKP 2024-2026.csv`](file:///C:/Coding%20SDT/VS%20Code/Python/Semester%205/Presentasi%20dan%20Storytelling%20Data/Tugas%20Kelompok/data/raw/data/raw/dataset_ikp/IKP%202024-2026.csv)) | **Rata-rata Aritmatika Agregat:**<br>Rata-rata = (Total Skor IKP 514 Kab/Kota) / 514 = 69.70<br>**Delta Tahunan:**<br>Delta = Rata-rata 2025 - Rata-rata 2024 = 69.70 - 68.04 = +1.66<br>**Klasifikasi Status:**<br>Rentang skor 65.0 sampai 74.9 masuk kategori *Agak Tahan* | Angka pertama dibuat paling besar pada deretan lima angka kunci agar perhatian audiens jatuh pada performa makro nasional. |
 | **2. Ketahanan Daerah** | `84.2%`<br>*433 dari 514 daerah* | `KELOMPOK IKP` | **Proporsi Relatif Daerah Tahan:**<br>Rasio = (Jumlah Daerah Kelompok 4, 5, 6 / Total Kab-Kota) x 100%<br>= (433 / 514) x 100% = 84.24% (dibulatkan 84.2%) | Menunjukkan seberapa luas penetrasi stabilitas ketahanan pangan di tingkat kabupaten/kota se-Indonesia. |
-| **3. Daerah Rentan Pangan** | `81`<br>*Prioritas 1 sampai 3* | `KELOMPOK IKP` | **Headcount Kelompok Rawan:**<br>Total = Jumlah Daerah (Kelompok 1 + Kelompok 2 + Kelompok 3)<br>= 20 + 19 + 42 = 81 daerah | Badge peringatan berwarna oranye untuk menegaskan target daerah yang mendesak diberi bantuan logistik pangan. |
+| **3. Daerah Rentan Pangan** | `81`<br>*Prioritas 1 sampai 3* | `KELOMPOK IKP` | **Headcount Kelompok Rawan:**<br>Total = Jumlah Daerah (Kelompok 1 + Kelompok 2 + Kelompok 3)<br>= 20 + 19 + 42 = 81 daerah | Angka dengan keterangan prioritas 1 sampai 3 untuk menegaskan target daerah yang mendesak diberi bantuan logistik pangan. |
 | **4. Kesenjangan Skor Wilayah** | `68.9`<br>*Skor 19.9 s/d 88.8* | `IKP` | **Rentang Dispersi (Range):**<br>Range = Skor Tertinggi - Skor Terendah<br>= 88.79 - 19.93 = 68.86 (dibulatkan 68.9) | Mengukur derajat ketimpangan spasial antara daerah paling mandiri (Badung 88.8) vs paling tertinggal (Nduga 19.9). |
 | **5. Kemiskinan P0** | `10.44%`<br>*Rerata Provinsi (BPS)* | `total_persen` ([`kemiskinan_p0...csv`](file:///C:/Coding%20SDT/VS%20Code/Python/Semester%205/Presentasi%20dan%20Storytelling%20Data/Tugas%20Kelompok/data/raw/data/raw/dataset_penduduk/kemiskinan_p0_provinsi_2018_2025.csv)) | **Rerata Persentase Provinsi:**<br>Rerata = (Total Persentase Kemiskinan 38 Provinsi) / 38 = 10.44% | Mengaitkan status pangan dengan daya beli moneter masyarakat menurut data Susenas BPS 2025. |
 
@@ -94,11 +94,11 @@ Seluruh visualisasi dirancang mengikuti kaidah Cole Nussbaumer Knaflic (*Storyte
 * **Tipe Visual:** *Interactive Geographic Choropleth Map* (Format SVG berbasis GeoJSON 38 Provinsi Indonesia).
 * **Metode Pemetaan Skala Warna (*Stepped Color Quantization*):**
   Menggunakan skala diskrit 5 interval (*binned thresholds*) untuk mempermudah identifikasi zona:
-  - **Skor kurang dari 55.0 (Amber/Oranye Pekat):** Sangat Rentan.
-  - **Skor 55.0 sampai 67.9 (Krem/Pasir Hangat):** Rentan / Di Bawah Rata-rata.
-  - **Skor 68.0 sampai 74.9 (Slate Netral):** Agak Tahan (Sekitar Rata-rata Nasional ~71).
-  - **Skor 75.0 sampai 81.9 (Biru Cobalt Sedang):** Tahan.
-  - **Skor 82.0 ke atas (Deep Cobalt / Biru Laut Tua):** Sangat Tahan.
+  - **Skor kurang dari 55.0 (Amber terang):** Sangat Rentan.
+  - **Skor 55.0 sampai 67.9 (Amber redup):** Rentan / Di Bawah Rata-rata.
+  - **Skor 68.0 sampai 74.9 (Abu-abu hangat netral):** Agak Tahan (Sekitar Rata-rata Nasional ~71).
+  - **Skor 75.0 sampai 81.9 (Biru redup):** Tahan.
+  - **Skor 82.0 ke atas (Biru langit terang):** Sangat Tahan.
 * **Metode Interaktivitas:**
   - *Reactive Cross-Filtering:* Klik poligon memicu pembaruan filter `selectedProvince` ke seluruh dashboard secara otomatis.
   - *Dynamic Tooltip:* Menghitung posisi koordinat mouse (clientX, clientY) yang dibatasi dalam batas layar (*viewport bounding*) agar tidak terpotong.
@@ -126,8 +126,8 @@ Seluruh visualisasi dirancang mengikuti kaidah Cole Nussbaumer Knaflic (*Storyte
   1. **Seleksi Nilai Ekstrem (*Extreme Value Slicing*):** Mengurutkan data secara menurun (*descending*), lalu mengambil Top 3 daerah tertinggi dan Bottom 3 daerah terendah.
   2. **Encoding Skala Batang Penuh (0–100):** Setiap batang diletakkan di atas *track background* abu-abu terang sepanjang skor 100 agar pembaca memahami rasio pencapaian terhadap skor ideal.
   3. **Diverging Color Encoding:**
-     - Batang Top (Tahan): Diberi warna Biru Cobalt.
-     - Batang Bottom (Rentan): Diberi warna Amber Waspada.
+     - Batang Top (Tahan): Diberi warna biru.
+     - Batang Bottom (Rentan): Diberi warna amber.
   4. **Pemotongan Teks Otomatis (*Clean Truncation*):** Nama kabupaten lebih dari 18 karakter dipotong dan diberi elipsis (`…`) agar label tetap rapi dan tidak bertumpukan.
 
 ---
@@ -141,7 +141,7 @@ Seluruh visualisasi dirancang mengikuti kaidah Cole Nussbaumer Knaflic (*Storyte
      - Pilar 2: **Pemanfaatan Pangan** (*Food Utilization* - Gizi, air bersih, dan sanitasi)
      - Pilar 3: **Ketersediaan Pangan** (*Food Availability* - Produksi dan cadangan pangan)
   2. **Deteksi Titik Hambat (*Bottleneck Highlighting*):**
-     Pilar Ketersediaan diberi kelas visual khusus (`chart-bar-fill--rentan`, warna oranye) karena secara statistik memiliki rata-rata nasional paling rendah (~61.1) dibanding Keterjangkauan (~84.8) dan Pemanfaatan (~72.3).
+     Pilar Ketersediaan diberi kelas visual khusus (`chart-bar-fill--rentan`, warna amber) karena secara statistik memiliki rata-rata nasional paling rendah (~61.1) dibanding Keterjangkauan (~84.8) dan Pemanfaatan (~72.3).
 
 ---
 

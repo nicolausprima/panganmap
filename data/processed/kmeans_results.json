@@ -1,0 +1,86 @@
+{
+  "tahun": 2024,
+  "total_kab_kota": 514,
+  "k_optimal": 4,
+  "global_silhouette_score": 0.2549,
+  "personas": {
+    "Agrarian Resilient": {
+      "ketersediaan": 73.37,
+      "keterjangkauan": 81.56,
+      "pemanfaatan": 70.89,
+      "pou": 7.38,
+      "ikp": 75.24,
+      "count": 150,
+      "pct": 29.2,
+      "color": "#15803d"
+    },
+    "Urban Resilient": {
+      "ketersediaan": 53.56,
+      "keterjangkauan": 82.48,
+      "pemanfaatan": 78.46,
+      "pou": 8.01,
+      "ikp": 71.44,
+      "count": 201,
+      "pct": 39.1,
+      "color": "#0284c7"
+    },
+    "Agrarian Paradox": {
+      "ketersediaan": 52.88,
+      "keterjangkauan": 73.52,
+      "pemanfaatan": 59.59,
+      "pou": 13.05,
+      "ikp": 61.94,
+      "count": 121,
+      "pct": 23.5,
+      "color": "#d97706"
+    },
+    "Chronic Crisis": {
+      "ketersediaan": 27.89,
+      "keterjangkauan": 58.96,
+      "pemanfaatan": 44.34,
+      "pou": 33.29,
+      "ikp": 43.66,
+      "count": 42,
+      "pct": 8.2,
+      "color": "#dc2626"
+    }
+  },
+  "geographic_distribution": {
+    "Agrarian Paradox": {
+      "Bali-Nusa Tenggara": 21,
+      "Jawa": 5,
+      "Kalimantan": 8,
+      "Maluku": 7,
+      "Papua": 11,
+      "Sulawesi": 34,
+      "Sumatera": 35
+    },
+    "Agrarian Resilient": {
+      "Bali-Nusa Tenggara": 10,
+      "Jawa": 24,
+      "Kalimantan": 25,
+      "Maluku": 0,
+      "Papua": 0,
+      "Sulawesi": 33,
+      "Sumatera": 58
+    },
+    "Chronic Crisis": {
+      "Bali-Nusa Tenggara": 0,
+      "Jawa": 0,
+      "Kalimantan": 0,
+      "Maluku": 12,
+      "Papua": 30,
+      "Sulawesi": 0,
+      "Sumatera": 0
+    },
+    "Urban Resilient": {
+      "Bali-Nusa Tenggara": 10,
+      "Jawa": 90,
+      "Kalimantan": 23,
+      "Maluku": 2,
+      "Papua": 1,
+      "Sulawesi": 14,
+      "Sumatera": 61
+    }
+  }
+}

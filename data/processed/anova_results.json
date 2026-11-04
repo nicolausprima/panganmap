@@ -1,0 +1,66 @@
+{
+  "tahun": 2024,
+  "total_kab_kota": 514,
+  "one_way_anova": {
+    "f_statistic": 101.6756,
+    "p_value": 1.0525202820137738e-83,
+    "welch_f": 53.4021,
+    "welch_p": 0.0,
+    "is_significant": true
+  },
+  "two_way_anova": {
+    "gugus_pulau": {
+      "f_statistic": 99.9505,
+      "p_value": 2.5112407724109465e-82,
+      "partial_eta_sq": 0.5453
+    },
+    "tipe_daerah": {
+      "f_statistic": 10.2641,
+      "p_value": 0.0014429654961002282,
+      "partial_eta_sq": 0.0201
+    },
+    "interaksi": {
+      "f_statistic": 2.502,
+      "p_value": 0.021456520229539262,
+      "partial_eta_sq": 0.0291
+    }
+  },
+  "tukey_top_disparities": [
+    {
+      "group1": "Kalimantan",
+      "group2": "Papua",
+      "meandiff": -26.9899,
+      "p-adj": 0.0
+    },
+    {
+      "group1": "Jawa",
+      "group2": "Papua",
+      "meandiff": -25.332,
+      "p-adj": 0.0
+    },
+    {
+      "group1": "Bali-Nusa Tenggara",
+      "group2": "Papua",
+      "meandiff": -19.3164,
+      "p-adj": 0.0
+    },
+    {
+      "group1": "Kalimantan",
+      "group2": "Maluku",
+      "meandiff": -17.4649,
+      "p-adj": 0.0
+    },
+    {
+      "group1": "Jawa",
+      "group2": "Maluku",
+      "meandiff": -15.807,
+      "p-adj": 0.0
+    },
+    {
+      "group1": "Bali-Nusa Tenggara",
+      "group2": "Maluku",
+      "meandiff": -9.7914,
+      "p-adj": 0.0
+    }
+  ]
+}

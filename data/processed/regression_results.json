@@ -1,0 +1,77 @@
+{
+  "tahun": 2024,
+  "total_kab_kota": 514,
+  "model_summary": {
+    "r_squared": 0.585,
+    "f_statistic": 239.69,
+    "f_pvalue": 5.369561157483774e-97,
+    "intercept": 67.1825
+  },
+  "levers": {
+    "indeks_keterjangkauan": {
+      "nama": "Keterjangkauan Pangan",
+      "unstandardized_coef": -0.5348,
+      "standardized_beta": -0.5176,
+      "p_value": 1.1925402153295894e-30,
+      "vif": 2.18,
+      "rank": 1
+    },
+    "indeks_ketersediaan": {
+      "nama": "Ketersediaan Pangan",
+      "unstandardized_coef": -0.1281,
+      "standardized_beta": -0.2288,
+      "p_value": 5.8384921377090805e-12,
+      "vif": 1.29,
+      "rank": 2
+    },
+    "indeks_pemanfaatan": {
+      "nama": "Pemanfaatan Pangan",
+      "unstandardized_coef": -0.1012,
+      "standardized_beta": -0.146,
+      "p_value": 0.00030773095786461194,
+      "vif": 1.98,
+      "rank": 3
+    }
+  },
+  "bottleneck_effect": {
+    "threshold_ketersediaan": 50,
+    "interaction_p_value": 1.5149465901450249e-12,
+    "bottleneck_regions_count": 130,
+    "bottleneck_mean_pou": 17.75,
+    "normal_mean_pou": 8.82
+  },
+  "scenarios": [
+    {
+      "Baseline PoU Nasional (%)": 11.08,
+      "Intervensi": "+0 Ketersediaan, +10 Keterjangkauan, +0 Pemanfaatan",
+      "Perubahan Absolut PoU (% poin)": -5.35,
+      "Proyeksi PoU Baru (%)": 5.73,
+      "Penurunan Relatif Angka Kelaparan (%)": "48.3%",
+      "Skenario": "Skenario A: Fokus Subsidi Keterjangkauan (+10 Akses)"
+    },
+    {
+      "Baseline PoU Nasional (%)": 11.08,
+      "Intervensi": "+10 Ketersediaan, +0 Keterjangkauan, +0 Pemanfaatan",
+      "Perubahan Absolut PoU (% poin)": -1.28,
+      "Proyeksi PoU Baru (%)": 9.8,
+      "Penurunan Relatif Angka Kelaparan (%)": "11.6%",
+      "Skenario": "Skenario B: Fokus Logistik Ketersediaan (+10 Stok)"
+    },
+    {
+      "Baseline PoU Nasional (%)": 11.08,
+      "Intervensi": "+0 Ketersediaan, +0 Keterjangkauan, +10 Pemanfaatan",
+      "Perubahan Absolut PoU (% poin)": -1.01,
+      "Proyeksi PoU Baru (%)": 10.07,
+      "Penurunan Relatif Angka Kelaparan (%)": "9.1%",
+      "Skenario": "Skenario C: Fokus Sanitasi Pemanfaatan (+10 Gizi)"
+    },
+    {
+      "Baseline PoU Nasional (%)": 11.08,
+      "Intervensi": "+5 Ketersediaan, +5 Keterjangkauan, +5 Pemanfaatan",
+      "Perubahan Absolut PoU (% poin)": -3.82,
+      "Proyeksi PoU Baru (%)": 7.26,
+      "Penurunan Relatif Angka Kelaparan (%)": "34.5%",
+      "Skenario": "Skenario D: Paket Holistik Berimbang (+5 Stok, +5 Akses, +5 Gizi)"
+    }
+  ]
+}
