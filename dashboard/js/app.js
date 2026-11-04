@@ -891,24 +891,24 @@
   function renderChartRanking() {
     elChartRanking.innerHTML = '';
     const width = chartWidth(elChartRanking, 420);
-    const pad = { top: 8, right: 52, bottom: 8, left: Math.min(172, Math.round(width * 0.42)) };
+    const pad = { top: 8, right: 72, bottom: 8, left: Math.min(172, Math.round(width * 0.42)) };
 
     let items = [];
     if (!selectedProvince) {
       // Top 3 & Bottom 3 Provinces nationally
       const nat = data.national[currentYear] || {};
-      const top3 = (nat.top5_prov || []).slice(0, 3).map(p => ({ name: p.nama_provinsi, val: p.ikp, isTop: true }));
-      const bot3 = (nat.bot5_prov || []).slice(0, 3).map(p => ({ name: p.nama_provinsi, val: p.ikp, isTop: false }));
+      const top3 = (nat.top5_prov || []).slice(0, 3).map(p => ({ name: p.nama_provinsi, val: p.ikp }));
+      const bot3 = (nat.bot5_prov || []).slice(0, 3).map(p => ({ name: p.nama_provinsi, val: p.ikp }));
       items = [...top3, ...bot3];
     } else {
       // Top & Bottom Kab within selected province
       const kabList = data.kabupaten.filter(k => k.prov === selectedProvince && k.tahun === currentYear && k.ikp !== null);
       kabList.sort((a, b) => b.ikp - a.ikp);
       if (kabList.length <= 6) {
-        items = kabList.map(k => ({ name: k.kab, val: k.ikp, isTop: k.ikp >= 70 }));
+        items = kabList.map(k => ({ name: k.kab, val: k.ikp }));
       } else {
-        const top3 = kabList.slice(0, 3).map(k => ({ name: k.kab, val: k.ikp, isTop: true }));
-        const bot3 = kabList.slice(-3).map(k => ({ name: k.kab, val: k.ikp, isTop: false }));
+        const top3 = kabList.slice(0, 3).map(k => ({ name: k.kab, val: k.ikp }));
+        const bot3 = kabList.slice(-3).map(k => ({ name: k.kab, val: k.ikp }));
         items = [...top3, ...bot3];
       }
     }
@@ -928,6 +928,8 @@
     items.forEach((item, i) => {
       const y = pad.top + i * rowH + (rowH - barH) / 2;
       const barW = Math.max(item.val * scaleW, 2);
+      // Warna hijau jika skor >= 68.0 (Tahan Pangan), merah jika < 68.0 (Rentan)
+      const isRentan = item.val < 68.0;
 
       svg.appendChild(svgEl('text', {
         x: pad.left - 10,
@@ -942,7 +944,7 @@
         y,
         width: barW,
         height: barH,
-        class: `chart-bar-fill ${!item.isTop ? 'chart-bar-fill--rentan' : ''}`
+        class: `chart-bar-fill ${isRentan ? 'chart-bar-fill--rentan' : ''}`
       }));
       svg.appendChild(svgEl('text', {
         x: pad.left + barW + 8,
@@ -950,6 +952,17 @@
         class: 'chart-bar-val'
       }, item.val.toFixed(1)));
     });
+
+    // Label vertikal "Skala skor 0–100" di samping kanan diagram batang
+    const midY = height / 2;
+    svg.appendChild(svgEl('text', {
+      transform: `rotate(-90, ${width - 12}, ${midY})`,
+      x: width - 12,
+      y: midY,
+      'text-anchor': 'middle',
+      class: 'chart-axis-text',
+      style: 'fill: var(--color-ink-2); font-weight: 500;'
+    }, 'Skala skor 0–100'));
 
     elChartRanking.appendChild(svg);
   }
