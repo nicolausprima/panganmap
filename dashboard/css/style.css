@@ -571,7 +571,6 @@ input[type="range"]:active::-moz-range-thumb { background: var(--color-accent-ac
   .figure:nth-child(even) { padding-left: var(--space-md); border-left: var(--hairline) solid var(--color-rule); }
   .figure:last-child { border-bottom: 0; }
   .brand-tagline { display: none; }
-  #themeToggleText { display: none; }
   .figure-label { white-space: normal; }
   .select, .input { min-width: 0; width: 100%; }
   .filter-actions { width: 100%; }

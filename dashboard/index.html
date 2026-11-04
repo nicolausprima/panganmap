@@ -15,14 +15,6 @@
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
-  <script>
-    (function() {
-      try {
-        var t = localStorage.getItem('sikap-theme');
-        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      } catch (e) {}
-    })();
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#mapSection">Lewati ke peta</a>
@@ -46,10 +38,7 @@
       </nav>
 
       <div class="topbar-actions">
-        <button type="button" id="themeToggleBtn" class="btn" aria-label="Ganti mode tampilan terang atau gelap" title="Ganti mode terang/gelap">
-          <span id="themeToggleIcon" aria-hidden="true">🌙</span>
-          <span id="themeToggleText">Mode Gelap</span>
-        </button>
+        <a href="landing.html" class="btn" title="Buka Halaman Utama / Landing Page">← Landing Page</a>
         <button type="button" id="exportBtn" class="btn btn--primary" data-export>Ekspor data</button>
       </div>
     </div>
