@@ -337,7 +337,7 @@
   const caf = typeof window !== 'undefined' && window.cancelAnimationFrame ? window.cancelAnimationFrame.bind(window) : clearTimeout;
   const nowFn = () => (typeof window !== 'undefined' && window.performance && window.performance.now ? window.performance.now() : Date.now());
 
-  function animateNumber(el, targetVal, decimals = 2, suffix = '', duration = 220) {
+  function animateNumber(el, targetVal, decimals = 2, suffix = '', duration = 380) {
     if (!el) return;
     if (typeof targetVal !== 'number' || isNaN(targetVal)) {
       el.textContent = targetVal !== null && targetVal !== undefined ? targetVal : '–';
@@ -360,8 +360,8 @@
     function tick(now) {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // easeOutCubic
-      const ease = 1 - Math.pow(1 - progress, 3);
+      // easeOutQuart: exceptionally smooth deceleration
+      const ease = 1 - Math.pow(1 - progress, 4);
       const current = startVal + (targetVal - startVal) * ease;
       el.textContent = current.toFixed(decimals) + suffix;
 
@@ -557,7 +557,6 @@
   let refocusMapCode = null;
 
   function renderMap() {
-    elMapSvg.innerHTML = '';
     const [vx, vy, vw, vh] = data.viewbox || [0, 0, 960, 420];
     elMapSvg.setAttribute('viewBox', `${vx} ${vy} ${vw} ${vh}`);
 
@@ -572,9 +571,6 @@
     } else {
       elMapSvg.classList.remove('has-class-filter');
     }
-
-    // Create container group
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 
     const stepColors = {
       1: 'var(--color-scale-1)',
@@ -593,6 +589,70 @@
     }
 
     const mapYear = (activeMetric === 'kemiskinan' && currentYear > 2025) ? 2025 : currentYear;
+    let g = elMapSvg.querySelector('g.map-group');
+
+    // Create container and paths on first render only (enables smooth CSS transition on fill & opacity)
+    if (!g) {
+      elMapSvg.innerHTML = '';
+      g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class', 'map-group');
+
+      Object.entries(data.geo_map).forEach(([geoCode, geoInfo]) => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', geoInfo.d);
+        path.setAttribute('class', 'map-prov-path');
+        path.setAttribute('data-code', geoCode);
+        path.setAttribute('data-name', geoInfo.name);
+        path.setAttribute('tabindex', '0');
+        path.setAttribute('role', 'button');
+
+        // Hover interaction
+        path.addEventListener('mouseenter', (e) => {
+          showTooltip(e, geoInfo, path._currentVal);
+        });
+        path.addEventListener('mousemove', (e) => {
+          positionTooltip(e);
+        });
+        path.addEventListener('mouseleave', () => {
+          hideTooltip();
+        });
+        path.addEventListener('focus', () => {
+          const box = path.getBoundingClientRect();
+          showTooltip({ clientX: box.left + box.width / 2, clientY: box.top + box.height / 2 }, geoInfo, path._currentVal);
+        });
+        path.addEventListener('blur', hideTooltip);
+        path.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            refocusMapCode = geoCode;
+            path.dispatchEvent(new MouseEvent('click'));
+          }
+        });
+
+        // Click to select
+        path.addEventListener('click', () => {
+          if (geoInfo.provinces.length === 1) {
+            const provName = geoInfo.provinces[0];
+            selectedProvince = selectedProvince === provName ? null : provName;
+          } else {
+            if (geoInfo.provinces.includes(selectedProvince)) {
+              selectedProvince = null;
+            } else {
+              selectedProvince = geoInfo.provinces[0];
+            }
+          }
+          elProvSelect.value = selectedProvince || '';
+          currentPage = 1;
+          updateUrlParams();
+          renderAll();
+        });
+
+        g.appendChild(path);
+      });
+      elMapSvg.appendChild(g);
+    }
+
+    // Smoothly update attributes on existing paths
     Object.entries(data.geo_map).forEach(([geoCode, geoInfo]) => {
       const yData = geoInfo.yearly[mapYear] || {};
       let val = null;
@@ -601,81 +661,23 @@
       else if (activeMetric === 'kemiskinan') val = yData.kemiskinan_persen;
 
       const step = getStepForValue(val);
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', geoInfo.d);
+      const path = g.querySelector(`path[data-code="${geoCode}"]`);
+      if (!path) return;
+
+      path._currentVal = val;
       path.setAttribute('fill', getColor(val));
-      path.setAttribute('class', 'map-prov-path');
-      path.setAttribute('data-code', geoCode);
-      path.setAttribute('data-name', geoInfo.name);
       path.setAttribute('data-step', step);
-      path.setAttribute('tabindex', '0');
-      path.setAttribute('role', 'button');
       path.setAttribute('aria-label', `${geoInfo.provinces.join(', ')}: ${val !== null && val !== undefined ? val : 'data tidak tersedia'}`);
 
-      // Check if this polygon matches classification filter
-      if (selectedClassification !== null && step === selectedClassification) {
-        path.classList.add('is-class-match');
-      }
+      const isClassMatch = selectedClassification !== null && step === selectedClassification;
+      path.classList.toggle('is-class-match', isClassMatch);
 
-      // Check if this polygon contains the selectedProvince
       const isSelected = selectedProvince && geoInfo.provinces.includes(selectedProvince);
-      if (isSelected) {
-        path.classList.add('is-selected');
-      }
-
-      // Hover interaction
-      path.addEventListener('mouseenter', (e) => {
-        showTooltip(e, geoInfo, val);
-      });
-      path.addEventListener('mousemove', (e) => {
-        positionTooltip(e);
-      });
-      path.addEventListener('mouseleave', () => {
-        hideTooltip();
-      });
-      path.addEventListener('focus', () => {
-        const box = path.getBoundingClientRect();
-        showTooltip({ clientX: box.left + box.width / 2, clientY: box.top + box.height / 2 }, geoInfo, val);
-      });
-      path.addEventListener('blur', hideTooltip);
-      path.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          refocusMapCode = geoCode;
-          path.dispatchEvent(new MouseEvent('click'));
-        }
-      });
-
-      // Click to select
-      path.addEventListener('click', () => {
-        // If polygon has multiple provinces (e.g. Papua split in 2024), pick the first or cycle
-        if (geoInfo.provinces.length === 1) {
-          const provName = geoInfo.provinces[0];
-          selectedProvince = selectedProvince === provName ? null : provName;
-        } else {
-          // If clicked again, reset; else pick first or match
-          if (geoInfo.provinces.includes(selectedProvince)) {
-            selectedProvince = null;
-          } else {
-            selectedProvince = geoInfo.provinces[0];
-          }
-        }
-        elProvSelect.value = selectedProvince || '';
-        currentPage = 1;
-        updateUrlParams();
-        renderAll();
-      });
-
-      g.appendChild(path);
+      path.classList.toggle('is-selected', isSelected);
     });
 
-    // Paint the selected and filtered provinces last so their outline is not
-    // overdrawn by neighbours.
-    g.querySelectorAll('.is-class-match').forEach(el => g.appendChild(el));
     const selectedPath = g.querySelector('.is-selected');
     if (selectedPath) g.appendChild(selectedPath);
-
-    elMapSvg.appendChild(g);
 
     if (refocusMapCode) {
       const again = elMapSvg.querySelector(`[data-code="${refocusMapCode}"]`);
@@ -1646,6 +1648,7 @@
 
     pageRows.forEach((r, idx) => {
       const tr = document.createElement('tr');
+      tr.style.setProperty('--row-idx', idx);
 
       // Persona step mapping (1: Rawan Kritis, 2: Cukup Rawan, 4: Aman Perkotaan, 5: Sangat Aman)
       const personaStep = {

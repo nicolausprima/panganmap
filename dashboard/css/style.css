@@ -255,7 +255,10 @@ html { scroll-padding-top: calc(var(--topbar-h) + var(--filterbar-h) + var(--spa
   stroke-width: 1px;
   stroke-linejoin: round;
   cursor: pointer;
-  transition: fill var(--dur-short) var(--ease-out), opacity var(--dur-short) var(--ease-out), stroke var(--dur-micro) var(--ease-out);
+  transition: fill 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke-width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .map-prov-path:hover { stroke: var(--color-ink); stroke-width: 2px; }
 .map-prov-path:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; stroke: var(--color-ink); stroke-width: 2px; }
@@ -335,26 +338,67 @@ html { scroll-padding-top: calc(var(--topbar-h) + var(--filterbar-h) + var(--spa
 .chart-caption { display: flex; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-sm); font-size: var(--text-xs); color: var(--color-muted); }
 .chart-caption--solo { margin-top: var(--space-md); }
 
-.chart-svg { width: 100%; height: auto; display: block; overflow: visible; }
+@keyframes chartFadeIn {
+  from { opacity: 0.15; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes valSlideIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  animation: chartFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 .chart-gridline { stroke: var(--color-rule); stroke-width: 1; }
 .chart-ring { fill: none; stroke: var(--color-rule); stroke-width: 1; }
 .chart-axis-text { fill: var(--color-muted); font-family: var(--font-body); font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
 .chart-axis-text.is-current { fill: var(--color-ink); font-weight: 500; }
 .chart-bar-label { fill: var(--color-ink-2); font-family: var(--font-body); font-size: var(--text-sm); dominant-baseline: central; }
 .chart-bar-label--strong { fill: var(--color-ink); font-weight: 500; dominant-baseline: auto; }
-.chart-bar-val { stroke: var(--color-paper); stroke-width: 3px; paint-order: stroke; fill: var(--color-ink); font-family: var(--font-outlier); font-size: var(--text-sm); font-variant-numeric: tabular-nums; dominant-baseline: central; }
+.chart-bar-val {
+  stroke: var(--color-paper);
+  stroke-width: 3px;
+  paint-order: stroke;
+  fill: var(--color-ink);
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  dominant-baseline: central;
+  animation: valSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 .chart-bar-bg { fill: var(--color-rule-2); }
-.chart-bar-fill { fill: var(--color-scale-4); }
+.chart-bar-fill {
+  fill: var(--color-scale-4);
+  transform-origin: left center;
+  animation: barGrow 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: fill 0.35s ease, opacity 0.35s ease;
+}
 .chart-bar-fill--rentan { fill: var(--color-scale-1); }
 .chart-bar-fill--quiet { fill: var(--color-muted-2); }
 
 .chart-line { fill: none; stroke: var(--color-scale-5); stroke-width: 2; stroke-linejoin: round; stroke-linecap: butt; }
 .chart-line-national { fill: none; stroke: var(--color-muted-2); stroke-width: 1.5; stroke-dasharray: 4 4; }
-.chart-point { fill: var(--color-paper); stroke: var(--color-scale-5); stroke-width: 1.5; }
+.chart-point { fill: var(--color-paper); stroke: var(--color-scale-5); stroke-width: 1.5; transition: r 0.25s cubic-bezier(0.16, 1, 0.3, 1), fill 0.25s ease, stroke 0.25s ease; }
 .chart-point.is-active { fill: var(--color-scale-5); stroke: var(--color-paper); stroke-width: 2; }
 
 .chart-quadrant { fill: var(--color-scale-1); fill-opacity: 0.1; }
-.scatter-dot { fill: var(--color-scale-4); stroke: var(--color-paper); stroke-width: 1; cursor: pointer; }
+.scatter-dot { fill: var(--color-scale-4); stroke: var(--color-paper); stroke-width: 1; cursor: pointer; transition: fill 0.3s ease, stroke 0.2s ease, r 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
 .scatter-dot--rentan { fill: var(--color-scale-1); }
 .scatter-dot.is-selected { stroke: var(--color-ink); stroke-width: 2; }
 .scatter-dot:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
@@ -514,6 +558,11 @@ input[type="range"]:active::-moz-range-thumb { background: var(--color-accent-ac
 .data-table td { padding: var(--space-sm) var(--space-md); border-bottom: var(--hairline) solid var(--color-rule-2); color: var(--color-ink-2); white-space: nowrap; }
 .data-table td strong { color: var(--color-ink); font-weight: 500; }
 .data-table td.num { text-align: right; font-size: var(--text-sm); }
+.data-table tbody tr {
+  animation: rowFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--row-idx, 0) * 16ms);
+  transition: background-color 0.15s ease;
+}
 @media (hover: hover) {
   .data-table tbody tr:hover td { background: var(--color-paper-2); }
 }
