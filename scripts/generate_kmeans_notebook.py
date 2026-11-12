@@ -67,6 +67,7 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score, silhouette_samples
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 
 # Styling visualisasi eksplanatori (Cole Knaflic style)
 sns.set_theme(style='whitegrid', font='sans-serif')
@@ -90,6 +91,13 @@ Menggunakan 4 dimensi kunci: 3 Pilar IKP + Angka Kelaparan (PoU) yang telah dist
 add_code('''# Fitur input model (Z-Score)
 feature_cols = ['z_indeks_ketersediaan', 'z_indeks_keterjangkauan', 'z_indeks_pemanfaatan', 'z_pou']
 raw_cols = ['indeks_ketersediaan', 'indeks_keterjangkauan', 'indeks_pemanfaatan', 'pou']
+
+# Standarisasi Z-Score otomatis jika kolom belum tersedia di CSV
+scaler = StandardScaler()
+for i, col in enumerate(raw_cols):
+    z_col = feature_cols[i]
+    if z_col not in df.columns:
+        df[z_col] = np.round(scaler.fit_transform(df[[col]]), 4)
 
 X = df[feature_cols].copy()
 print("Fitur terstandarisasi yang digunakan:")
@@ -163,27 +171,27 @@ sorted_by_ikp = profile_raw.sort_values(by='ikp', ascending=False).index.tolist(
 
 persona_mapping = {
     sorted_by_ikp[0]: {
-        'nama': 'Agrarian Resilient (Lumbung Pangan Berdaulat)',
+        'nama': 'Klaster 1: Sangat Aman (Lumbung Pangan Tangguh)',
         'kode': 'Agrarian Resilient',
-        'warna': '#15803d', # Hijau tua
+        'warna': '#15803d', # Hijau Zamrud / Emerald (Klaster 1)
         'karakter': 'Ketersediaan surplus pangan tinggi, ketahanan pangan prima, kelaparan sangat rendah. Mayoritas kabupaten sentra pertanian.'
     },
     sorted_by_ikp[1]: {
-        'nama': 'Urban Resilient (Pusat Konsumsi Modern)',
+        'nama': 'Klaster 2: Aman Perkotaan (Sentra Konsumsi Modern)',
         'kode': 'Urban Resilient',
-        'warna': '#0284c7', # Biru
+        'warna': '#22c55e', # Hijau Muda / Spring Green (Klaster 2, diselaraskan dengan Dashboard)
         'karakter': 'Ketersediaan lokal moderat tetapi daya beli dan pemanfaatan gizi tertinggi. Dominan kota besar.'
     },
     sorted_by_ikp[2]: {
-        'nama': 'Agrarian Paradox (Rentan Kesejahteraan)',
+        'nama': 'Klaster 3: Cukup Rawan (Paradoks Lumbung Pangan)',
         'kode': 'Agrarian Paradox',
-        'warna': '#d97706', # Amber/Oranye
+        'warna': '#d97706', # Amber / Oranye (Klaster 3)
         'karakter': 'Ketersediaan pangan ada tetapi akses ekonomi (daya beli) tertinggal, PoU mulai waspada (13%).'
     },
     sorted_by_ikp[3]: {
-        'nama': 'Chronic Crisis (Krisis Multidimensi Akut)',
+        'nama': 'Klaster 4: Rawan Kritis (Darurat Pangan Menahun)',
         'kode': 'Chronic Crisis',
-        'warna': '#dc2626', # Merah
+        'warna': '#dc2626', # Merah / Crimson (Klaster 4)
         'karakter': 'Defisit ketersediaan kritis (<30), pemanfaatan terpuruk, angka kelaparan (PoU) melonjak drastis (>33%). Kawasan 3T.'
     }
 }
@@ -247,25 +255,50 @@ df['pca_2'] = pca_coords[:, 1]
 var_exp = pca.explained_variance_ratio_ * 100
 print(f"Total Variansi Dijelaskan oleh 2 Komponen Utama: {sum(var_exp):.1f}% (PC1: {var_exp[0]:.1f}%, PC2: {var_exp[1]:.1f}%)")
 
-plt.figure(figsize=(10, 6))
+# Label display & palet warna sinkron 100% dengan Dashboard SIKAP Pangan
 palette_dict = {v['kode']: v['warna'] for v in persona_mapping.values()}
+
+dashboard_label_map = {
+    'Agrarian Resilient': 'Klaster 1: Sangat Aman',
+    'Urban Resilient': 'Klaster 2: Aman Perkotaan',
+    'Agrarian Paradox': 'Klaster 3: Cukup Rawan',
+    'Chronic Crisis': 'Klaster 4: Rawan Kritis'
+}
+df['klaster_dashboard'] = df['persona'].map(dashboard_label_map)
+
+palette_dashboard = {
+    'Klaster 1: Sangat Aman': palette_dict['Agrarian Resilient'],  # #15803d (Emerald)
+    'Klaster 2: Aman Perkotaan': palette_dict['Urban Resilient'],   # #22c55e (Spring Green)
+    'Klaster 3: Cukup Rawan': palette_dict['Agrarian Paradox'],    # #d97706 (Amber)
+    'Klaster 4: Rawan Kritis': palette_dict['Chronic Crisis']      # #dc2626 (Crimson)
+}
+
+hue_order = [
+    'Klaster 1: Sangat Aman',
+    'Klaster 2: Aman Perkotaan',
+    'Klaster 3: Cukup Rawan',
+    'Klaster 4: Rawan Kritis'
+]
+
+plt.figure(figsize=(10, 6))
 
 sns.scatterplot(
     data=df, 
     x='pca_1', 
     y='pca_2', 
-    hue='persona', 
-    palette=palette_dict,
+    hue='klaster_dashboard',
+    hue_order=hue_order,
+    palette=palette_dashboard,
     alpha=0.85, 
     s=65,
     style='tipe',
     markers={'Kabupaten': 'o', 'Kota': 's'}
 )
 
-plt.title('Proyeksi PCA 2D: Klasterisasi 514 Kabupaten/Kota Berdasarkan Persona Kerentanan', pad=15)
+plt.title('Proyeksi PCA 2D: Klasterisasi 514 Daerah Berdasarkan Ketahanan Pangan', pad=15)
 plt.xlabel(f'Principal Component 1 ({var_exp[0]:.1f}% Variansi)', fontweight='bold')
 plt.ylabel(f'Principal Component 2 ({var_exp[1]:.1f}% Variansi)', fontweight='bold')
-plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', frameon=True)
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', frameon=True, title='Klaster Ketahanan')
 plt.tight_layout()
 plt.show()''')
 
@@ -309,6 +342,7 @@ output_master_csv = os.path.join(OUTPUT_DIR, 'master_analisis_2024.csv')
 export_cols = [
     'kode_prov', 'nama_provinsi', 'kode_kab_kota', 'nama_kabupaten', 'tipe', 'gugus_pulau',
     'ikp', 'indeks_ketersediaan', 'indeks_keterjangkauan', 'indeks_pemanfaatan', 'status_kerentanan', 'pou',
+    'z_indeks_ketersediaan', 'z_indeks_keterjangkauan', 'z_indeks_pemanfaatan', 'z_pou',
     'persona', 'warna_persona', 'pca_1', 'pca_2'
 ]
 df[export_cols].to_csv(output_master_csv, index=False)
